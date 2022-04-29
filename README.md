@@ -1,11 +1,19 @@
-# fit3161 - suburb selector
-This project aims to recommend a suburb for students to live in around Australian
-universities or schools based on their budget, public transport availability to their most
-traveled destinations, whether or not they need late night transportation, transit time and
-crime rates in the suburbs
+# FIT3161 Group 20 - Suburb Selector
 
-# members
+This project aims to recommend a suburb for students to live in around Australian
+Universities or Schools based on their:
+
+<ol>
+  <li>budget,</li>
+  <li>public transport,</li>
+  <li>availability to grocery stores, shopping centres,</li>
+  <li>whether or not they need late night transportation,</li>
+  <li>transit time and</li>
+  <li>crime rates in the suburbs</li>
+</ol>
+
+# Members
+
 Rachel Knowles
 Philbert Lan
-Phillip Tran
-
+Phillip Tran 30610427 ptra0010@student.monash.edu
