@@ -1,4 +1,4 @@
-# FIT3161 Group 20 - Suburb Selector
+# FIT3161/2 Group 20 - Suburb Selector
 
 This project aims to recommend a suburb for students to live in around Australian
 Universities or Schools based on their:
