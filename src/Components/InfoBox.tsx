@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 
 interface Props {
   name?: string;
+  campusLocation?: string;
 }
 
 function InfoBox(props: Props) {
@@ -19,6 +20,7 @@ function InfoBox(props: Props) {
       }}
     >
       <p>{props.name}</p>
+      <p>{props.campusLocation}</p>
     </Box>
   );
 }
