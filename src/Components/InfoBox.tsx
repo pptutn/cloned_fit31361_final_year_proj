@@ -1,7 +1,11 @@
 import React from "react";
 import Box from "@mui/material/Box";
 
-function InfoBox() {
+interface Props {
+  name?: string;
+}
+
+function InfoBox(props: Props) {
   return (
     <Box
       sx={{
@@ -13,7 +17,9 @@ function InfoBox() {
           opacity: [0.5, 0.5, 0.5],
         },
       }}
-    ></Box>
+    >
+      <p>{props.name}</p>
+    </Box>
   );
 }
 
