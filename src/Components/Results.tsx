@@ -2,23 +2,37 @@ import "./Results.css";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
+import SearchIcon from '@mui/icons-material/Search';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import { Avatar } from '@material-ui/core';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 function Results() {
   return (
-    <Stack spacing={{ xs: 1, sm: 2, md: 4 }} sx={{ width: 1, height: 1 }}>
-      <div>
-        <h1 className="Results-title"> StuCom.</h1>
-        <Autocomplete
-          id="search-universities"
-          freeSolo
-          options={Universities.map((option) => option.name)}
-          renderInput={(params) => (
-            <TextField {...params} label="Search for your University" />
-          )}
-        />
-        <h2 className="Results-title"> Search Results</h2>
+
+    // header
+      <div className = 'header'>
+        
+        {/* banner */}
+        <div className='banner__left'>
+          <h1 className="app-title"> StuCom.</h1>
+        </div>
+
+        <div className='banner__right'>
+          <Avatar />
+        </div>
+
+        {/* header */}
+        <div className='header__left'>
+          <ArrowBackIcon />
+        </div>
+
+        <div className='header__center'>
+          <input type="text" />
+          <FilterListIcon />
+          <SearchIcon />
+        </div>
       </div>
-    </Stack>
   );
 }
 
