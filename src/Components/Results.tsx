@@ -11,27 +11,32 @@ function Results() {
   return (
 
     // header
-      <div className = 'header'>
+      <div className = 'result__header'>
         
         {/* banner */}
-        <div className='banner__left'>
-          <h1 className="app-title"> StuCom.</h1>
-        </div>
+        <div className='banner'>
+          <div className='banner__left'>
+            <h1 className="app-title"> StuCom.</h1>
+          </div>
 
-        <div className='banner__right'>
-          <Avatar />
+          <div className='banner__right'>
+            <Avatar />
+          </div>
         </div>
 
         {/* header */}
-        <div className='header__left'>
-          <ArrowBackIcon />
-        </div>
+        <div className = 'header'>
+          <div className='header__left'>
+            <ArrowBackIcon />
+          </div>
 
-        <div className='header__center'>
-          <input type="text" />
-          <FilterListIcon />
-          <SearchIcon />
+          <div className='header__center'>
+            <input type="text" />
+            <FilterListIcon />
+            <SearchIcon />
+          </div>
         </div>
+        
       </div>
   );
 }

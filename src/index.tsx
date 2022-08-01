@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import HomePage from "./Components/HomePage";
 import Results from "./Components/Results";
+import Banner from "./Components/Banner";
+import SearchBar from "./Components/SearchBar";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) throw new Error("Failed to find the root element");
@@ -10,7 +12,8 @@ const root = ReactDOM.createRoot(rootElement);
 
 root.render(
   <div>
-    <Results />
+    <Banner />
+    <SearchBar />
   </div>
 );
 

@@ -1,7 +1,9 @@
-.header {
+.result__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  
   position: sticky;
   top: 10px;
   background-color: #282c34;
@@ -9,29 +11,26 @@
   width: 100%;
 }
 
-.banner__left {
+.banner {
   display: flex;
   align-items: center;
+}
+
+.banner__left {
   margin-left: 50px;
 }
 
 .banner__right {
-  display: flex;
-  align-items: center;
   position: absolute;
   right: 50px;
 }
 
-.header__left {
+.header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .header__center {
-  display: flex;
-  flex: 1;
-  align-items: center;
   max-width: fit-content;
   padding: 10px;
   height: 30px;
