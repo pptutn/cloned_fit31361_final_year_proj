@@ -18,8 +18,6 @@ function SearchBar() {
             <FilterListIcon />
             <SearchIcon />
         </div>
-
-        <div id = 'blank__element'></div>
       </div>
   );
 }

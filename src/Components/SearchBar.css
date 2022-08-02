@@ -4,9 +4,10 @@
     align-items: center;
     position: sticky;
     top: 0;
-    background-color: 282c34;
+    background-color: #1F222A;
     z-index: 100;
     width: 100%;
+    padding-right: 50%;
   }
   
 
@@ -21,6 +22,7 @@
     border: 1px solid lightgray;
     background-color: white;
     border-radius: 999px;
+    margin-right: calc(50vw - 170px);
 }
 
 .header__left {
@@ -28,12 +30,9 @@
     align-items: center;
     justify-content: space-between;
     width: 15vw;
-    margin-left: 80px;
+    padding-left: 80px;
     transform: scale(1.8);
-}
-
-.blank__element {
-    flex: 1;
+    color: #FFFFFF;
 }
 
 .header__center > input {
