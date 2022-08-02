@@ -8,6 +8,10 @@ interface Props {
   campusLocation?: string;
 }
 
+const showAlert = () => {
+  alert("God I love FIT3162");
+};
+
 function InfoBox(props: Props) {
   return (
     <Box
@@ -21,7 +25,7 @@ function InfoBox(props: Props) {
         },
         borderRadius: 2,
       }}
-      // onClick={}
+      onClick={showAlert}
     >
       <Stack className={"Stack-stack"} ml={2} mr={2}>
         <p className={"Box-title"}>{props.name}</p>
