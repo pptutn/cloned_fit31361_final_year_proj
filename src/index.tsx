@@ -5,6 +5,9 @@ import HomePage from "./Components/HomePage";
 // import searchResults from "./Components/searchResults";
 import Banner from "./Components/Headers/Banner";
 import SearchBar from "./Components/Headers/SearchBar";
+import LoginPage from "./Components/LoginPage";
+import SignupPage from "./Components/SignupPage";
+
 
 const rootElement = document.getElementById("root");
 if (!rootElement) throw new Error("Failed to find the root element");
@@ -14,6 +17,12 @@ root.render(
   <div>
     <Banner />
     <SearchBar />
+    <HomePage />
+    
+    {/* for testing purposes */}
+    {/* <LoginPage />
+    <SignupPage /> */}
+
   </div>
 );
 

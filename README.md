@@ -14,6 +14,6 @@ Universities or Schools based on their:
 
 # Members
 
-Rachel Knowles
+Rachel Knowles 30584957 rkno0002@student.monash.edu
 Philbert Lan 31455182 plan0008@student.monash.edu
 Phillip Tran 30610427 ptra0010@student.monash.edu
