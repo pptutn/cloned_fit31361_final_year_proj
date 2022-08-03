@@ -10,7 +10,7 @@ import "./LoginPage.css";
 import { auth, database, logInWithEmailAndPassword } from "../firebase";
 import { addDoc, collection } from "@firebase/firestore";
 import React from "react";
-import { createTheme, ThemeProvider } from "@mui/material";
+import { createTheme, Link, ThemeProvider } from "@mui/material";
 import { teal } from "@mui/material/colors";
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -47,14 +47,12 @@ function LoginPage() {
         console.log(emailRef + " " + passwordRef);
 
         // save the data to the firebase collection
-        try {
-          // add the users credentials to the Firestore
-          logInWithEmailAndPassword(emailRef, passwordRef);
-        } catch (e) {
-          console.log(e);
+        let validUserSignInCredentials = logInWithEmailAndPassword(emailRef, passwordRef);
+
+        if (await validUserSignInCredentials) {
+            window.location.href="/";
         }
     }
-
 
     return (
 
@@ -119,18 +117,17 @@ function LoginPage() {
                             Log In
                         </Button>
                         <Grid container justifyContent="flex-end">
-                            {/* <Grid item>
-                            <Link href="#" variant="body2">
-                                Already have an account? Sign in
-                            </Link>
-                            </Grid> */}
+                            <Grid item>
+                                <Link href="/signup" variant="body2">
+                                    Do not have an account? Sign up
+                                </Link>
+                            </Grid>
                         </Grid>
                         </Box>
                     </Box>
                     </Container>
                     </ThemeProvider>
                     );
-
   }
 
   export default LoginPage;

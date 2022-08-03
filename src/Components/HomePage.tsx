@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
 import InfoBox from "./InfoBox";
+import { Button } from "@material-ui/core";
 
 function HomePage() {
   return (
@@ -26,7 +27,8 @@ function HomePage() {
         />
         <h2 className="HomePage-title"> Frequently Searched Universities</h2>
 
-        <button> Log in </button>
+
+        <Button color="primary" variant="contained" href="/login">Log In</Button>
 
       </div>
       <Stack

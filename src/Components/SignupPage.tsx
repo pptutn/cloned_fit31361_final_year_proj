@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { teal } from "@material-ui/core/colors";
+import { Route } from "react-router-dom";
 
 const theme = createTheme({
     palette: {
@@ -36,11 +37,11 @@ function SignupPage() {
     const handleSignup = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
 
-        try { 
-            // call the firebase sign up method, once hte user has filled in fields required
-            signUp(firstNameRef, lastNameRef, emailRef, passwordRef, universityRef);
-        } catch (e) {
-            console.log(e);
+        // call the firebase sign up method, once hte user has filled in fields required
+        let validUserMade = signUp(firstNameRef, lastNameRef, emailRef, passwordRef, universityRef);
+
+        if (await validUserMade) {
+            window.location.href="/";
         }
     }
 
@@ -152,7 +153,7 @@ function SignupPage() {
                         </Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
-                            <Link href="#" variant="body2">
+                            <Link href="/login" variant="body2">
                                 Already have an account? Sign in
                             </Link>
                             </Grid>

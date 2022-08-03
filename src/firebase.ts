@@ -49,8 +49,10 @@ const signUp = async (firstname: string, lastname: string, email: string, passwo
       });
   } catch (e:any) {
       console.error(e);
-      alert(e.message)
+      alert(e.message);
+      return false; 
   }
+  return true;
 };
 
 // function that allows the user to log in to app using email and password, given they already have
@@ -58,12 +60,15 @@ const signUp = async (firstname: string, lastname: string, email: string, passwo
 const logInWithEmailAndPassword = async(email: string, password: string) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-
     const user = userCredential.user;
+
   } catch (error:any) {
     console.log(error);
     alert(error.message);
+    return false;
   }
+
+  return true;
 }
 
 

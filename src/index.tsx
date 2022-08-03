@@ -1,12 +1,9 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import HomePage from "./Components/HomePage";
-// import searchResults from "./Components/searchResults";
 import Banner from "./Components/Headers/Banner";
 import SearchBar from "./Components/Headers/SearchBar";
-import LoginPage from "./Components/LoginPage";
-import SignupPage from "./Components/SignupPage";
+import { BrowserRouter, Route, Router, Routes, useLocation } from 'react-router-dom';
+import App from "./App";
 
 
 const rootElement = document.getElementById("root");
@@ -17,14 +14,14 @@ root.render(
   <div>
     <Banner />
     <SearchBar />
-    <HomePage />
-    
-    {/* for testing purposes */}
-    {/* <LoginPage />
-    <SignupPage /> */}
 
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+    
   </div>
-);
+  );
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
