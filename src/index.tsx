@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import HomePage from "./Components/HomePage";
-import Results from "./Components/Results";
-import Banner from "./Components/Banner";
-import SearchBar from "./Components/SearchBar";
+// import searchResults from "./Components/searchResults";
+import Banner from "./Components/Headers/Banner";
+import SearchBar from "./Components/Headers/SearchBar";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) throw new Error("Failed to find the root element");
