@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import HomePage from "./Components/HomePage";
+// import searchResults from "./Components/searchResults";
+import Banner from "./Components/Headers/Banner";
+import SearchBar from "./Components/Headers/SearchBar";
 import LoginPage from "./Components/LoginPage";
 import SignupPage from "./Components/SignupPage";
 
@@ -12,6 +15,8 @@ const root = ReactDOM.createRoot(rootElement);
 
 root.render(
   <div>
+    <Banner />
+    <SearchBar />
     <HomePage />
     
     {/* for testing purposes */}

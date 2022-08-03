@@ -1,0 +1,18 @@
+.result__banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 10px;
+    background-color: #1F222A;
+    z-index: 100;
+    width: 100%;
+  }
+  
+  .banner__left {
+    margin-left: 50px;
+    color: white;
+  }
+  
+  .banner__right {
+    margin-right: 50px;
+  }
