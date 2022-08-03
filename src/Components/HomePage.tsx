@@ -25,6 +25,9 @@ function HomePage() {
           )}
         />
         <h2 className="HomePage-title"> Frequently Searched Universities</h2>
+
+        <button> Log in </button>
+
       </div>
       <Stack
         direction={{ xs: "column", sm: "row" }}
@@ -47,7 +50,7 @@ function HomePage() {
 const Universities = [
   { name: "Monash University", state: "VIC" },
   { name: "The University of Melbourne", state: "VIC" },
-  { name: "University of New South Wales", state: "MSW" },
+  { name: "University of New South Wales", state: "NSW" },
   { name: "University of Sydney", state: "NSW" },
   { name: "Adelaide University", state: "SA" },
   { name: "Queendsland Universty", state: "QLD" },
