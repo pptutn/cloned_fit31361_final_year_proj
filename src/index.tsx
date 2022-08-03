@@ -7,6 +7,8 @@ import Banner from "./Components/Headers/Banner";
 import SearchBar from "./Components/Headers/SearchBar";
 import LoginPage from "./Components/LoginPage";
 import SignupPage from "./Components/SignupPage";
+import SearchPage from  "./Components/Results/searchPage";
+import SearchResults from  "./Components/Results/searchResults";
 
 
 const rootElement = document.getElementById("root");
@@ -17,7 +19,7 @@ root.render(
   <div>
     <Banner />
     <SearchBar />
-    <HomePage />
+    <SearchPage />
     
     {/* for testing purposes */}
     {/* <LoginPage />
