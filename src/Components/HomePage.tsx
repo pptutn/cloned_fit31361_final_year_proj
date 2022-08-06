@@ -1,10 +1,27 @@
+import React from "react";
 import "./HomePage.css";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
-import InfoBox from "./InfoBox";
+import InfoBox from "./AuxComponents/InfoBox";
+import SimpleDialog from "./AuxComponents/SimpleDialog";
+import { Button, Typography } from "@mui/material";
 
 function HomePage() {
+  // POPUP STUFF
+  const emails = ["username@gmail.com", "user02@gmail.com"];
+  const [open, setOpen] = React.useState(false);
+  const [selectedValue, setSelectedValue] = React.useState(emails[1]);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (value: string) => {
+    setOpen(false);
+    setSelectedValue(value);
+  };
+
   return (
     <Stack
       spacing={{ xs: 1, sm: 2, md: 4 }}
@@ -13,6 +30,22 @@ function HomePage() {
       ml={2}
       mr={2}
     >
+      {/* POPUP STUFF */}
+      <div>
+        <Typography variant="subtitle1" component="div">
+          Selected: {selectedValue}
+        </Typography>
+        <br />
+        <Button variant="outlined" onClick={handleClickOpen}>
+          FILTER MENU
+        </Button>
+        <SimpleDialog
+          selectedValue={selectedValue}
+          open={open}
+          onClose={handleClose}
+        />
+      </div>
+      {/* POPUP STUFF */}
       <div>
         <Autocomplete
           id="search-universities"
