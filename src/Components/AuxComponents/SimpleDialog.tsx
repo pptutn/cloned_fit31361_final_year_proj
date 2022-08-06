@@ -90,7 +90,14 @@ function SimpleDialog(props: SimpleDialogProps) {
   return (
     <Dialog onClose={handleClose} open={open}>
       <DialogTitle>Filters</DialogTitle>
-      <List sx={{ pt: 0 }}>
+      <List
+        sx={{
+          pt: 0,
+          width: "100%",
+          maxWidth: 600,
+          bgcolor: "background.paper",
+        }}
+      >
         {emails.map((email) => (
           <ListItem
             button
