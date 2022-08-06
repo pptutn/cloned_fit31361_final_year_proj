@@ -11,6 +11,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import AddIcon from "@mui/icons-material/Add";
 import Typography from "@mui/material/Typography";
 import { blue } from "@mui/material/colors";
+import { Slider } from "@mui/material";
 
 const emails = ["username@gmail.com", "user02@gmail.com"];
 
@@ -28,8 +29,36 @@ function SimpleDialog(props: SimpleDialogProps) {
   };
 
   const handleListItemClick = (value: string) => {
+    // need to change this to allow for multiple values to be selected
     onClose(value);
   };
+
+  const marks = [
+    {
+      value: 0,
+      label: "0 km",
+    },
+    {
+      value: 5,
+      label: "5 km",
+    },
+    {
+      value: 10,
+      label: "10 km",
+    },
+    {
+      value: 15,
+      label: "15 km",
+    },
+    {
+      value: 20,
+      label: "20 km",
+    },
+    {
+      value: 25,
+      label: "25 km",
+    },
+  ];
 
   return (
     <Dialog onClose={handleClose} open={open}>
@@ -60,6 +89,18 @@ function SimpleDialog(props: SimpleDialogProps) {
             </Avatar>
           </ListItemAvatar>
           <ListItemText primary="Add account" />
+        </ListItem>
+        <h3>Distance from Campus</h3>
+        <ListItem>
+          <Slider
+            aria-label="Volume"
+            size="small"
+            marks={marks}
+            // step={5}
+            valueLabelDisplay="auto"
+            defaultValue={15}
+            max={25}
+          />
         </ListItem>
       </List>
     </Dialog>
