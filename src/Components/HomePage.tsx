@@ -3,7 +3,6 @@ import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
 import InfoBox from "./InfoBox";
-import { Button } from "@material-ui/core";
 
 function HomePage() {
   return (
@@ -15,7 +14,6 @@ function HomePage() {
       mr={2}
     >
       <div>
-        <h1 className="HomePage-title"> StuCom.</h1>
         <Autocomplete
           id="search-universities"
           freeSolo
@@ -26,10 +24,6 @@ function HomePage() {
           )}
         />
         <h2 className="HomePage-title"> Frequently Searched Universities</h2>
-
-
-        <Button color="primary" variant="contained" href="/login">Log In</Button>
-
       </div>
       <Stack
         direction={{ xs: "column", sm: "row" }}
