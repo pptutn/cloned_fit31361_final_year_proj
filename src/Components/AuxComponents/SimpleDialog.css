@@ -1,0 +1,9 @@
+.checkbox__filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter__title {
+  align-items: center;
+}

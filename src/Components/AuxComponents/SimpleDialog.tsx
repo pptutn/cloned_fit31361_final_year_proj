@@ -8,9 +8,12 @@ import ListItemText from "@mui/material/ListItemText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
 import PersonIcon from "@mui/icons-material/Person";
-import AddIcon from "@mui/icons-material/Add";
+import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
+import TramIcon from "@mui/icons-material/Tram";
+import TrainIcon from "@mui/icons-material/Train";
+import LocalTaxiIcon from "@mui/icons-material/LocalTaxi";
 import Typography from "@mui/material/Typography";
-import { blue } from "@mui/material/colors";
+import { blue, green } from "@mui/material/colors";
 import { Box, Slider, Checkbox, FormControlLabel } from "@mui/material";
 
 const emails = ["username@gmail.com", "user02@gmail.com"];
@@ -88,17 +91,18 @@ function SimpleDialog(props: SimpleDialogProps) {
   ];
 
   return (
-    <Dialog onClose={handleClose} open={open}>
-      <DialogTitle>Filters</DialogTitle>
+    <Dialog onClose={handleClose} open={open} fullWidth maxWidth="lg">
+      <DialogTitle sx={{ alignItems: "center" }}>Filters</DialogTitle>
       <List
         sx={{
           pt: 0,
           width: "100%",
           maxWidth: 600,
           bgcolor: "background.paper",
+          m: "25px",
         }}
       >
-        {emails.map((email) => (
+        {/* {emails.map((email) => (
           <ListItem
             button
             onClick={() => handleListItemClick(email)}
@@ -123,7 +127,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             </Avatar>
           </ListItemAvatar>
           <ListItemText primary="Add account" />
-        </ListItem>
+        </ListItem> */}
         <h3>Distance from Campus</h3>
         <ListItem>
           <Slider // NEED TO ADD an ONCHANGE HOOK
@@ -139,10 +143,12 @@ function SimpleDialog(props: SimpleDialogProps) {
         <h3>Rent Price (Per week)</h3>
         <ListItem>
           <Slider // NEED TO ADD an ONCHANGE HOOK For all the below items
+            sx={{
+              color: green, // color is still blue wtf
+            }}
             aria-label="Volume"
             size="small"
             marks={priceMarks}
-            // step={5}
             valueLabelDisplay="auto"
             defaultValue={100}
             max={500}
@@ -151,18 +157,39 @@ function SimpleDialog(props: SimpleDialogProps) {
         <h3>Public Transport Access</h3>
         <ListItem>
           <Box sx={{ display: "flex", flexDirection: "column", ml: 3 }}>
-            <FormControlLabel label="Bus" control={<Checkbox />} />
-            <FormControlLabel label="Tram" control={<Checkbox />} />
-            <FormControlLabel label="Train" control={<Checkbox />} />
+            <div className="checkbox__filters">
+              <FormControlLabel label="Bus" control={<Checkbox />} />
+              <DirectionsBusIcon />
+            </div>
+            <div className="checkbox__filters">
+              <FormControlLabel label="Tram" control={<Checkbox />} />
+              <TramIcon />
+            </div>
+            <div className="checkbox__filters">
+              <FormControlLabel label="Train" control={<Checkbox />} />
+              <TrainIcon />
+            </div>
           </Box>
         </ListItem>
         <h3>Late Night Transport Access</h3>
         <ListItem>
           <Box sx={{ display: "flex", flexDirection: "column", ml: 3 }}>
-            <FormControlLabel label="Bus" control={<Checkbox />} />
-            <FormControlLabel label="Tram" control={<Checkbox />} />
-            <FormControlLabel label="Train" control={<Checkbox />} />
-            <FormControlLabel label="Ride Share" control={<Checkbox />} />
+            <div className="checkbox__filters">
+              <FormControlLabel label="Bus" control={<Checkbox />} />
+              <DirectionsBusIcon />
+            </div>
+            <div className="checkbox__filters">
+              <FormControlLabel label="Tram" control={<Checkbox />} />
+              <TramIcon />
+            </div>
+            <div className="checkbox__filters">
+              <FormControlLabel label="Train" control={<Checkbox />} />
+              <TrainIcon />
+            </div>
+            <div className="checkbox__filters">
+              <FormControlLabel label="Ride Share" control={<Checkbox />} />
+              <LocalTaxiIcon />
+            </div>
           </Box>
         </ListItem>
       </List>
