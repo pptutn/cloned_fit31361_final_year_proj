@@ -7,11 +7,12 @@ Version: 1.0.0
 */
 
 import "./LoginPage.css";
-import { auth, database, logInWithEmailAndPassword } from "../firebase";
+import { auth, database, logInWithEmailAndPassword } from "../../firebase";
 import { addDoc, collection } from "@firebase/firestore";
 import React from "react";
 import { createTheme, Link, ThemeProvider } from "@mui/material";
-import { teal } from "@mui/material/colors";
+// import { colourTheme } from "../../colourScheme";
+import theme from "../../colourScheme"
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -19,16 +20,6 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-
-const theme = createTheme({
-  palette: {
-      primary: teal,
-      secondary: {
-          main: '#4caf50',
-        },
-  }
-});
-
 
 function LoginPage() {
 

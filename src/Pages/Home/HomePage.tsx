@@ -2,7 +2,7 @@ import "./HomePage.css";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
-import InfoBox from "./InfoBox";
+import InfoBox from "../../Components/InfoBox/InfoBox";
 import { Button } from "@material-ui/core";
 
 function HomePage() {

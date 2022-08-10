@@ -1,5 +1,5 @@
 import "./SignupPage.css";
-import { signUp } from "../firebase";
+import { signUp } from "../../firebase";
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
