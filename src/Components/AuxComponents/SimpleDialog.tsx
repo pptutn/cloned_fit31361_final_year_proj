@@ -91,43 +91,32 @@ function SimpleDialog(props: SimpleDialogProps) {
   ];
 
   return (
-    <Dialog onClose={handleClose} open={open} fullWidth maxWidth="lg">
-      <DialogTitle sx={{ alignItems: "center" }}>Filters</DialogTitle>
+    <Dialog
+      onClose={handleClose}
+      open={open}
+      fullWidth
+      maxWidth="lg"
+      scroll="paper" // body is entire page, paper is just the dialog
+      // sx={{
+      //   justifyContent: "center", // aligns through main axis
+      //   alignItems: "center",
+      //   // bgcolor: "red",
+      // }}
+    >
+      <DialogTitle sx={{ textAlign: "center" }}>FILTERS</DialogTitle>
       <List
         sx={{
           pt: 0,
           width: "100%",
           maxWidth: 600,
-          bgcolor: "background.paper",
-          m: "25px",
+          // bgcolor: "green",
+          // m: "100px",
+          ml: "25%",
+          flex: 1,
+          justifyContent: "center", // aligns through main axis
+          alignItems: "center", // aligns though secondary axis
         }}
       >
-        {/* {emails.map((email) => (
-          <ListItem
-            button
-            onClick={() => handleListItemClick(email)}
-            key={email}
-          >
-            <ListItemAvatar>
-              <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
-                <PersonIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary={email} />
-          </ListItem>
-        ))}
-        <ListItem
-          autoFocus
-          button
-          onClick={() => handleListItemClick("addAccount")}
-        >
-          <ListItemAvatar>
-            <Avatar>
-              <AddIcon />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary="Add account" />
-        </ListItem> */}
         <h3>Distance from Campus</h3>
         <ListItem>
           <Slider // NEED TO ADD an ONCHANGE HOOK
@@ -155,42 +144,80 @@ function SimpleDialog(props: SimpleDialogProps) {
           />
         </ListItem>
         <h3>Public Transport Access</h3>
-        <ListItem>
-          <Box sx={{ display: "flex", flexDirection: "column", ml: 3 }}>
-            <div className="checkbox__filters">
-              <FormControlLabel label="Bus" control={<Checkbox />} />
-              <DirectionsBusIcon />
-            </div>
-            <div className="checkbox__filters">
-              <FormControlLabel label="Tram" control={<Checkbox />} />
-              <TramIcon />
-            </div>
-            <div className="checkbox__filters">
-              <FormControlLabel label="Train" control={<Checkbox />} />
-              <TrainIcon />
-            </div>
-          </Box>
+        <ListItem
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            ml: 3,
+            // bgcolor: "red",
+          }}
+        >
+          <div className="checkbox__filters">
+            <FormControlLabel label="Bus" control={<Checkbox />} />
+            <DirectionsBusIcon />
+          </div>
+          <div className="checkbox__filters">
+            <FormControlLabel label="Tram" control={<Checkbox />} />
+            <TramIcon />
+          </div>
+          <div className="checkbox__filters">
+            <FormControlLabel label="Train" control={<Checkbox />} />
+            <TrainIcon />
+          </div>
         </ListItem>
         <h3>Late Night Transport Access</h3>
+        <ListItem
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            ml: 3,
+            // bgcolor: "red",
+          }}
+        >
+          <div className="checkbox__filters">
+            <FormControlLabel label="Bus" control={<Checkbox />} />
+            <DirectionsBusIcon />
+          </div>
+          <div className="checkbox__filters">
+            <FormControlLabel label="Tram" control={<Checkbox />} />
+            <TramIcon />
+          </div>
+          <div className="checkbox__filters">
+            <FormControlLabel label="Train" control={<Checkbox />} />
+            <TrainIcon />
+          </div>
+          <div className="checkbox__filters">
+            <FormControlLabel label="Ride Share" control={<Checkbox />} />
+            <LocalTaxiIcon />
+          </div>
+        </ListItem>
+        <h3>Crime Rates</h3>
         <ListItem>
-          <Box sx={{ display: "flex", flexDirection: "column", ml: 3 }}>
-            <div className="checkbox__filters">
-              <FormControlLabel label="Bus" control={<Checkbox />} />
-              <DirectionsBusIcon />
-            </div>
-            <div className="checkbox__filters">
-              <FormControlLabel label="Tram" control={<Checkbox />} />
-              <TramIcon />
-            </div>
-            <div className="checkbox__filters">
-              <FormControlLabel label="Train" control={<Checkbox />} />
-              <TrainIcon />
-            </div>
-            <div className="checkbox__filters">
-              <FormControlLabel label="Ride Share" control={<Checkbox />} />
-              <LocalTaxiIcon />
-            </div>
-          </Box>
+          <Slider // NEED TO ADD an ONCHANGE HOOK For all the below items
+            sx={{
+              color: green, // color is still blue wtf
+            }}
+            aria-label="Volume"
+            size="small"
+            // marks={priceMarks}
+            valueLabelDisplay="auto"
+            defaultValue={100}
+            max={500}
+          />
+        </ListItem>
+        <ListItem
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            ml: 3,
+            // bgcolor: "red",
+          }}
+        >
+          <Button>Clear Filters</Button>
+          <Button>Search</Button>
         </ListItem>
       </List>
     </Dialog>
