@@ -1,18 +1,30 @@
 .result__banner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    top: 10px;
-    background-color: #1F222A;
-    z-index: 100;
-    width: 100%;
-  }
-  
-  .banner__left {
-    margin-left: 50px;
-    color: white;
-  }
-  
-  .banner__right {
-    margin-right: 50px;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 10px;
+  background-color: #1f222a;
+  z-index: 100;
+  width: 100%;
+}
+
+.banner__left {
+  margin-left: 50px;
+  color: white;
+}
+
+.banner__right {
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
+.banner__links {
+  display: flex;
+  justify-content: space-around;
+}
+
+a {
+  text-decoration: inherit;
+  color: inherit;
+  /* cursor: auto; */
+}

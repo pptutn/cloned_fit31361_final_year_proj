@@ -1,11 +1,27 @@
+import React from "react";
 import "./HomePage.css";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
-import InfoBox from "../../Components/InfoBox/InfoBox";
-import { Button } from "@material-ui/core";
+import InfoBox from "../../Components/AuxComponents/InfoBox";
+import SimpleDialog from "../../Components/AuxComponents/SimpleDialog";
+import { Button, Typography } from "@mui/material";
 
 function HomePage() {
+  // POPUP STUFF
+  const emails = ["username@gmail.com", "user02@gmail.com"];
+  const [open, setOpen] = React.useState(false);
+  const [selectedValue, setSelectedValue] = React.useState(emails[1]);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (value: string) => {
+    setOpen(false);
+    setSelectedValue(value);
+  };
+
   return (
     <Stack
       spacing={{ xs: 1, sm: 2, md: 4 }}
@@ -14,8 +30,23 @@ function HomePage() {
       ml={2}
       mr={2}
     >
+      {/* POPUP STUFF */}
       <div>
-        <h1 className="HomePage-title"> StuCom.</h1>
+        <Typography variant="subtitle1" component="div">
+          Selected: {selectedValue}
+        </Typography>
+        <br />
+        <Button variant="outlined" onClick={handleClickOpen}>
+          FILTER MENU
+        </Button>
+        <SimpleDialog
+          selectedValue={selectedValue}
+          open={open}
+          onClose={handleClose}
+        />
+      </div>
+      {/* POPUP STUFF */}
+      <div>
         <Autocomplete
           id="search-universities"
           freeSolo
@@ -26,10 +57,6 @@ function HomePage() {
           )}
         />
         <h2 className="HomePage-title"> Frequently Searched Universities</h2>
-
-
-        <Button color="primary" variant="contained" href="/login">Log In</Button>
-
       </div>
       <Stack
         direction={{ xs: "column", sm: "row" }}
