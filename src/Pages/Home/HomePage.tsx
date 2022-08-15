@@ -3,14 +3,9 @@ import "./HomePage.css";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
-<<<<<<< HEAD:src/Components/HomePage.tsx
-import InfoBox from "./AuxComponents/InfoBox";
-import SimpleDialog from "./AuxComponents/SimpleDialog";
+import InfoBox from "../../Components/AuxComponents/InfoBox";
+import SimpleDialog from "../../Components/AuxComponents/SimpleDialog";
 import { Button, Typography } from "@mui/material";
-=======
-import InfoBox from "../../Components/InfoBox/InfoBox";
-import { Button } from "@material-ui/core";
->>>>>>> master:src/Pages/Home/HomePage.tsx
 
 function HomePage() {
   // POPUP STUFF
