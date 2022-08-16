@@ -1,0 +1,39 @@
+.SuburbInfo {
+    display: flex;
+    padding: 3.25rem;
+    background-color: #F5F5F5;
+    width: 1338px;
+    height: 728px;
+    margin-top: 80px;
+    margin-left: 450px;
+    border-radius: 75px;
+  }
+
+.SuburbInfo__heart{
+  position: absolute;
+  top: 365px;
+  right: 750px;
+  transform: scale(1.5);
+}
+
+.SuburbResult__infoTop {
+  color: #1AB65C;
+  font-size: 36px;
+}
+
+.SuburbResult__heading {
+  font-size: 32px;
+  padding-left: 60px;
+}
+
+.SuburbResult__infoBottom{
+  font-size: 24px;
+  padding-left: 60px;
+  font-weight: bold;
+}
+.Suburb__Hyperlink{
+  font-size: 24px;
+  padding-left: 60px;
+  font-weight: bold;
+  color: #1AB6AD;
+}

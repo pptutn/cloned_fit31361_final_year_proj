@@ -4,6 +4,7 @@ import LoginPage from "./Components/LoginPage";
 import SignupPage from "./Components/SignupPage";
 import SearchResults from "./Components/Results/searchResults";
 import SearchPage from "./Components/Results/searchPage";
+import SuburbDetails from "./Components/Suburb/SuburbDetails";
 
 function App() {
   const location = useLocation();
@@ -11,7 +12,7 @@ function App() {
   return (
     <div className="app">
       <Routes location={location}>
-        <Route path="/" element={<SearchPage />} />
+        <Route path="/" element={<SuburbDetails />} />
 
         <Route path="/login" element={<LoginPage />} />
 
