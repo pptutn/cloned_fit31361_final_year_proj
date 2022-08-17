@@ -1,32 +1,36 @@
 import "./SuburbDetails.css";
-import FavoriteBorderIcon  from "@material-ui/icons/FavoriteBorder";
-
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import Grid from "@mui/material/Grid";
 
 function SuburbDetails() {
   return (
-    <div className = 'SuburbInfo'>
-      <div className = 'SuburbDetailsPage'>
-        <div className = 'SuburbDetailsInfo'>
-        <FavoriteBorderIcon className="SuburbInfo__heart" />
-          <div className="SuburbResult__infoTop">
-              <h1>Clayton</h1>
-          </div>
-          <div className="SuburbResult__heading">
-              <h3>Suburb Overview</h3>
-          </div>
-          <div className='SuburbResult__infoBottom'>
-            <p>Average Rent: $600/week</p>
-            <p>Distance:3.1km </p>
-            <p>Crime Rates: 15% </p>
-            <p>Average Transit Time: 0.1 hours </p>
-          </div>
-          <div className = 'Suburb__Hyperlink'>
-            <p>Click here to search for rental houses</p>
+    <Grid container spacing={2}>
+      <Grid item xs={8}>
+        <div className="SuburbInfo">
+          <div className="SuburbDetailsPage">
+            <div className="SuburbDetailsInfo">
+              <FavoriteBorderIcon className="SuburbInfo__heart" />
+              <div className="SuburbResult__infoTop">
+                <h1>Clayton</h1>
+              </div>
+              <div className="SuburbResult__heading">
+                <h3>Suburb Overview</h3>
+              </div>
+              <div className="SuburbResult__infoBottom">
+                <p>Average Rent: $600/week</p>
+                <p>Distance:3.1km </p>
+                <p>Crime Rates: 15% </p>
+                <p>Average Transit Time: 0.1 hours </p>
+              </div>
+              <div className="Suburb__Hyperlink">
+                <p>Click here to search for rental houses</p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  )
+      </Grid>
+    </Grid>
+  );
 }
 
 export default SuburbDetails;
