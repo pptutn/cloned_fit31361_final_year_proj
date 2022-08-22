@@ -2,8 +2,8 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import HomePage from "./Pages/Home/HomePage";
 import LoginPage from "./Pages/LogIn/LoginPage";
 import SignupPage from "./Pages/SignUp/SignupPage";
-import SearchResults from "./Components/Results/searchResults";
-import SearchPage from "./Components/Results/searchPage";
+import SearchResults from "./Pages/Results/searchResults";
+import SearchPage from "./Pages/Results/searchPage";
 import SuburbDetails from "./Components/Suburb/SuburbDetails";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="app">
       <Routes location={location}>
-        <Route path="/" element={<SuburbDetails />} />
+        <Route path="/" element={<HomePage />} />
 
         <Route path="/login" element={<LoginPage />} />
 
