@@ -17,7 +17,7 @@ function SuburbDetails() {
             </div>
             <div className="SuburbResult__infoBottom">
               <p>Average Rent: $600/week</p>
-              <p>Distance:3.1km </p>
+              <p>Distance: 3.1km </p>
               <p>Crime Rates: 15% </p>
               <p>Average Transit Time: 0.1 hours </p>
             </div>
