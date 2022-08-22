@@ -22,7 +22,9 @@ function SuburbDetails() {
               <p>Average Transit Time: 0.1 hours </p>
             </div>
             <div className="Suburb__Hyperlink">
-              <p>Click here to search for rental houses</p>
+              <p><a href="https://www.domain.com.au/rent/clayton-vic-3168/">
+              Click here to search for rental houses
+            </a></p>
             </div>
           </div>
         </div>

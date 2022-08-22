@@ -38,13 +38,18 @@
 }
 
 .SuburbResult__infoBottom > p{
+  font-size: 1.2rem;
   text-indent: 3rem;
   font-weight: bold;
+  margin-top: 1.3rem;
+  margin-bottom: 0;
 }
-.Suburb__Hyperlink > p{
+
+.Suburb__Hyperlink{
   margin: 0;
   padding: 0;
   text-indent: 3rem;
+  font-size: 1.2rem;
   font-weight: bold;
   color: #1ab6ad;
 }
