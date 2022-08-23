@@ -6,6 +6,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import InfoBox from "../../Components/AuxComponents/InfoBox";
 import SimpleDialog from "../../Components/AuxComponents/SimpleDialog";
 import { Button, Typography } from "@mui/material";
+import {useNavigate} from 'react-router-dom'
 
 function HomePage() {
   // POPUP STUFF
@@ -21,6 +22,17 @@ function HomePage() {
     setOpen(false);
     setSelectedValue(value);
   };
+
+  let navigate = useNavigate();
+  const showDetails = () => {
+    let path = `/details`;
+    navigate(path)
+  }
+
+  const showResults = () => {
+    let path = `/results`
+    navigate(path)
+  }
 
   return (
     <Stack
@@ -55,6 +67,8 @@ function HomePage() {
           renderInput={(params) => (
             <TextField {...params} label="Search for your University" />
           )}
+          onClick={showResults}
+          onChange={showResults}
         />
         <h2 className="HomePage-title"> Frequently Searched Universities</h2>
       </div>
@@ -64,7 +78,7 @@ function HomePage() {
         alignItems={"centre"}
         justifyContent={"space-evenly"}
       >
-        <InfoBox name="Monash University" campusLocation="Clayton, VIC" />
+        <InfoBox name="Monash University" campusLocation="Clayton, VIC" onClick={showDetails}/>
         <InfoBox
           name="The University of Melbourne"
           campusLocation="Parkville, VIC"
