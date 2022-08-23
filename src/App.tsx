@@ -4,7 +4,7 @@ import LoginPage from "./Pages/LogIn/LoginPage";
 import SignupPage from "./Pages/SignUp/SignupPage";
 import SearchResults from "./Pages/Results/searchResults";
 import SearchPage from "./Pages/Results/searchPage";
-import SuburbDetails from "./Components/Suburb/SuburbDetails";
+import SuburbDetails from "./Pages/Suburb/SuburbDetails";
 
 function App() {
   const location = useLocation();
@@ -18,6 +18,10 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
 
         <Route path="/signup" element={<SignupPage />} />
+
+        <Route path="/results" element={<SearchPage />} />
+
+        <Route path="/details" element={<SuburbDetails />} />
       </Routes>
     </div>
   );

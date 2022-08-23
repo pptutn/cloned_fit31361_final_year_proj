@@ -17,9 +17,9 @@
 }
 
 .SuburbInfo__heart {
-  position: absolute;
-  top: 19rem;
-  right: 30rem;
+  position: relative;
+  top: 8%;
+  left: 80%;
   transform: scale(1.5);
 }
 

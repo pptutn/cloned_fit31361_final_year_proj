@@ -7,8 +7,8 @@ function SuburbDetails() {
     <Grid container spacing={2}>
       <Grid item xs={8}>
         <div className="SuburbInfo">
+        <FavoriteBorderIcon className="SuburbInfo__heart" />
           <div className="SuburbDetailsPage">
-            <FavoriteBorderIcon className="SuburbInfo__heart" />
             <div className="SuburbResult__infoTop">
               <h1>Clayton</h1>
             </div>
