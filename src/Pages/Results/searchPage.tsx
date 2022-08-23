@@ -1,8 +1,15 @@
 import './searchPage.css';
 import SearchResults from "./searchResults";
 import { Button } from "@material-ui/core";
+import {useNavigate} from 'react-router-dom';
 
 function SearchPage(){
+    let navigate = useNavigate();
+    const showDetails = () => {
+      let path = `/details`;
+      navigate(path)
+    }
+
     return (
         <div className='searchPage'>
             <div className = 'searchPage__info'>
@@ -17,6 +24,7 @@ function SearchPage(){
                 distance = "3.1km"
                 crime = "15%"
                 time = "0.1 hours"
+                onClick={showDetails}
             />
             <SearchResults
                 suburb = "Mount Waverley"

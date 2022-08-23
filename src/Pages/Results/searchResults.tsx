@@ -6,10 +6,11 @@ function searchResults({
   price,
   distance,
   crime,
-  time
+  time,
+  onClick
 }: any) {
   return (
-    <div className = 'searchResult'>
+    <div className = 'searchResult' onClick={onClick}>
       <FavoriteBorderIcon className="searchResult__heart" />
 
       <div className = 'resultsPageInfo'>
