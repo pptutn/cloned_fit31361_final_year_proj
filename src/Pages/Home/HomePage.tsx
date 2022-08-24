@@ -78,7 +78,7 @@ function HomePage() {
         alignItems={"centre"}
         justifyContent={"space-evenly"}
       >
-        <InfoBox name="Monash University" campusLocation="Clayton, VIC" onClick={showDetails}/>
+        <InfoBox name="Monash University" campusLocation="Clayton, VIC" onClick={showResults}/>
         <InfoBox
           name="The University of Melbourne"
           campusLocation="Parkville, VIC"
