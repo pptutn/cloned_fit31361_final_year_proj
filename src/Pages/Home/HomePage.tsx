@@ -6,7 +6,8 @@ import Autocomplete from "@mui/material/Autocomplete";
 import InfoBox from "../../Components/AuxComponents/InfoBox";
 import SimpleDialog from "../../Components/AuxComponents/SimpleDialog";
 import { Button, Typography } from "@mui/material";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+import { Api } from "./api";
 
 function HomePage() {
   // POPUP STUFF
@@ -26,13 +27,13 @@ function HomePage() {
   let navigate = useNavigate();
   const showDetails = () => {
     let path = `/details`;
-    navigate(path)
-  }
+    navigate(path);
+  };
 
   const showResults = () => {
-    let path = `/results`
-    navigate(path)
-  }
+    let path = `/results`;
+    navigate(path);
+  };
 
   return (
     <Stack
@@ -78,7 +79,11 @@ function HomePage() {
         alignItems={"centre"}
         justifyContent={"space-evenly"}
       >
-        <InfoBox name="Monash University" campusLocation="Clayton, VIC" onClick={showResults}/>
+        <InfoBox
+          name="Monash University"
+          campusLocation="Clayton, VIC"
+          onClick={showResults}
+        />
         <InfoBox
           name="The University of Melbourne"
           campusLocation="Parkville, VIC"
@@ -86,6 +91,8 @@ function HomePage() {
         <InfoBox name="University of Sydney" campusLocation="Sydney, NSW" />
         <InfoBox name="University of NSW" campusLocation="Kensington, NSW" />
       </Stack>
+      <Api suburbName={"Clayton"} postCode={"3168"}></Api>
+      <Api suburbName={"Dandenong"} postCode={"3175"}></Api>
     </Stack>
   );
 }
