@@ -12,7 +12,7 @@ import { addDoc, collection } from "@firebase/firestore";
 import React from "react";
 import { createTheme, Link, ThemeProvider } from "@mui/material";
 // import { colourTheme } from "../../colourScheme";
-import theme from "../../colourScheme"
+import theme from "../../ColourScheme"
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
