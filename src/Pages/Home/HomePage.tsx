@@ -5,7 +5,10 @@ import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
 import InfoBox from "../../Components/AuxComponents/InfoBox";
 import SimpleDialog from "../../Components/AuxComponents/SimpleDialog";
-import { Button, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
+import { Container } from "@mui/system";
+import SearchBar from "../../Components/Headers/SearchBar";
+import Banner from "../../Components/Headers/Banner";
 
 function HomePage() {
   // POPUP STUFF
@@ -30,32 +33,28 @@ function HomePage() {
       ml={2}
       mr={2}
     >
+      
+    <div>
+      <Banner/>
+    </div>
+
+    <div>
+      <SearchBar/>
+    </div>
+
+
       {/* POPUP STUFF */}
       <div>
-        <Typography variant="subtitle1" component="div">
+        <Typography variant="subtitle1" component="div" color='#ffffff'>
           Selected: {selectedValue}
         </Typography>
         <br />
-        <Button variant="outlined" onClick={handleClickOpen}>
-          FILTER MENU
-        </Button>
-        <SimpleDialog
-          selectedValue={selectedValue}
-          open={open}
-          onClose={handleClose}
-        />
+        
       </div>
       {/* POPUP STUFF */}
+      
       <div>
-        <Autocomplete
-          id="search-universities"
-          freeSolo
-          sx={{ width: 0.9, height: 1 }}
-          options={Universities.map((option) => option.name)}
-          renderInput={(params) => (
-            <TextField {...params} label="Search for your University" />
-          )}
-        />
+        
         <h2 className="HomePage-title"> Frequently Searched Universities</h2>
       </div>
       <Stack

@@ -17,7 +17,7 @@ const root = ReactDOM.createRoot(rootElement);
 
 root.render(
   <div>
-    <Banner />
+    {/* <Banner /> */}
     {/* <SearchBar /> */}
 
     <BrowserRouter>
