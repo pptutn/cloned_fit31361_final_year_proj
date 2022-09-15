@@ -2,10 +2,13 @@ import React from "react";
 import "./HomePage.css";
 import Stack from "@mui/material/Stack";
 import InfoBox from "../../Components/AuxComponents/InfoBox";
-import { Box, Button, Grid, Typography } from "@mui/material";
 import SearchBar from "../../Components/Headers/SearchBar";
 import Banner from "../../Components/Headers/Banner";
 import { auth } from "../../firebase"
+
+import SimpleDialog from "../../Components/AuxComponents/SimpleDialog";
+import { Button, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
   // POPUP STUFF
@@ -19,6 +22,17 @@ function HomePage() {
   const handleClose = (value: string) => {
     setOpen(false);
     // setSelectedValue(value);
+  };
+
+  let navigate = useNavigate();
+  const showDetails = () => {
+    let path = `/details`;
+    navigate(path);
+  };
+
+  const showResults = () => {
+    let path = `/results`;
+    navigate(path);
   };
 
   return (
@@ -58,7 +72,11 @@ function HomePage() {
         alignItems={"centre"}
         justifyContent={"space-evenly"}
       >
-        <InfoBox name="Monash University" campusLocation="Clayton, VIC" />
+        <InfoBox
+          name="Monash University"
+          campusLocation="Clayton, VIC"
+          onClick={showResults}
+        />
         <InfoBox
           name="The University of Melbourne"
           campusLocation="Parkville, VIC"

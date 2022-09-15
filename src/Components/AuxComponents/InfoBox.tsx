@@ -6,6 +6,8 @@ import "./InfoBox.css";
 interface Props {
   name?: string;
   campusLocation?: string;
+  href?: string;
+  onClick?: any;
 }
 
 const showAlert = () => {
@@ -25,7 +27,7 @@ function InfoBox(props: Props) {
         },
         borderRadius: 2,
       }}
-      onClick={showAlert}
+      onClick={props.onClick ? props.onClick : showAlert}
     >
       <Stack className={"Stack-stack"} ml={2} mr={2}>
         <p className={"Box-title"}>{props.name}</p>
