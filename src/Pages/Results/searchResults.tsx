@@ -1,34 +1,42 @@
 import "./searchResults.css";
-import FavoriteBorderIcon  from "@material-ui/icons/FavoriteBorder";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import React from "react";
 
-function searchResults({
-  suburb,
-  price,
-  distance,
-  crime,
-  time,
-  onClick
-}: any) {
+interface Props {
+  suburbName: string;
+  postCode: string;
+  medianRent: number;
+  lowerRent: number;
+  upperRent: number;
+  onClick?: any;
+}
+
+function searchResults(props: Props) {
   return (
-    <div className = 'searchResult' onClick={onClick}>
+    <div
+      className="searchResult"
+      onClick={props.onClick ? props.onClick : null}
+    >
       <FavoriteBorderIcon className="searchResult__heart" />
 
-      <div className = 'resultsPageInfo'>
-        <div className='searchResult__info'>
+      <div className="resultsPageInfo">
+        <div className="searchResult__info">
           <div className="searchResult__infoTop">
-              <h1>{suburb}</h1>
+            <h1>{props.suburbName}</h1>
           </div>
-          <div className='searchResult__infoBottom'>
-            <p>Average Rent: {price}</p>
-            <p>Distance: {distance}</p>
-            <p>Crime Rates: {crime}</p>
-            <p>Average Transit Time: {time}</p>
+          <div className="searchResult__infoBottom">
+            <p>Average Rent: ${props.medianRent}</p>
+            <p>
+              Rent Range: ${props.lowerRent} to ${props.upperRent}
+            </p>
+            <p>Distance: TBC</p>
+            <p>Average Transit Time: TBC</p>
             <p>Click here to search for rental houses</p>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default searchResults;
