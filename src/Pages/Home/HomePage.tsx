@@ -1,20 +1,16 @@
 import React from "react";
 import "./HomePage.css";
-import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
-import Autocomplete from "@mui/material/Autocomplete";
 import InfoBox from "../../Components/AuxComponents/InfoBox";
-import SimpleDialog from "../../Components/AuxComponents/SimpleDialog";
 import { Box, Button, Grid, Typography } from "@mui/material";
-import { Container } from "@mui/system";
 import SearchBar from "../../Components/Headers/SearchBar";
 import Banner from "../../Components/Headers/Banner";
+import { auth } from "../../firebase"
 
 function HomePage() {
   // POPUP STUFF
-  const emails = ["username@gmail.com", "user02@gmail.com"];
   const [open, setOpen] = React.useState(false);
-  const [selectedValue, setSelectedValue] = React.useState(emails[1]);
+  const [selectedValue, setSelectedValue] = React.useState(auth.currentUser);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -22,7 +18,7 @@ function HomePage() {
 
   const handleClose = (value: string) => {
     setOpen(false);
-    setSelectedValue(value);
+    // setSelectedValue(value);
   };
 
   return (
@@ -46,7 +42,7 @@ function HomePage() {
       {/* POPUP STUFF */}
       <div>
         <Typography variant="subtitle1" component="div" color='#ffffff'>
-          Selected: {selectedValue}
+          Selected: {auth.currentUser?.email}
         </Typography>
         <br />
         
@@ -54,7 +50,6 @@ function HomePage() {
       {/* POPUP STUFF */}
       
       <div>
-        
         <h2 className="HomePage-title"> Frequently Searched Universities</h2>
       </div>
       <Stack
@@ -81,7 +76,7 @@ const Universities = [
   { name: "University of New South Wales", state: "NSW" },
   { name: "University of Sydney", state: "NSW" },
   { name: "Adelaide University", state: "SA" },
-  { name: "Queendsland Universty", state: "QLD" },
+  { name: "Queensland Universty", state: "QLD" },
   { name: "Royal Melbourne Insitute of Technology", state: "VIC" },
 ];
 

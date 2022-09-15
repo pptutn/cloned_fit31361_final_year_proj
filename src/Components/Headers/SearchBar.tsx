@@ -1,20 +1,24 @@
 import "./SearchBar.css";
 import TextField from "@mui/material/TextField";
-import { makeStyles } from "@material-ui/core/styles"
 import { Button, Grid, Paper, ThemeProvider } from "@material-ui/core";
 import theme from "../../colourScheme";
 import React from "react";
-import { ClassNames } from "@emotion/react";
-
-
+import { auth } from "../../firebase";
+import SimpleDialog from "../AuxComponents/SimpleDialog";
 
 
 function SearchBar() {
 
   const [open, setOpen] = React.useState(false);
+  const [selectedValue, setSelectedValue] = React.useState(auth.currentUser);
 
   const handleClickOpen = () => {
     setOpen(true);
+  };
+
+  const handleClose = (value: string) => {
+    setOpen(false);
+    // setSelectedValue(value);
   };
 
   return (
@@ -43,6 +47,12 @@ function SearchBar() {
             onClick={handleClickOpen}>
             FILTERS
           </Button>
+          <SimpleDialog
+          selectedValue=""
+          // selectedValue={         
+          open={open}
+          onClose={handleClose}
+        />
         </Paper>
       </Grid>
 
