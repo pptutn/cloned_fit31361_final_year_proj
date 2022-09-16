@@ -134,6 +134,7 @@ function SimpleDialog(props: SimpleDialogProps) {
                 ...selectedValue,
                 distance: parseInt(t.value),
               });
+              console.log("this is state from Price", selectedValue);
             }}
           />
         </ListItem>
@@ -149,6 +150,14 @@ function SimpleDialog(props: SimpleDialogProps) {
             valueLabelDisplay="auto"
             defaultValue={100}
             max={500}
+            onChange={(e) => {
+              const t = e.target as HTMLInputElement;
+              handleListItemClick({
+                ...selectedValue,
+                price: parseInt(t.value),
+              });
+              console.log("this is state from Rent", selectedValue);
+            }}
           />
         </ListItem>
         <h3>Public Transport Access</h3>
@@ -201,7 +210,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             <LocalTaxiIcon />
           </div>
         </ListItem>
-        <h3>Crime Rates</h3>
+        {/* <h3>Crime Rates</h3>
         <ListItem>
           <Slider // NEED TO ADD an ONCHANGE HOOK For all the below items
             sx={{
@@ -214,7 +223,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             defaultValue={100}
             max={500}
           />
-        </ListItem>
+        </ListItem> */}
         <ListItem
           sx={{
             display: "flex",

@@ -34,7 +34,7 @@ function HomePage() {
 
   // sets the entire state
   const handleClose = (value: IFilterValues) => {
-    setOpen(false);
+    // setOpen(false);
     setSelectedValue(value);
   };
 
