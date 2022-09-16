@@ -234,7 +234,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             // bgcolor: "red",
           }}
         >
-          <Button>Clear Filters</Button>
+          <Button onClick={handleClose}>Close</Button>
           <Button>Search</Button>
         </ListItem>
       </List>
