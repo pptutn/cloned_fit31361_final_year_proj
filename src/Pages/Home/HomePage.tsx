@@ -34,7 +34,11 @@ function HomePage() {
 
   // sets the entire state
   const handleClose = (value: IFilterValues) => {
-    // setOpen(false);
+    setOpen(false);
+    setSelectedValue(value);
+  };
+
+  const handleSelection = (value: IFilterValues) => {
     setSelectedValue(value);
   };
 
@@ -58,9 +62,12 @@ function HomePage() {
         <SimpleDialog
           selectedValue={selectedValue}
           open={open}
+          handleSelection={handleSelection}
           onClose={handleClose}
         />
       </div>
+      <div>MAX Distance {selectedValue.distance}</div>
+      <div>MAX Price {selectedValue.price}</div>
       {/* POPUP STUFF */}
       <div>
         <Autocomplete

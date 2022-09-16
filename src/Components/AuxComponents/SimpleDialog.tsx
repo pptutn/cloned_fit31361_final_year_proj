@@ -22,20 +22,21 @@ const emails = ["username@gmail.com", "user02@gmail.com"];
 export interface SimpleDialogProps {
   open: boolean;
   selectedValue: IFilterValues;
+  handleSelection: (value: IFilterValues) => void;
   onClose: (value: IFilterValues) => void;
 }
 
 function SimpleDialog(props: SimpleDialogProps) {
-  const { onClose, selectedValue, open } = props;
+  const { onClose, selectedValue, handleSelection, open } = props;
 
   const handleClose = () => {
     onClose(selectedValue);
   };
 
-  const handleListItemClick = (value: IFilterValues) => {
-    // need to change this to allow for multiple values to be selected
-    onClose(value);
-  };
+  // const handleListItemClick = (value: IFilterValues) => {
+  //   // need to change this to allow for multiple values to be selected
+  //   onClose(value);
+  // };
 
   const distanceMarks = [
     {
@@ -130,7 +131,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             max={25}
             onChange={(e) => {
               const t = e.target as HTMLInputElement;
-              handleListItemClick({
+              handleSelection({
                 ...selectedValue,
                 distance: parseInt(t.value),
               });
@@ -152,7 +153,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             max={500}
             onChange={(e) => {
               const t = e.target as HTMLInputElement;
-              handleListItemClick({
+              handleSelection({
                 ...selectedValue,
                 price: parseInt(t.value),
               });
