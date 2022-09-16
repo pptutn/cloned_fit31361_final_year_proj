@@ -7,17 +7,33 @@ import InfoBox from "../../Components/AuxComponents/InfoBox";
 import SimpleDialog from "../../Components/AuxComponents/SimpleDialog";
 import { Button, Typography } from "@mui/material";
 
+export interface IFilterValues {
+  distance: number;
+  price: number;
+  pubTransport: boolean;
+  lateTransport: boolean;
+}
+
 function HomePage() {
   // POPUP STUFF
   const emails = ["username@gmail.com", "user02@gmail.com"];
+
+  const initialFilters: IFilterValues = {
+    distance: 0,
+    price: 0,
+    pubTransport: false,
+    lateTransport: false,
+  };
+
   const [open, setOpen] = React.useState(false);
-  const [selectedValue, setSelectedValue] = React.useState(emails[1]);
+  const [selectedValue, setSelectedValue] = React.useState(initialFilters);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = (value: string) => {
+  // sets the entire state
+  const handleClose = (value: IFilterValues) => {
     setOpen(false);
     setSelectedValue(value);
   };
@@ -32,9 +48,9 @@ function HomePage() {
     >
       {/* POPUP STUFF */}
       <div>
-        <Typography variant="subtitle1" component="div">
+        {/* <Typography variant="subtitle1" component="div">
           Selected: {selectedValue}
-        </Typography>
+        </Typography> */}
         <br />
         <Button variant="outlined" onClick={handleClickOpen}>
           FILTER MENU

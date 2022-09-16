@@ -15,13 +15,14 @@ import LocalTaxiIcon from "@mui/icons-material/LocalTaxi";
 import Typography from "@mui/material/Typography";
 import { blue, green } from "@mui/material/colors";
 import { Box, Slider, Checkbox, FormControlLabel } from "@mui/material";
+import { IFilterValues } from "../../Pages/Home/HomePage";
 
 const emails = ["username@gmail.com", "user02@gmail.com"];
 
 export interface SimpleDialogProps {
   open: boolean;
-  selectedValue: string;
-  onClose: (value: string) => void;
+  selectedValue: IFilterValues;
+  onClose: (value: IFilterValues) => void;
 }
 
 function SimpleDialog(props: SimpleDialogProps) {
@@ -31,7 +32,7 @@ function SimpleDialog(props: SimpleDialogProps) {
     onClose(selectedValue);
   };
 
-  const handleListItemClick = (value: string) => {
+  const handleListItemClick = (value: IFilterValues) => {
     // need to change this to allow for multiple values to be selected
     onClose(value);
   };
@@ -127,6 +128,13 @@ function SimpleDialog(props: SimpleDialogProps) {
             valueLabelDisplay="auto"
             defaultValue={15}
             max={25}
+            onChange={(e) => {
+              const t = e.target as HTMLInputElement;
+              handleListItemClick({
+                ...selectedValue,
+                distance: parseInt(t.value),
+              });
+            }}
           />
         </ListItem>
         <h3>Rent Price (Per week)</h3>
