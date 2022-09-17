@@ -1,6 +1,6 @@
 import "./SearchPage.css";
 import SearchResults from "./SearchResults";
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { GetData } from "./GetData";
 
@@ -11,7 +11,7 @@ function SearchPage() {
     navigate(path);
   };
 
-  //
+  
   const suburbsData = [
     { suburbName: "Clayton", postCode: "3168" },
     { suburbName: "Dandenong", postCode: "3175" },

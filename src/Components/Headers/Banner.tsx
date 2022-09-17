@@ -1,5 +1,5 @@
 import "./Banner.css";
-import { Button, Avatar } from "@material-ui/core";
+import { Button, Avatar } from "@mui/material";
 import { auth } from "../../firebase";
 
 function Banner() {

@@ -1,5 +1,5 @@
 import "./SuburbDetails.css";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Grid from "@mui/material/Grid";
 
 function SuburbDetails() {

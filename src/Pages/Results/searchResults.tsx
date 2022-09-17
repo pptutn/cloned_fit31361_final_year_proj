@@ -1,5 +1,5 @@
-import "./searchResults.css";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import "./SearchResults.css";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import React from "react";
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
   onClick?: any;
 }
 
-function searchResults(props: Props) {
+function SearchResults(props: Props) {
   return (
     <div
       className="searchResult"
@@ -39,4 +39,4 @@ function searchResults(props: Props) {
   );
 }
 
-export default searchResults;
+export default SearchResults;
