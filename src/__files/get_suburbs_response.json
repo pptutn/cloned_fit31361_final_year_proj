@@ -1,0 +1,170 @@
+[
+  {
+    "id": "1",
+    "Suburb": "Clayton",
+    "Median Rent Price": "450",
+    "Distance": "2.5",
+    "Car Time": "6",
+    "PTV Time": "13"
+  },
+  {
+    "id": "2",
+    "Suburb": "Chadstone",
+    "Median Rent Price": "487",
+    "Distance": "6",
+    "Car Time": "10",
+    "PTV Time": "40"
+  },
+  {
+    "id": "3",
+    "Suburb": "Clarinda",
+    "Median Rent Price": "450",
+    "Distance": "5.5",
+    "Car Time": "11",
+    "PTV Time": "35"
+  },
+  {
+    "id": "4",
+    "Suburb": "Clayton South",
+    "Median Rent Price": "450",
+    "Distance": "4",
+    "Car Time": "9",
+    "PTV Time": "40"
+  },
+  {
+    "id": "5",
+    "Suburb": "Glen Waverley",
+    "Median Rent Price": "550",
+    "Distance": "6.8",
+    "Car Time": "14",
+    "PTV Time": "25"
+  },
+  {
+    "id": "6",
+    "Suburb": "Huntingdale",
+    "Median Rent Price": "480",
+    "Distance": "2.7",
+    "Car Time": "5",
+    "PTV Time": "20"
+  },
+  {
+    "id": "7",
+    "Suburb": "Mount Waverley",
+    "Median Rent Price": "545",
+    "Distance": "5.5",
+    "Car Time": "10",
+    "PTV Time": "30"
+  },
+  {
+    "id": "8",
+    "Suburb": "Mulgrave",
+    "Median Rent Price": "490",
+    "Distance": "2.3",
+    "Car Time": "4",
+    "PTV Time": "11"
+  },
+  {
+    "id": "9",
+    "Suburb": "Notting Hill",
+    "Median Rent Price": "450",
+    "Distance": "2.2",
+    "Car Time": "5",
+    "PTV Time": "15"
+  },
+  {
+    "id": "10",
+    "Suburb": "Oakleigh",
+    "Median Rent Price": "500",
+    "Distance": "4.5",
+    "Car Time": "8",
+    "PTV Time": "25"
+  },
+  {
+    "id": "11",
+    "Suburb": "Oakleigh East",
+    "Median Rent Price": "499",
+    "Distance": "2",
+    "Car Time": "3",
+    "PTV Time": "20"
+  },
+  {
+    "id": "12",
+    "Suburb": "Oakleigh South",
+    "Median Rent Price": "510",
+    "Distance": "5",
+    "Car Time": "9",
+    "PTV Time": "24"
+  },
+  {
+    "id": "13",
+    "Suburb": "Springvale",
+    "Median Rent Price": "415",
+    "Distance": "5",
+    "Car Time": "11",
+    "PTV Time": "28"
+  },
+  {
+    "id": "14",
+    "Suburb": "Wheeler's Hill",
+    "Median Rent Price": "540",
+    "Distance": "6",
+    "Car Time": "10",
+    "PTV Time": "35"
+  },
+  {
+    "id": "15",
+    "Suburb": "Murrumbeena",
+    "Median Rent Price": "630",
+    "Distance": "6.6",
+    "Car Time": "11",
+    "PTV Time": "38"
+  },
+  {
+    "id": "16",
+    "Suburb": "Bentleigh East",
+    "Median Rent Price": "650",
+    "Distance": "8.2",
+    "Car Time": "14",
+    "PTV Time": "35"
+  },
+  {
+    "id": "17",
+    "Suburb": "Moorabbin",
+    "Median Rent Price": "600",
+    "Distance": "10",
+    "Car Time": "16",
+    "PTV Time": "55"
+  },
+  {
+    "id": "18",
+    "Suburb": "Highett",
+    "Median Rent Price": "677",
+    "Distance": "11.7",
+    "Car Time": "18",
+    "PTV Time": "57"
+  },
+  {
+    "id": "19",
+    "Suburb": "Cheltenham",
+    "Median Rent Price": "580",
+    "Distance": "12",
+    "Car Time": "20",
+    "PTV Time": "50"
+  },
+  {
+    "id": "20",
+    "Suburb": "Heatherton",
+    "Median Rent Price": "610",
+    "Distance": "8.8",
+    "Car Time": "15",
+    "PTV Time": "45"
+  },
+  {
+    "id": "21",
+    "Suburb": "Noble Park",
+    "Median Rent Price": "400",
+    "Distance": "7.3",
+    "Car Time": "15",
+    "PTV Time": "35"
+  }
+]
