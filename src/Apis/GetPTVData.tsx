@@ -74,14 +74,13 @@ export function GetPTVData(props: Props) {
     // const [items, setItems] = useState([]);
 
     
+
     const trainData = () => {
         // API fetch call: searchUrl + search_term/suburb + "?route_types=" + train_route_type 
         // + "&max_distance=0&include_addresses=true&include_outlets=falsematch_stop_by_suburb=true&devid=" 
         // + user_id + "&signature=" + 
         // + 4FDF842D146D82BE358AAE2F1A5D80F32CAC14EF
-        const signature = generateSignature(trainURI);
-        const trainQuery = trainURI + "&signature=" + signature;
-        console.log("signature " + signature);
+        const trainQuery = trainURI + "&signature=" + generateSignature(trainURI);
 
         fetch(trainQuery)
         .then((res) => res.json())
@@ -113,21 +112,31 @@ export function GetPTVData(props: Props) {
         trainData();
       }, []);
 
-    
-    let { isLoaded, items } = apiCall;
+    // if (error) {
+    //     return <div>Error: {error}</div>;
+    // } else if (!isLoaded) {
+    //     return <div>Loading...</div>;
+    // } else {
+        // const PTVData = items
+        // console.log(trainData);
+        // return (
+        //     <div></div>
+        // );
 
-    if (isLoaded) {
-        return {
-        
+        //    <ul>
+        //     {/* get the json list and get the appropriate data from each obj  */}
+        //      {items.map(item => (
+        //       <li key={items}>
+        //         {item.} {item}
+        //       </li>
+        //     ))}
             
-        }
-   
-    }
-    else {
-        console.log(items);
+        //   </ul>
+        
+    //   }
+    return {
 
-        return {
-        }
+        
     }
 
 }
