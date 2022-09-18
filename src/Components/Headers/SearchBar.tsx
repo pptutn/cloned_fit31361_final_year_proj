@@ -1,7 +1,7 @@
 import "./SearchBar.css";
 import TextField from "@mui/material/TextField";
 import { Button, Grid, Paper, ThemeProvider } from "@material-ui/core";
-import theme from "../../ColourScheme";
+import theme from "../../colourScheme";
 import React from "react";
 import { auth } from "../../firebase";
 import SimpleDialog from "../AuxComponents/SimpleDialog";

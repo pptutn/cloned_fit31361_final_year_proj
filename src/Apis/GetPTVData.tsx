@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { PTV_API_KEY, PTV_USER_ID } from "../constants";
-import createHmac from "create-hmac";
+// import createHmac from "create-hmac";
 
 // const CryptoJS = require('crypto-js');
 
@@ -43,11 +43,11 @@ export function GetPTVData(props: Props) {
         // convert the train URI to byte array
         var uriBytes:number[] = getBytes(uri);
 
-        let generated_signature = createHmac('sha1', "key").update("json").digest("base64");
+        // let generated_signature = createHmac('sha1', "key").update("json").digest("base64");
 
         // var generated_signature = CryptoJS.HmacSHA1(uriBytes, keyBytes).toString(CryptoJS.enc.Hex);
 
-        return generated_signature;
+        return "";//generated_signature ;
 
     }
 

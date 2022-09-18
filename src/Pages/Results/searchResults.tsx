@@ -1,4 +1,4 @@
-import "./SearchResults.css";
+import "./searchResults.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import React from "react";
 
