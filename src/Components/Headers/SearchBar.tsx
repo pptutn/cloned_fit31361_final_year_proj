@@ -1,14 +1,12 @@
 import "./SearchBar.css";
 import TextField from "@mui/material/TextField";
 import { Button, Grid, Paper, ThemeProvider } from "@material-ui/core";
-import theme from "../../ColourScheme";
 import React from "react";
 import { auth } from "../../firebase";
 import SimpleDialog from "../AuxComponents/SimpleDialog";
-
+import theme from "../../colourScheme";
 
 function SearchBar() {
-
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(auth.currentUser);
 
@@ -22,57 +20,56 @@ function SearchBar() {
   };
 
   return (
-  <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <Grid container spacing={2} className="grid">
+        <Grid item xs={8}>
+          <Paper className="paper">
+            <TextField
+              className="search-bar"
+              color="success"
+              fullWidth
+              label="Search for your University"
+            ></TextField>
+          </Paper>
+        </Grid>
 
-    <Grid container spacing={2} className='grid'>
-      <Grid item xs={8}>
-        <Paper className='paper'>
-          <TextField 
-            className="search-bar"
-            color="success"
-            fullWidth
-            label="Search for your University">
-          </TextField>
-        </Paper>
+        <Grid item xs={2}>
+          <Paper className="paper">
+            <Button
+              className="filter-button"
+              color="primary"
+              variant="contained"
+              size="large"
+              fullWidth
+              onClick={handleClickOpen}
+            >
+              FILTERS
+            </Button>
+            <SimpleDialog
+              selectedValue=""
+              // selectedValue={
+              open={open}
+              onClose={handleClose}
+            />
+          </Paper>
+        </Grid>
+
+        <Grid item xs={2}>
+          <Paper className="paper">
+            <Button
+              className="filter-button"
+              color="secondary"
+              variant="contained"
+              size="large"
+              fullWidth
+              onClick={handleClickOpen}
+            >
+              SEARCH
+            </Button>
+          </Paper>
+        </Grid>
       </Grid>
-
-      <Grid item xs={2}>
-        <Paper className='paper'>
-          <Button 
-            className="filter-button" 
-            color="primary"
-            variant="contained" 
-            size="large" 
-            fullWidth 
-            onClick={handleClickOpen}>
-            FILTERS
-          </Button>
-          <SimpleDialog
-          selectedValue=""
-          // selectedValue={         
-          open={open}
-          onClose={handleClose}
-        />
-        </Paper>
-      </Grid>
-
-      <Grid item xs={2}>
-        <Paper className='paper'>
-          <Button 
-            className="filter-button" 
-            color="secondary"
-            variant="contained" 
-            size="large" 
-            fullWidth 
-            onClick={handleClickOpen}>
-            SEARCH
-          </Button>
-        </Paper>
-      </Grid>
-
-    </Grid>
     </ThemeProvider>
-
   );
 }
 

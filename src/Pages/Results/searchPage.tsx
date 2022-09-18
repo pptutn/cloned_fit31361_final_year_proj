@@ -1,8 +1,8 @@
-import "./SearchPage.css";
-import SearchResults from "./SearchResults";
+import "./searchPage.css";
 import { Button } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 import { GetData } from "./GetData";
+import SearchResults from "./searchResults";
 
 function SearchPage() {
   let navigate = useNavigate();
