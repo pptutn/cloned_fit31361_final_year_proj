@@ -3,6 +3,7 @@ import SearchResults from "./searchResults";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { GetData } from "./GetData";
+import { GetPTVData } from "../../Apis/GetPTVData";
 
 function SearchPage() {
   let navigate = useNavigate();
@@ -21,6 +22,8 @@ function SearchPage() {
   ];
 
   const rentData = suburbsData.map((s) => GetData(s));
+
+  const PTVData = suburbsData.map((s) => GetPTVData(s));
 
   const resultsElem = rentData.map((s) => (
     <SearchResults {...s} onClick={showDetails} />
