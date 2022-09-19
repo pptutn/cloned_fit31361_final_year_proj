@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { idText } from "typescript";
 import { PTV_API_KEY, PTV_USER_ID } from "../constants";
 // import createHmac from "create-hmac";
 
@@ -54,10 +55,14 @@ export function GetPTVData(props: Props) {
     // function that generates the search query string/URIs for a specified suburb, transport type
     // it also contains the dev ID
     const generateSearchURI = (transportType: number) => {
-        const searchQueryString: string = "/v3/search/" + props.suburbName + 
-            "?route_types=" + transportType 
-            + "/v3/search/&max_distance=0&include_addresses=true&include_outlets=falsematch_stop_by_suburb=true&devid="
+        // http://timetableapi.ptv.vic.gov.au/v3/search/Clayton?route_types=0&max_distance=0&include_addresses=true&include_outlets=false&match_stop_by_suburb=true&devid=3002236&signature=2C13C2E4EA49150AD0422E1F2F2481D26A695F4A
+
+        const searchQueryString: string = 
+        "/v3/search/" + props.suburbName 
+            + "?route_types=" + transportType 
+            + "&max_distance=0&include_addresses=true&include_outlets=false&match_stop_by_suburb=true&devid="
             + PTV_USER_ID ;
+            
         return searchQueryString;
     }
 
@@ -81,6 +86,10 @@ export function GetPTVData(props: Props) {
         // + user_id + "&signature=" + 
         // + 4FDF842D146D82BE358AAE2F1A5D80F32CAC14EF
         const trainQuery = trainURI + "&signature=" + generateSignature(trainURI);
+
+
+        console.log(fetch(trainQuery)
+        .then((res) => res.json()));
 
         fetch(trainQuery)
         .then((res) => res.json())
