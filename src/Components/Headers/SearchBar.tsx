@@ -1,10 +1,14 @@
 import "./SearchBar.css";
 import TextField from "@mui/material/TextField";
 import { Button, Grid, Paper, ThemeProvider } from "@mui/material";
+import { createStyles, makeStyles, Theme } from "@mui/material/styles";
+
 import theme from "../../colourScheme";
 import React from "react";
 import { auth } from "../../firebase";
 import SimpleDialog from "../AuxComponents/SimpleDialog";
+
+
 
 
 function SearchBar() {
@@ -24,9 +28,9 @@ function SearchBar() {
   return (
   <ThemeProvider theme={theme}>
 
-    <Grid container spacing={2} className='grid'>
+    <Grid container spacing={2} className='grid' alignItems="center">
       <Grid item xs={8}>
-        <Paper className='paper'>
+        <Paper className='paper' >
           <TextField 
             className="search-bar"
             color="success"
@@ -56,7 +60,7 @@ function SearchBar() {
         </Paper>
       </Grid>
 
-      <Grid item xs={2}>
+      <Grid item xs={2} >
         <Paper className='paper'>
           <Button 
             className="filter-button" 

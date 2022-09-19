@@ -1,8 +1,10 @@
+import React from "react";
 import "./searchPage.css";
 import SearchResults from "./searchResults";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { GetData } from "./GetData";
+import { GetPTVData } from "../../Apis/GetPTVData";
 
 function SearchPage() {
   let navigate = useNavigate();
@@ -20,10 +22,15 @@ function SearchPage() {
     { suburbName: "Clayton South", postCode: "3169" },
   ];
 
-  const rentData = suburbsData.map((s) => GetData(s));
+  // const rentData = suburbsData.map((s) => GetData(s));
+  const PtvData = suburbsData.map((s) => GetPTVData(s));
 
-  const resultsElem = rentData.map((s) => (
-    <SearchResults {...s} onClick={showDetails} />
+  // const resultsElem = rentData.map((s) => (
+  //   <SearchResults {...s} onClick={showDetails} />
+  // ));
+
+  const resultsElem = suburbsData.map((s) => (
+    <SearchResults medianRent={0} lowerRent={0} upperRent={0} {...s} onClick={showDetails} />
   ));
 
   return (
