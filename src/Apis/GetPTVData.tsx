@@ -4,7 +4,6 @@ import { PTV_API_KEY, PTV_USER_ID } from "../constants";
 
 // const CryptoJS = require('crypto-js');
 
-
 interface Props {
   suburbName: string;
   postCode: string;
@@ -47,7 +46,8 @@ export function GetPTVData(props: Props) {
 
         // var generated_signature = CryptoJS.HmacSHA1(uriBytes, keyBytes).toString(CryptoJS.enc.Hex);
 
-        return "";//generated_signature ;
+        // return generated_signature;
+        return "";
 
     }
 

@@ -56,7 +56,7 @@ function HomePage() {
       {/* POPUP STUFF */}
       <div>
         <Typography variant="subtitle1" component="div" color='#ffffff'>
-          Selected: {auth.currentUser?.email}
+          {/* Selected: {auth.currentUser?.email} */}
         </Typography>
         <br />
         

@@ -1,3 +1,4 @@
+import React from "react";
 import "./Banner.css";
 import { Button, Avatar } from "@mui/material";
 import { auth } from "../../firebase";

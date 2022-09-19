@@ -1,14 +1,7 @@
+import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import Banner from "./Components/Headers/Banner";
-import SearchBar from "./Components/Headers/SearchBar";
-import {
-  BrowserRouter,
-  Route,
-  Router,
-  Routes,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
 const rootElement = document.getElementById("root");
@@ -17,8 +10,6 @@ const root = ReactDOM.createRoot(rootElement);
 
 root.render(
   <div>
-    {/* <Banner /> */}
-    {/* <SearchBar /> */}
 
     <BrowserRouter>
       <App />

@@ -1,6 +1,6 @@
 import "./SearchBar.css";
 import TextField from "@mui/material/TextField";
-import { Button, Grid, Paper, ThemeProvider } from "@material-ui/core";
+import { Button, Grid, Paper, ThemeProvider } from "@mui/material";
 import theme from "../../colourScheme";
 import React from "react";
 import { auth } from "../../firebase";

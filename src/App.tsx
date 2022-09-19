@@ -1,3 +1,4 @@
+import React from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import HomePage from "./Pages/Home/HomePage";
 import LoginPage from "./Pages/LogIn/LoginPage";
