@@ -16,9 +16,6 @@
       "dom.iterable",
       "esnext"
     ],
-    "typeRoots": [
-      "node_modules/@types"
-    ],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",

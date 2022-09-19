@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { GetData } from "./GetData";
 import { GetPTVData } from "../../Apis/GetPTVData";
 
-
 function SearchPage() {
   let navigate = useNavigate();
   const showDetails = () => {
@@ -23,10 +22,8 @@ function SearchPage() {
     { suburbName: "Clayton South", postCode: "3169" },
   ];
 
-
   // const rentData = suburbsData.map((s) => GetData(s));
   const PtvData = suburbsData.map((s) => GetPTVData(s));
-
 
   // const resultsElem = rentData.map((s) => (
   //   <SearchResults {...s} onClick={showDetails} />

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { PTV_API_KEY, PTV_USER_ID } from "../constants";
 // import createHmac from "create-hmac";
 
-const CryptoJS = require('crypto-js');
+// const CryptoJS = require('crypto-js');
 
 interface Props {
   suburbName: string;
@@ -44,13 +44,10 @@ export function GetPTVData(props: Props) {
 
         // let generated_signature = createHmac('sha1', "key").update("json").digest("base64");
 
-        var hmac = CryptoJS.SHA1(uri+PTV_API_KEY).toString();
-        // var hmac = CryptoJS.algo.HMAC.create(CryptoJS.algo.SHA1, uri).update(PTV_API_KEY);
+        // var generated_signature = CryptoJS.HmacSHA1(uriBytes, keyBytes).toString(CryptoJS.enc.Hex);
 
-        // var generated_signature = CryptoJS.HmacSHA1(uri, PTV_API_KEY).toString(CryptoJS.enc.Hex);
-
-        return hmac;
-        // return "";
+        // return generated_signature;
+        return "";
 
     }
 
@@ -83,55 +80,26 @@ export function GetPTVData(props: Props) {
         // + "&max_distance=0&include_addresses=true&include_outlets=falsematch_stop_by_suburb=true&devid=" 
         // + user_id + "&signature=" + 
         // + 4FDF842D146D82BE358AAE2F1A5D80F32CAC14EF
+        const trainQuery = trainURI + "&signature=" + generateSignature(trainURI);
 
-        /*
-        http://timetableapi.ptv.vic.gov.au
-        /v3/search/Clayton
-        ?route_types=0
-        &max_distance=0&include_addresses=true&include_outlets=false&match_stop_by_suburb=true&devid=3002236
-        &signature=2C13C2E4EA49150AD0422E1F2F2481D26A695F4A
-
-        */
-       const sig = generateSignature(trainURI);
-       console.log(sig);
-        const trainQuery = trainURI + "&signature=" + sig;
-
-        console.log(fetch(trainQuery));
-        // fetch(trainQuery)
-        // .then((res) => res.json())
-        // .then((json) => {
-        //     // setIsLoaded(true);
-        //     // setItems(json);
-        //   setApiCall({
-        //     items: json,
-        //     isLoaded: true,
-        //   });
-        // },
-        // (error) => {
-        //     // setIsLoaded(true);
-        //     // setError(error);
-        //     setApiCall({
-        //       isLoaded: true,
-        //       error
-        //     });
-        // })
-
-        console.log(fetch(trainQuery, { credentials: "include",
-        headers: {
-            'content-type': 'application/json'
-        }}).then((response) => response.text));
-
-        fetch(trainQuery, { credentials: "include",
-        headers: {
-            'content-type': 'application/json'
-        }}).then((response) => {
-            return response.json();})
-          .then((data) => {
-              console.log(data);
-          })
-          .catch((error) => {
-              console.log(error);
+        fetch(trainQuery)
+        .then((res) => res.json())
+        .then((json) => {
+            // setIsLoaded(true);
+            // setItems(json);
+          setApiCall({
+            items: json,
+            isLoaded: true,
           });
+        },
+        (error) => {
+            // setIsLoaded(true);
+            // setError(error);
+            setApiCall({
+              isLoaded: true,
+              error
+            });
+        })
 
     };
 
@@ -139,11 +107,9 @@ export function GetPTVData(props: Props) {
         //
     }
 
+
     useEffect(() => {
         trainData();
-        console.log(CryptoJS.SHA1(trainURI+PTV_API_KEY).toString());
-        console.log(CryptoJS.SHA1(trainURI+PTV_API_KEY).toString());
-
       }, []);
 
     // if (error) {
