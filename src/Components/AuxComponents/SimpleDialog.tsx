@@ -15,7 +15,7 @@ import LocalTaxiIcon from "@mui/icons-material/LocalTaxi";
 import Typography from "@mui/material/Typography";
 import { blue, green } from "@mui/material/colors";
 import { Box, Slider, Checkbox, FormControlLabel } from "@mui/material";
-import { IFilterValues } from "../../Pages/Home/HomePage";
+import { IFilterValues } from "../../App";
 
 const emails = ["username@gmail.com", "user02@gmail.com"];
 

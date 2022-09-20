@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import "./HomePage.css";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
@@ -7,25 +7,18 @@ import InfoBox from "../../Components/AuxComponents/InfoBox";
 import SimpleDialog from "../../Components/AuxComponents/SimpleDialog";
 import { Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { IFilterValues } from "../../App";
 
-export interface IFilterValues {
-  distance: number;
-  price: number;
-  pubTransport: boolean;
-  lateTransport: boolean;
+interface homePageProps {
+  filterVal: IFilterValues;
+  selectedValue: IFilterValues;
+  setSelectedValue: Dispatch<SetStateAction<IFilterValues>>;
 }
 
-function HomePage() {
+function HomePage(props: homePageProps) {
   // POPUP STUFF
-  const initialFilters: IFilterValues = {
-    distance: 0,
-    price: 0,
-    pubTransport: false,
-    lateTransport: false,
-  };
 
   const [open, setOpen] = React.useState(false);
-  const [selectedValue, setSelectedValue] = React.useState(initialFilters);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -34,14 +27,14 @@ function HomePage() {
   // sets the entire state
   const handleClose = (value: IFilterValues) => {
     setOpen(false);
-    setSelectedValue(value);
+    props.setSelectedValue(value);
   };
 
   const handleSelection = (value: IFilterValues) => {
-    setSelectedValue(value);
+    props.setSelectedValue(value);
   };
   let navigate = useNavigate();
-  
+
   const showDetails = () => {
     let path = `/details`;
     navigate(path);
@@ -70,14 +63,14 @@ function HomePage() {
           FILTER MENU
         </Button>
         <SimpleDialog
-          selectedValue={selectedValue}
+          selectedValue={props.selectedValue}
           open={open}
           handleSelection={handleSelection}
           onClose={handleClose}
         />
       </div>
-      <div>MAX Distance {selectedValue.distance}</div>
-      <div>MAX Price {selectedValue.price}</div>
+      <div>MAX Distance {props.selectedValue.distance}</div>
+      <div>MAX Price {props.selectedValue.price}</div>
       {/* POPUP STUFF */}
       <div>
         <Autocomplete
