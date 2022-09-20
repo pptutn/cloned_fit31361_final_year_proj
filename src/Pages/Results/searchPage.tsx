@@ -20,11 +20,13 @@ function SearchPage() {
     { suburbName: "Clayton South", postCode: "3169" },
   ];
 
-  const rentData = suburbsData.map((s) => GetData(s));
-
-  const resultsElem = rentData.map((s) => (
-    <SearchResults {...s} onClick={showDetails} />
-  ));
+  const renderResults = (
+    localityData: { suburbName: string; postCode: string }[]
+  ) => {
+    return localityData
+      .map((s) => GetData(s))
+      .map((s) => <SearchResults {...s} onClick={showDetails} />);
+  };
 
   return (
     <div className="searchPage">
@@ -34,7 +36,7 @@ function SearchPage() {
         <Button variant="outlined">Distance from University</Button>
         <Button variant="outlined">More Filters</Button>
       </div>
-      {resultsElem}
+      {renderResults(suburbsData)}
     </div>
   );
 }
