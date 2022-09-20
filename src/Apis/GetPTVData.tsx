@@ -28,7 +28,7 @@ export function GetPTVData(props: Props) {
     const bus_route_type = 2;
     const night_bus_route_type = 4;
 
-    const baseUrl = "http://timetableapi.ptv.vic.gov.au";
+    const baseUrl = "https://timetableapi.ptv.vic.gov.au";
     // const searchQueryString = "/v3/search/&max_distance=0&include_addresses=true&include_outlets=falsematch_stop_by_suburb=true&devid=";
 
     // function that creates the signature value. 
@@ -81,15 +81,26 @@ export function GetPTVData(props: Props) {
     
 
     const trainData = () => {
-        // API fetch call: searchUrl + search_term/suburb + "?route_types=" + train_route_type 
-        // + "&max_distance=0&include_addresses=true&include_outlets=falsematch_stop_by_suburb=true&devid=" 
-        // + user_id + "&signature=" + 
-        // + 4FDF842D146D82BE358AAE2F1A5D80F32CAC14EF
-        const trainQuery = trainURI + "&signature=" + generateSignature(trainURI);
+        // base URL / version number / API name / query string
+            // baseUrl = "http://timetableapi.ptv.vic.gov.au"
+            // version number = "/v3"
+            // API name = "/search/" + props.suburbName 
+            // query string = "?route_types=" + transportType +
+            //                "&max_distance=0&include_addresses=true&include_outlets=false&match_stop_by_suburb=true&devid="
+            // + PTV_USER_ID ;
+            // signature = "&signature=" + signature
+
+        // const trainQuery = "https://timetableapi.ptv.vic.gov.au" + "/v3/search/" + props.suburbName 
+        // + "?route_types=0&devid=" //&max_distance=0&include_addresses=true&include_outlets=false&match_stop_by_suburb=true&devid="
+        // + PTV_USER_ID + "&signature=" + generateSignature(trainURI);
+
+        const trainQuery = "http://timetableapi.ptv.vic.gov.au/v3/search/Clayton?route_types=0&max_distance=0&include_addresses=true&include_outlets=false&match_stop_by_suburb=true&" 
+        + "devid=" + PTV_USER_ID + "&signature=" 
+        + generateSignature("/v3/search/Clayton?route_types=0&max_distance=0&include_addresses=true&include_outlets=false&match_stop_by_suburb=true&devid=3002236");
 
 
-        console.log(fetch(trainQuery)
-        .then((res) => res.json()));
+        // console.log(fetch(trainQuery)
+        // .then((res) => res.json()));
 
         fetch(trainQuery)
         .then((res) => res.json())
@@ -100,6 +111,7 @@ export function GetPTVData(props: Props) {
             items: json,
             isLoaded: true,
           });
+          console.log(apiCall.items);
         },
         (error) => {
             // setIsLoaded(true);

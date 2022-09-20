@@ -34,6 +34,7 @@
 .searchResult__infoTop > h1 {
   margin-top: 10px;
   font-weight: bold;
+  margin-left: 50px;
 }
 
 .searchResult__infoBottom > p{
@@ -42,6 +43,7 @@
   font-weight: bold;
   
 }
+
 
 /* .searchResult__infoBottom {
   display: flex;

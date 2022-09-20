@@ -1,6 +1,6 @@
 import "./SearchBar.css";
 import TextField from "@mui/material/TextField";
-import { Button, Grid, Paper, ThemeProvider } from "@mui/material";
+import { Box, Button, Grid, Paper, Stack, ThemeProvider } from "@mui/material";
 import { createStyles, makeStyles, Theme } from "@mui/material/styles";
 
 import theme from "../../colourScheme";
@@ -27,8 +27,19 @@ function SearchBar() {
 
   return (
   <ThemeProvider theme={theme}>
+    <Box>
+      <Stack
+        spacing={2}
+        direction="row"
+        
+      >
+        <TextField fullWidth className="paper" color="primary" label="Search for your University"></TextField>
+        <Button variant="contained" color="primary" onClick={handleClickOpen}>FILTERS</Button>
+        <Button variant="contained" color="secondary">SEARCH</Button>
+      </Stack>
+    </Box>
 
-    <Grid container spacing={2} className='grid' alignItems="center">
+    {/* <Grid container spacing={2} className='grid' alignItems="center">
       <Grid item xs={8}>
         <Paper className='paper' >
           <TextField 
@@ -74,7 +85,7 @@ function SearchBar() {
         </Paper>
       </Grid>
 
-    </Grid>
+    </Grid> */}
     </ThemeProvider>
 
   );

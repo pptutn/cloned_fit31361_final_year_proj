@@ -10,11 +10,11 @@ const theme =
             main: '#009688',
             dark: '#00695f'
             },
-            secondary: {
-                light: '#6fbf73',
-                main: '#4caf50',
-                dark: '#357a38'
-            },
+        secondary: {
+            light: '#6fbf73',
+            main: '#4caf50',
+            dark: '#357a38'
+        },
         },
     });
 

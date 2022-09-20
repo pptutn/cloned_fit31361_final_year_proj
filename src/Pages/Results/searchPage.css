@@ -1,7 +1,17 @@
+.result__banner {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  top: 10px;
+  /* background-color: #1f222a; */
+  z-index: 100;
+  width: 100%;
+  margin: 0px 0px 20px;
+}
+
 .searchPage__info {
     padding: 20px;
   }
-
 
 .searchPage__info > h1 {
     margin-bottom: 30px;
@@ -15,3 +25,37 @@
     background-color: #1AB65C;
     font-weight: bold;
   }
+
+.banner__left {
+  margin-left: 50px;
+  color: white;
+}
+
+.banner__right {
+  margin-right: 50px;
+  /* margin-left: 50px; */
+  color: #F7FCFF;
+
+}
+
+.searchPage__links {
+  display: flex;
+  justify-content: space-around;
+  margin: 0px 0px 20px;
+}
+
+.banner_backButton {
+    margin-left: 50px;
+    color: white;
+
+}
+
+.banner__title {
+  margin-right: 50px;
+  margin-left: 50px;
+  color: #F7FCFF;
+}
+
+.h1 {
+  color:#F7FCFF;
+}
