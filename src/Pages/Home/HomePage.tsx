@@ -17,8 +17,6 @@ export interface IFilterValues {
 
 function HomePage() {
   // POPUP STUFF
-  const emails = ["username@gmail.com", "user02@gmail.com"];
-
   const initialFilters: IFilterValues = {
     distance: 0,
     price: 0,
@@ -43,6 +41,7 @@ function HomePage() {
     setSelectedValue(value);
   };
   let navigate = useNavigate();
+  
   const showDetails = () => {
     let path = `/details`;
     navigate(path);
