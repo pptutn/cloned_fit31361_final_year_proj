@@ -2,13 +2,16 @@ import React from "react";
 import "./Banner.css";
 import { Button, Avatar } from "@mui/material";
 import { auth } from "../../firebase";
+import { ThemeProvider } from "@emotion/react";
+import theme from "../../colourScheme";
 
 function Banner() {
 
   return (
+    <ThemeProvider theme={theme}>
     <div className="result__banner">
       <div className="banner__left">
-        <h1 className="app-title">
+        <h1>
           {" "}
           <a href="/">StuCom.</a>
         </h1>
@@ -22,6 +25,7 @@ function Banner() {
         </div>
       </div>
     </div>
+    </ThemeProvider>
   );
 }
 

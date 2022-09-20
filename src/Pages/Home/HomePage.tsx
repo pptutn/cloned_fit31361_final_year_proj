@@ -51,21 +51,12 @@ function HomePage() {
     <div>
       <SearchBar/>
     </div>
+  
+    <div>
+      <h2 className="HomePage-title" margin-left="50px"> Favourite Suburbs</h2>
+    </div>
 
-
-      {/* POPUP STUFF */}
-      <div>
-        <Typography variant="subtitle1" component="div" color='#ffffff'>
-          {/* Selected: {auth.currentUser?.email} */}
-        </Typography>
-        <br />
-        
-      </div>
-      {/* POPUP STUFF */}
-      
-      <div>
-        <h2 className="HomePage-title"> Frequently Searched Universities</h2>
-      </div>
+    
       <Stack
         direction={{ xs: "column", sm: "row" }}
         spacing={{ xs: 1, sm: 2, md: 4 }}

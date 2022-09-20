@@ -27,24 +27,12 @@ function SearchBar() {
 
   return (
   <ThemeProvider theme={theme}>
-    <Box>
-      <Stack
-        spacing={2}
-        direction="row"
-        
-      >
-        <TextField fullWidth className="paper" color="primary" label="Search for your University"></TextField>
-        <Button variant="contained" color="primary" onClick={handleClickOpen}>FILTERS</Button>
-        <Button variant="contained" color="secondary">SEARCH</Button>
-      </Stack>
-    </Box>
 
-    {/* <Grid container spacing={2} className='grid' alignItems="center">
-      <Grid item xs={8}>
+    <Grid container spacing={2} className='grid' alignItems="center" marginLeft="50px" marginRight="50px">
+      <Grid item xs={7}>
         <Paper className='paper' >
           <TextField 
-            className="search-bar"
-            color="success"
+            color="primary"
             fullWidth
             label="Search for your University">
           </TextField>
@@ -85,7 +73,7 @@ function SearchBar() {
         </Paper>
       </Grid>
 
-    </Grid> */}
+    </Grid>
     </ThemeProvider>
 
   );
