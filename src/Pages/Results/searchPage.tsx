@@ -12,7 +12,7 @@ function SearchPage() {
   };
 
   //
-  const suburbsData = [
+  const monashSuburbs = [
     { suburbName: "Clayton", postCode: "3168" },
     { suburbName: "Dandenong", postCode: "3175" },
     { suburbName: "Huntingdale", postCode: "3166" },
@@ -20,7 +20,15 @@ function SearchPage() {
     { suburbName: "Clayton South", postCode: "3169" },
   ];
 
-  const renderResults = (
+  const uniMelbSuburbs = [
+    { suburbName: "Parkville", postCode: "3010" },
+    { suburbName: "Carlton", postCode: "3053" },
+    { suburbName: "Fitzroy", postCode: "3065" },
+    { suburbName: "North Melbourne", postCode: "3051" },
+    { suburbName: "Melbourne", postCode: "3000" },
+  ];
+
+  const renderSuburbResults = (
     localityData: { suburbName: string; postCode: string }[]
   ) => {
     return localityData
@@ -36,7 +44,7 @@ function SearchPage() {
         <Button variant="outlined">Distance from University</Button>
         <Button variant="outlined">More Filters</Button>
       </div>
-      {renderResults(suburbsData)}
+      {renderSuburbResults(monashSuburbs)}
     </div>
   );
 }
