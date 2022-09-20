@@ -8,6 +8,7 @@ import SuburbDetails from "./Pages/Suburb/SuburbDetails";
 import { useState } from "react";
 
 export interface IFilterValues {
+  selectedUni: string;
   distance: number;
   price: number;
   pubTransport: boolean;
@@ -18,8 +19,9 @@ function App() {
   const location = useLocation();
 
   const initialFilters: IFilterValues = {
-    distance: 0,
-    price: 0,
+    selectedUni: "none selected",
+    distance: 25,
+    price: 500,
     pubTransport: false,
     lateTransport: false,
   };
@@ -44,7 +46,10 @@ function App() {
 
         <Route path="/signup" element={<SignupPage />} />
 
-        <Route path="/results" element={<SearchPage />} />
+        <Route
+          path="/results"
+          element={<SearchPage filterValues={selectedValue} />}
+        />
 
         <Route path="/details" element={<SuburbDetails />} />
       </Routes>

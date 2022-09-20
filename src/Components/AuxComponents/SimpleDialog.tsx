@@ -198,7 +198,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             <FormControlLabel label="Bus" control={<Checkbox />} />
             <DirectionsBusIcon />
           </div>
-          <div className="checkbox__filters">
+          {/* <div className="checkbox__filters">
             <FormControlLabel label="Tram" control={<Checkbox />} />
             <TramIcon />
           </div>
@@ -209,7 +209,7 @@ function SimpleDialog(props: SimpleDialogProps) {
           <div className="checkbox__filters">
             <FormControlLabel label="Ride Share" control={<Checkbox />} />
             <LocalTaxiIcon />
-          </div>
+          </div> */}
         </ListItem>
         {/* <h3>Crime Rates</h3>
         <ListItem>
@@ -235,7 +235,7 @@ function SimpleDialog(props: SimpleDialogProps) {
           }}
         >
           <Button onClick={handleClose}>Close</Button>
-          <Button>Search</Button>
+          <Button onClick={handleClose}>Done</Button>
         </ListItem>
       </List>
     </Dialog>

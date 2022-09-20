@@ -55,9 +55,6 @@ function HomePage(props: homePageProps) {
     >
       {/* POPUP STUFF */}
       <div>
-        {/* <Typography variant="subtitle1" component="div">
-          Selected: {selectedValue}
-        </Typography> */}
         <br />
         <Button variant="outlined" onClick={handleClickOpen}>
           FILTER MENU
@@ -82,7 +79,16 @@ function HomePage(props: homePageProps) {
             <TextField {...params} label="Search for your University" />
           )}
           onClick={showResults}
-          onChange={showResults}
+          // onChange={showResults}
+          onChange={(e) => {
+            const t = e.target as HTMLInputElement;
+            handleSelection({
+              ...props.selectedValue,
+              selectedUni: t.value,
+            });
+          }}
+
+          //
         />
         <h2 className="HomePage-title"> Frequently Searched Universities</h2>
       </div>
