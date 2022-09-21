@@ -34,7 +34,7 @@ function SearchPage(props: searchProps) {
     "Monash University": monashClaytonSuburbs,
     "Monash University Peninsula": monashPeninsulaSuburbs,
     "The University of Melbourne": uniMelbParkvilleSuburbs,
-    RMIT: rmitMelbSuburbs,
+    "RMIT": rmitMelbSuburbs,
   };
 
   console.log("heres johnny", uniDictionary[props.filterValues.selectedUni]);

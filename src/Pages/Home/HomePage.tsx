@@ -101,14 +101,47 @@ function HomePage(props: homePageProps) {
         <InfoBox
           name="Monash University"
           campusLocation="Clayton, VIC"
-          onClick={showResults}
+          onClick={() => {
+            handleSelection({
+              ...props.selectedValue,
+              selectedUni: "Monash University",
+            });
+            showResults();
+          }}
         />
         <InfoBox
           name="The University of Melbourne"
           campusLocation="Parkville, VIC"
+          onClick={() => {
+            handleSelection({
+              ...props.selectedValue,
+              selectedUni: "The University of Melbourne",
+            });
+            showResults();
+          }}
         />
-        <InfoBox name="University of Sydney" campusLocation="Sydney, NSW" />
-        <InfoBox name="University of NSW" campusLocation="Kensington, NSW" />
+        <InfoBox
+          name="Monash University Peninsula"
+          campusLocation="Frankston, VIC"
+          onClick={() => {
+            handleSelection({
+              ...props.selectedValue,
+              selectedUni: "Monash University Peninsula",
+            });
+            showResults();
+          }}
+        />
+        <InfoBox
+          name="Royal Melb Institute of Technology"
+          campusLocation="Melbourne, VIC"
+          onClick={() => {
+            handleSelection({
+              ...props.selectedValue,
+              selectedUni: "RMIT",
+            });
+            showResults();
+          }}
+        />
       </Stack>
     </Stack>
   );
