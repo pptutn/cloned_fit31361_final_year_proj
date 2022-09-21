@@ -1,15 +1,20 @@
+import React from "react";
 import "./searchPage.css";
 import SearchResults from "./searchResults";
-import { Button } from "@material-ui/core";
+import { Box, Button, Grid, Paper, Stack, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { GetData } from "./GetData";
+import { GetPTVData } from "../../Apis/GetPTVData";
+import { ThemeProvider } from "@emotion/react";
+import theme from "../../colourScheme";
+import BackButton from "../../Components/BackButton/BackButton";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ExpandableComponent from "../../Components/ExpandableComponent/ExpandableComponent";
+import FavouriteButton from "../../Components/FavouriteButton";
+
 
 function SearchPage() {
   let navigate = useNavigate();
-  const showDetails = () => {
-    let path = `/details`;
-    navigate(path);
-  };
 
   //
   const monashSuburbs = [
@@ -33,19 +38,44 @@ function SearchPage() {
   ) => {
     return localityData
       .map((s) => GetData(s))
-      .map((s) => <SearchResults {...s} onClick={showDetails} />);
+      .map((s) =>
+        <ExpandableComponent {...s}></ExpandableComponent>
+      )
   };
 
+
   return (
-    <div className="searchPage">
-      <div className="searchPage__info">
-        <h1>Ideal Suburbs</h1>
-        <Button variant="outlined">Average Rent</Button>
-        <Button variant="outlined">Distance from University</Button>
-        <Button variant="outlined">More Filters</Button>
-      </div>
+    <ThemeProvider theme={theme}>
+
+      {/* add in the back button for navigation */}
+      <Box>
+        <Stack
+          spacing={4}
+          direction="row">
+          <Button color="primary" onClick={() => navigate(-1)}>
+            <ArrowBackIcon fontSize="large" />
+          </Button>
+          <div className="banner_right">
+            <h1 className="h1">Ideal Suburbs</h1>
+          </div>
+        </Stack>
+      </Box>
+
+      <Box>
+        <Stack
+          padding={2}
+          spacing={3}
+          direction="row">
+          <Button variant="contained">Average Rent</Button>
+          <Button variant="contained">Distance from University</Button>
+          <Button variant="contained">More Filters</Button>
+        </Stack>
+      </Box>
+
+      {/* create the expandable component */}
       {renderSuburbResults(monashSuburbs)}
-    </div>
+
+    </ThemeProvider>
   );
 }
 

@@ -20,6 +20,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import Banner from "../../Components/Headers/Banner";
 
 function LoginPage() {
 
@@ -48,6 +49,7 @@ function LoginPage() {
     return (
 
       <ThemeProvider theme={theme}>
+        <Banner />
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                     <Box

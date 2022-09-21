@@ -7,7 +7,6 @@ version: 1.1.0
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc } from "@firebase/firestore";
-import "firebase/auth";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -29,8 +28,10 @@ const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
 
 // initialise authentication module
-const auth = getAuth(app);
+const auth = getAuth();
 
+// check if a user is logged in
+const user = auth.currentUser;
 
 // create a signUp function, so users can sign up to application and are authenticated
 const signUp = async (firstname: string, lastname: string, email: string, password: string, university: string) => {
@@ -78,5 +79,5 @@ const logOut = () => {
 };
 
 // declare the exports for this file
-export { database, auth, signUp, logInWithEmailAndPassword, logOut };
+export { database, auth, user, signUp, logInWithEmailAndPassword, logOut };
   

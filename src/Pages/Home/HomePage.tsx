@@ -1,18 +1,19 @@
 import React from "react";
 import "./HomePage.css";
-import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
-import Autocomplete from "@mui/material/Autocomplete";
 import InfoBox from "../../Components/AuxComponents/InfoBox";
+import SearchBar from "../../Components/Headers/SearchBar";
+import Banner from "../../Components/Headers/Banner";
+import { auth } from "../../firebase"
+
 import SimpleDialog from "../../Components/AuxComponents/SimpleDialog";
 import { Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 function HomePage() {
   // POPUP STUFF
-  const emails = ["username@gmail.com", "user02@gmail.com"];
   const [open, setOpen] = React.useState(false);
-  const [selectedValue, setSelectedValue] = React.useState(emails[1]);
+  const [selectedValue, setSelectedValue] = React.useState(auth.currentUser);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -20,7 +21,12 @@ function HomePage() {
 
   const handleClose = (value: string) => {
     setOpen(false);
-    setSelectedValue(value);
+    // setSelectedValue(value);
+  };
+
+  const showResults = () => {
+    let path = `/results`;
+    navigate(path);
   };
 
   let navigate = useNavigate();
@@ -29,10 +35,6 @@ function HomePage() {
     navigate(path);
   };
 
-  const showResults = () => {
-    let path = `/results`;
-    navigate(path);
-  };
 
   return (
     <Stack
@@ -42,36 +44,20 @@ function HomePage() {
       ml={2}
       mr={2}
     >
-      {/* POPUP STUFF */}
-      <div>
-        <Typography variant="subtitle1" component="div">
-          Selected: {selectedValue}
-        </Typography>
-        <br />
-        <Button variant="outlined" onClick={handleClickOpen}>
-          FILTER MENU
-        </Button>
-        <SimpleDialog
-          selectedValue={selectedValue}
-          open={open}
-          onClose={handleClose}
-        />
-      </div>
-      {/* POPUP STUFF */}
-      <div>
-        <Autocomplete
-          id="search-universities"
-          freeSolo
-          sx={{ width: 0.9, height: 1 }}
-          options={Universities.map((option) => option.name)}
-          renderInput={(params) => (
-            <TextField {...params} label="Search for your University" />
-          )}
-          onClick={showResults}
-          onChange={showResults}
-        />
-        <h2 className="HomePage-title"> Frequently Searched Universities</h2>
-      </div>
+      
+    <div>
+      <Banner/>
+    </div>
+
+    <div>
+      <SearchBar/>
+    </div>
+  
+    <div>
+      <h2 className="HomePage-title" margin-left="50px"> Favourite Suburbs</h2>
+    </div>
+
+    
       <Stack
         direction={{ xs: "column", sm: "row" }}
         spacing={{ xs: 1, sm: 2, md: 4 }}
@@ -100,7 +86,7 @@ const Universities = [
   { name: "University of New South Wales", state: "NSW" },
   { name: "University of Sydney", state: "NSW" },
   { name: "Adelaide University", state: "SA" },
-  { name: "Queendsland Universty", state: "QLD" },
+  { name: "Queensland Universty", state: "QLD" },
   { name: "Royal Melbourne Insitute of Technology", state: "VIC" },
 ];
 

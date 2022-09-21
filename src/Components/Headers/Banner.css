@@ -6,6 +6,7 @@
   background-color: #1f222a;
   z-index: 100;
   width: 100%;
+  margin: 0px 0px 20px;
 }
 
 .banner__left {
@@ -28,3 +29,6 @@ a {
   color: inherit;
   /* cursor: auto; */
 }
+
+
+div {}

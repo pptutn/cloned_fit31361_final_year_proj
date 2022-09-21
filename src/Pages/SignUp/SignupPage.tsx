@@ -11,8 +11,9 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { teal } from "@material-ui/core/colors";
+import { teal } from "@mui/material/colors";
 import { Route } from "react-router-dom";
+import Banner from "../../Components/Headers/Banner";
 
 const theme = createTheme({
     palette: {
@@ -48,6 +49,8 @@ function SignupPage() {
      
     return (
         <ThemeProvider theme={theme}>
+            <Banner/>
+
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                     <Box

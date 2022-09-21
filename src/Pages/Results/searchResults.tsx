@@ -1,6 +1,7 @@
 import "./searchResults.css";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import React from "react";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import React, { useState } from "react";
+import FavouriteButton from "../../Components/FavouriteButton";
 
 interface Props {
   suburbName: string;
@@ -11,13 +12,24 @@ interface Props {
   onClick?: any;
 }
 
-function searchResults(props: Props) {
+function SearchResults(props: Props) {
+  const [favourite, setFavourite] = useState(false);
+
+  const onPress = () => {
+    console.log("favourite BEFORE: " + favourite);
+
+    // change the state of the favourite button on click
+    setFavourite(!favourite);
+    console.log("favourite AFTER: " + favourite);
+  };
+
   return (
     <div
       className="searchResult"
       onClick={props.onClick ? props.onClick : null}
     >
-      <FavoriteBorderIcon className="searchResult__heart" />
+      <FavouriteButton favourite={favourite} suburbName={props.suburbName} />
+      {/* <FavoriteBorderIcon className="searchResult__heart" /> */}
 
       <div className="resultsPageInfo">
         <div className="searchResult__info">
@@ -39,4 +51,4 @@ function searchResults(props: Props) {
   );
 }
 
-export default searchResults;
+export default SearchResults;
