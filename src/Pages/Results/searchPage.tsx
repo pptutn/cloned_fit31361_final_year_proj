@@ -1,53 +1,42 @@
-import './searchPage.css';
+import "./searchPage.css";
 import SearchResults from "./searchResults";
 import { Button } from "@material-ui/core";
+import { useState, useEffect } from "react";
+import { getSearchData } from "../../Components/API/getSuburbData";
 
-function SearchPage(){
-    return (
-        <div className='searchPage'>
-            <div className = 'searchPage__info'>
-                <h1>Ideal Suburbs</h1>
-                <Button variant="outlined">Average Rent</Button>
-                <Button variant="outlined">Distance from University</Button>
-                <Button variant="outlined">More Filters</Button>
-            </div>
-            <SearchResults
-                suburb = "Clayton"
-                price = "$600"
-                distance = "3.1km"
-                crime = "15%"
-                time = "0.1 hours"
-            />
-            <SearchResults
-                suburb = "Mount Waverley"
-                price = "$650"
-                distance = "7.2km"
-                crime = "8%"
-                time = "0.5 hours"
-            />
-            <SearchResults
-                suburb = "Huntingdale"
-                price = "$460"
-                distance = "5.3km"
-                crime = "12%"
-                time = "0.4 hours"
-            />
-            <SearchResults
-                suburb = "Chadstone"
-                price = "$812"
-                distance = "4.3km"
-                crime = "23%"
-                time = "0.3 hours"
-            />
-            <SearchResults
-                suburb = "Clayton South"
-                price = "$760"
-                distance = "3.9km"
-                crime = "32%"
-                time = "0.2 hours"
-            />
-        </div>
-    )
+function SearchPage() {
+  const [suburbs, setSuburbs] = useState<any[]>([]);
+
+  const handleData = async () => {
+    const searchData = await getSearchData();
+    setSuburbs(searchData);
+  };
+
+  // when the compoent is created this will run
+  useEffect(() => {
+    handleData();
+    console.log(suburbs);
+  }, []);
+
+  return (
+    <div className="searchPage">
+      <div className="searchPage__info">
+        <h1>Ideal Suburbs</h1>
+        <Button variant="outlined">Average Rent</Button>
+        <Button variant="outlined">Distance from University</Button>
+        <Button variant="outlined">More Filters</Button>
+      </div>
+      {suburbs.map((elem) => (
+        <SearchResults
+          suburb={elem.Suburb}
+          price={elem.Median_Rent_Price}
+          distance={elem.Distance}
+          Car_Time={elem.Car_Time}
+          PTV_Time={elem.PTV_Time}
+        />
+      ))}
+    </div>
+  );
 }
 
-export default SearchPage
+export default SearchPage;
