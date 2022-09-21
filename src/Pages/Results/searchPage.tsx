@@ -34,14 +34,14 @@ function SearchPage(props: searchProps) {
     "Monash University": monashClaytonSuburbs,
     "Monash University Peninsula": monashPeninsulaSuburbs,
     "The University of Melbourne": uniMelbParkvilleSuburbs,
-    "RMIT": rmitMelbSuburbs,
+    RMIT: rmitMelbSuburbs,
   };
 
   console.log("heres johnny", uniDictionary[props.filterValues.selectedUni]);
   return (
     <div className="searchPage">
       <div className="searchPage__info">
-        <h1>Ideal Suburbs</h1>
+        <h1>Ideal Suburbs for {props.filterValues.selectedUni}</h1>
         <Button variant="outlined">Average Rent</Button>
         <Button variant="outlined">Distance from University</Button>
         <Button variant="outlined">More Filters</Button>

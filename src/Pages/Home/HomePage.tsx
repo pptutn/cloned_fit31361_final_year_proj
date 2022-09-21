@@ -66,6 +66,7 @@ function HomePage(props: homePageProps) {
           onClose={handleClose}
         />
       </div>
+      <div>Uni {props.selectedValue.selectedUni}</div>
       <div>MAX Distance {props.selectedValue.distance}</div>
       <div>MAX Price {props.selectedValue.price}</div>
       {/* POPUP STUFF */}
@@ -79,6 +80,9 @@ function HomePage(props: homePageProps) {
             <TextField {...params} label="Search for your University" />
           )}
           onClick={showResults}
+          // onClick={(x) => {
+          //   console.log("HERE", x);
+          // }}
           // onChange={showResults}
           onChange={(e) => {
             const t = e.target as HTMLInputElement;
@@ -86,6 +90,7 @@ function HomePage(props: homePageProps) {
               ...props.selectedValue,
               selectedUni: t.value,
             });
+            console.log("changing", t.value);
           }}
 
           //
