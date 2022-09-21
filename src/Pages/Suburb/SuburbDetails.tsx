@@ -1,13 +1,30 @@
+import React, { useState } from "react";
 import "./SuburbDetails.css";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Grid from "@mui/material/Grid";
+import FavouriteButton from "../../Components/FavouriteButton";
 
 function SuburbDetails() {
+  const [favourite, setFavourite] = useState(false);
+  
+  const onPress = () => {
+    console.log("favourite BEFORE: " + favourite);
+
+    // change the state of the favourite button on click
+    setFavourite(!favourite);
+    console.log("favourite AFTER: " + favourite);
+  };
+  
   return (
     <Grid container spacing={2}>
       <Grid item xs={8}>
         <div className="SuburbInfo">
-        <FavoriteBorderIcon className="SuburbInfo__heart" />
+        
+        {/* <FavoriteBorderIcon className="SuburbInfo__heart" /> */}
+        {/* <FavouriteButton favourite={favourite}/> */}
+        
+
+
           <div className="SuburbDetailsPage">
             <div className="SuburbResult__infoTop">
               <h1>Clayton</h1>
