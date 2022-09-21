@@ -22,6 +22,10 @@ interface Props {
     lowerRent: number;
     upperRent: number;
     onClick?: any;
+    // distance: any;
+    // carTime: any;
+    // ptvTime: any;
+
 }
 
 const Accordion = styled((props: AccordionProps) => (

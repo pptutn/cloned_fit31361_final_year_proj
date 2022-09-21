@@ -1,0 +1,10 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/api/suburbs"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "../__files/get_suburbs_response.json"
+  }
+}
