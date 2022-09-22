@@ -60,7 +60,11 @@ function HomePage(props: homePageProps) {
       </div>
 
       <div>
-        <SearchBar />
+        <SearchBar
+          filterVal={props.filterVal}
+          selectedValue={props.selectedValue}
+          setSelectedValue={props.setSelectedValue}
+        />
       </div>
 
       <div>

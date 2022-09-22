@@ -9,22 +9,33 @@ import {
   ThemeProvider,
 } from "@mui/material";
 import theme from "../../colourScheme";
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { auth } from "../../firebase";
 import SimpleDialog from "../AuxComponents/SimpleDialog";
 import { useNavigate } from "react-router-dom";
 import { Universities } from "../../constants";
 import SearchPage from "../../Pages/Results/searchPage";
+import { IFilterValues } from "../../App";
 
-function SearchBar() {
+interface searchBarProps {
+  filterVal: IFilterValues;
+  selectedValue: IFilterValues;
+  setSelectedValue: Dispatch<SetStateAction<IFilterValues>>;
+}
+
+function SearchBar(props: searchBarProps) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = (value: string) => {
+  const handleClose = (value: IFilterValues) => {
     setOpen(false);
+    props.setSelectedValue(value);
+  };
+  const handleSelection = (value: IFilterValues) => {
+    props.setSelectedValue(value);
   };
 
   let navigate = useNavigate();
@@ -76,12 +87,12 @@ function SearchBar() {
             >
               FILTERS
             </Button>
-            {/* <SimpleDialog
-          // selectedValue=""
-          selectedValue={}        
-          open={open}
-          // onClose={handleClose}
-        /> */}
+            <SimpleDialog
+              selectedValue={props.selectedValue}
+              open={open}
+              handleSelection={handleSelection}
+              onClose={handleClose}
+            />
           </Paper>
         </Grid>
 
