@@ -1,4 +1,5 @@
 import { getRentData } from "../../Pages/Results/GetData";
+import { suburbDataI } from "../../Pages/Results/searchPage";
 
 const axios = require("axios").default;
 
@@ -24,12 +25,34 @@ export async function getSearchData() {
   // console.log(typeof responseData.data);
 
   // response data is object
-  responseData.data.map((s: any) => {
+  const theFuckingData = responseData.data.map((s: any) => {
     console.log("this is s", s);
     // getRentData(s);
   });
+
   return responseData.data;
+  // return theFuckingData;
 }
+
+export const anotherFunction = () => {
+  let thisArray: any = [];
+
+  getSearchData().then(function (result) {
+    console.log("this is result", result);
+    result.map((s: suburbDataI) => {
+      console.log("ALSO S", s);
+      // getRentData(s);
+      thisArray.push({ suburbName: s.suburbName, postCode: s.postCode });
+    });
+  });
+
+  console.log("this array", thisArray);
+  return thisArray;
+};
+
+anotherFunction();
+
+console.log("result", anotherFunction());
 
 // console.log("hi");
 // getSearchData().then(function (result) {
