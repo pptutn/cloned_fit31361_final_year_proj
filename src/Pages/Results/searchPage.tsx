@@ -10,64 +10,59 @@ import { GetPTVData } from "../../Apis/GetPTVData";
 import { ThemeProvider } from "@emotion/react";
 import theme from "../../colourScheme";
 import BackButton from "../../Components/BackButton/BackButton";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ExpandableComponent from "../../Components/ExpandableComponent/ExpandableComponent";
 import FavouriteButton from "../../Components/FavouriteButton";
+import { IFilterValues } from "../../App";
 
-function SearchPage() {
-    const [suburbs, setSuburbs] = useState<any[]>([]);
+interface searchProps {
+  filterValues: IFilterValues;
+}
+interface uniDictionaryI {
+  [index: string]: {
+    suburbName: string;
+    postCode: string;
+  }[];
+}
 
-    const handleData = async () => {
-      const searchData = await getSearchData();
-      setSuburbs(searchData);
-    };
-  
-    useEffect(() => {
-      handleData();
-      console.log(suburbs);
-    }, []);
-
+function SearchPage(props: searchProps) {
   let navigate = useNavigate();
+  const [suburbs, setSuburbs] = useState<any[]>([]);
 
-  //
-  const monashSuburbs = [
-    { suburbName: "Clayton", postCode: "3168" },
-    { suburbName: "Dandenong", postCode: "3175" },
-    { suburbName: "Huntingdale", postCode: "3166" },
-    { suburbName: "Chadstone", postCode: "3148" },
-    { suburbName: "Clayton South", postCode: "3169" },
-  ];
+  const handleData = async () => {
+    const searchData = await getSearchData();
+    setSuburbs(searchData);
+  };
 
-  const uniMelbSuburbs = [
-    { suburbName: "Parkville", postCode: "3010" },
-    { suburbName: "Carlton", postCode: "3053" },
-    { suburbName: "Fitzroy", postCode: "3065" },
-    { suburbName: "North Melbourne", postCode: "3051" },
-    { suburbName: "Melbourne", postCode: "3000" },
-  ];
+  useEffect(() => {
+    handleData();
+    console.log(suburbs);
+  }, []);
 
   const renderSuburbResults = (
     localityData: { suburbName: string; postCode: string }[]
   ) => {
     return localityData
       .map((s) => GetData(s))
-      .map((s) =>
-        <ExpandableComponent {...s}></ExpandableComponent>
-        //     suburbName: string; postCode: string; 
-        // medianRent: number; lowerRent: number; upperRent: number; onClick?: any; 
+      .map(
+        (s) => <ExpandableComponent {...s}></ExpandableComponent>
+        //     suburbName: string; postCode: string;
+        // medianRent: number; lowerRent: number; upperRent: number; onClick?: any;
         // distance: any; carTime: any; ptvTime: any; ptvType: any; noBuses: any; closestStation: any;
-      )
+      );
   };
-
+  const uniDictionary: uniDictionaryI = {
+    "Monash University": monashClaytonSuburbs,
+    "Monash University Peninsula": monashPeninsulaSuburbs,
+    "The University of Melbourne": uniMelbParkvilleSuburbs,
+    RMIT: rmitMelbSuburbs,
+  };
 
   return (
     <ThemeProvider theme={theme}>
-
       {/* add in the back button for navigation */}
       <Box>
-        <Stack
-          spacing={4}
-          direction="row">
+        <Stack spacing={4} direction="row">
           <Button color="primary" onClick={() => navigate(-1)}>
             <ArrowBackIcon fontSize="large" />
           </Button>
@@ -78,10 +73,7 @@ function SearchPage() {
       </Box>
 
       <Box>
-        <Stack
-          padding={2}
-          spacing={3}
-          direction="row">
+        <Stack padding={2} spacing={3} direction="row">
           <Button variant="contained">Average Rent</Button>
           <Button variant="contained">Distance from University</Button>
           <Button variant="contained">More Filters</Button>
@@ -89,7 +81,8 @@ function SearchPage() {
       </Box>
 
       {/* create the expandable component */}
-      {renderSuburbResults(monashSuburbs)}
+      {/* {renderSuburbResults(monashSuburbs)} */}
+      {renderSuburbResults(uniDictionary[props.filterValues.selectedUni])}
       {/* {suburbs.map((elem) => (
         <SearchResults
           suburb={elem.Suburb}
@@ -99,10 +92,39 @@ function SearchPage() {
           ptvTime={elem.ptvTime}
         />
       ))} */}
-
-
     </ThemeProvider>
   );
 }
+
+const monashClaytonSuburbs = [
+  { suburbName: "Clayton", postCode: "3168" },
+  { suburbName: "Dandenong", postCode: "3175" },
+  { suburbName: "Huntingdale", postCode: "3166" },
+  { suburbName: "Chadstone", postCode: "3148" },
+  { suburbName: "Clayton South", postCode: "3169" },
+];
+
+const monashPeninsulaSuburbs = [
+  { suburbName: "Frankston", postCode: "3199" },
+  { suburbName: "Langwarrin", postCode: "3910" },
+  { suburbName: "Seaford", postCode: "3198" },
+  { suburbName: "Mount Eliza", postCode: "3930" },
+];
+
+const uniMelbParkvilleSuburbs = [
+  { suburbName: "Parkville", postCode: "3052" },
+  { suburbName: "Carlton", postCode: "3053" },
+  { suburbName: "Fitzroy", postCode: "3065" },
+  { suburbName: "North Melbourne", postCode: "3051" },
+  { suburbName: "Melbourne", postCode: "3000" },
+];
+
+const rmitMelbSuburbs = [
+  { suburbName: "Parkville", postCode: "3052" },
+  { suburbName: "Carlton", postCode: "3053" },
+  { suburbName: "Fitzroy", postCode: "3065" },
+  { suburbName: "North Melbourne", postCode: "3051" },
+  { suburbName: "Melbourne", postCode: "3000" },
+];
 
 export default SearchPage;
