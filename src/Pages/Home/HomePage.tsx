@@ -75,18 +75,6 @@ function HomePage(props: homePageProps) {
       </div>
 
       {/* POPUP STUFF */}
-      <div>
-        <br />
-        <Button variant="outlined" onClick={handleClickOpen}>
-          FILTER MENU
-        </Button>
-        <SimpleDialog
-          selectedValue={props.selectedValue}
-          open={open}
-          handleSelection={handleSelection}
-          onClose={handleClose}
-        />
-      </div>
       <div>Uni {props.selectedValue.selectedUni}</div>
       <div>MAX Distance {props.selectedValue.distance}</div>
       <div>MAX Price {props.selectedValue.price}</div>
@@ -113,8 +101,6 @@ function HomePage(props: homePageProps) {
             });
             console.log("changing", t.value);
           }}
-
-          //
         />
         <h2 className="HomePage-title"> Frequently Searched Universities</h2>
       </div>

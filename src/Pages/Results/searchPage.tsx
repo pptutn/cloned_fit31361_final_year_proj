@@ -5,7 +5,7 @@ import { getSearchData } from "../../Components/API/getSuburbData";
 import React from "react";
 import { Box, Button, Grid, Paper, Stack, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { GetData } from "./GetData";
+import { compileData, GetData, getRentData } from "./GetData";
 import { GetPTVData } from "../../Apis/GetPTVData";
 import { ThemeProvider } from "@emotion/react";
 import theme from "../../colourScheme";
@@ -18,46 +18,78 @@ import { IFilterValues } from "../../App";
 interface searchProps {
   filterValues: IFilterValues;
 }
-interface uniDictionaryI {
-  [index: string]: {
-    suburbName: string;
-    postCode: string;
-  }[];
+// interface uniDictionaryI {
+//   [index: string]: {
+//     suburbName: string;
+//     postCode: string;
+//   }[];
+// }
+
+export interface suburbDataI {
+  suburbName: string;
+  postCode: string;
+  [key: string]: any;
 }
 
 function SearchPage(props: searchProps) {
   let navigate = useNavigate();
-  const [suburbs, setSuburbs] = useState<any[]>([]);
+  // const [suburbs, setSuburbs] = useState<any[]>([]);
 
-  const handleData = async () => {
-    const searchData = await getSearchData();
-    setSuburbs(searchData);
-  };
+  // let suburbDataTest: suburbDataI[] = [];
 
-  useEffect(() => {
-    handleData();
-    console.log(suburbs);
-  }, []);
+  // const handleData = async () => {
+  //   const searchData = await getSearchData();
+  //   setSuburbs(searchData);
+  //   suburbDataTest = suburbs;
+  // };
 
-  const renderSuburbResults = (
-    localityData: { suburbName: string; postCode: string }[]
-  ) => {
-    return localityData
-      .map((s) => GetData(s))
-      .map(
-        (s) => <ExpandableComponent {...s}></ExpandableComponent>
-        //     suburbName: string; postCode: string;
-        // medianRent: number; lowerRent: number; upperRent: number; onClick?: any;
-        // distance: any; carTime: any; ptvTime: any; ptvType: any; noBuses: any; closestStation: any;
-      );
-  };
-  const uniDictionary: uniDictionaryI = {
-    "Monash University": monashClaytonSuburbs,
-    "Monash University Peninsula": monashPeninsulaSuburbs,
-    "The University of Melbourne": uniMelbParkvilleSuburbs,
-    RMIT: rmitMelbSuburbs,
-  };
+  // useEffect(() => {
+  //   handleData();
+  //   console.log("this suburbs", suburbs);
+  // }, []);
 
+  // console.log("new suburbs", suburbs);
+  // console.log("TEST", suburbDataTest);
+
+  // const renderSuburbResults = (localityData: suburbDataI[]) => {
+  //   return localityData
+  //     .map((s) => GetData(s))
+  //     .map(
+  //       (s) => <ExpandableComponent {...s}></ExpandableComponent>
+  //       //     suburbName: string; postCode: string;
+  //       // medianRent: number; lowerRent: number; upperRent: number; onClick?: any;
+  //       // distance: any; carTime: any; ptvTime: any; ptvType: any; noBuses: any; closestStation: any;
+  //     );
+  // };
+
+  // const suburbResults = () => GetData()
+  GetData();
+
+  // let someArray: any[] = [];
+
+  // GetData().map((s) => {
+  //   console.log(s);
+  //   // getRentData(s);
+  //   someArray.push(s);
+  // });
+
+  // console.log("hi this is me", someArray);
+
+  // someArray.map((s) => getRentData(s));
+
+  // console.log("render", renderSuburbResults(suburbs));
+  // const uniDictionary: uniDictionaryI = {
+  //   "Monash University": monashClaytonSuburbs,
+  //   "Monash University Peninsula": monashPeninsulaSuburbs,
+  //   "The University of Melbourne": uniMelbParkvilleSuburbs,
+  //   RMIT: rmitMelbSuburbs,
+  // };
+
+  // console.log("new suburbs", suburbDataTest);
+  // compileData();
+
+  // let rentData = monashClaytonSuburbs.map((s) => getRentData(s));
+  // console.log("this is rent data", rentData);
   return (
     <ThemeProvider theme={theme}>
       {/* add in the back button for navigation */}
@@ -80,9 +112,7 @@ function SearchPage(props: searchProps) {
         </Stack>
       </Box>
 
-      {/* create the expandable component */}
-      {/* {renderSuburbResults(monashSuburbs)} */}
-      {renderSuburbResults(uniDictionary[props.filterValues.selectedUni])}
+      {/* {renderSuburbResults(suburbs)} */}
       {/* {suburbs.map((elem) => (
         <SearchResults
           suburb={elem.Suburb}

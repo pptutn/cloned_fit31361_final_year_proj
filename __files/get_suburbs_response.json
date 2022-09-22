@@ -1,7 +1,7 @@
 [
   {
     "id": "1",
-    "Suburb": "Clayton",
+    "suburbName": "Clayton",
     "postCode": "3168",
     "Median_Rent_Price": "450",
     "Distance": "2.5",
@@ -16,7 +16,7 @@
   },
   {
     "id": "2",
-    "Suburb": "Chadstone",
+    "suburbName": "Chadstone",
     "postCode": "3148",
     "Median_Rent_Price": "487",
     "Distance": "6",
@@ -31,7 +31,7 @@
   },
   {
     "id": "3",
-    "Suburb": "Clarinda",
+    "suburbName": "Clarinda",
     "postCode": "3169",
     "Median_Rent_Price": "450",
     "Distance": "5.5",
@@ -46,7 +46,7 @@
   },
   {
     "id": "4",
-    "Suburb": "Clayton South",
+    "suburbName": "Clayton South",
     "postCode": "3169",
     "Median_Rent_Price": "450",
     "Distance": "4",
@@ -61,7 +61,7 @@
   },
   {
     "id": "5",
-    "Suburb": "Glen Waverley",
+    "suburbName": "Glen Waverley",
     "postCode": "3150",
     "Median_Rent_Price": "550",
     "Distance": "6.8",
@@ -76,7 +76,7 @@
   },
   {
     "id": "6",
-    "Suburb": "Huntingdale",
+    "suburbName": "Huntingdale",
     "postCode": "3166",
     "Median_Rent_Price": "480",
     "Distance": "2.7",
@@ -91,7 +91,7 @@
   },
   {
     "id": "7",
-    "Suburb": "Mount Waverley",
+    "suburbName": "Mount Waverley",
     "postCode": "3149",
     "Median_Rent_Price": "545",
     "Distance": "5.5",
@@ -106,7 +106,7 @@
   },
   {
     "id": "8",
-    "Suburb": "Mulgrave",
+    "suburbName": "Mulgrave",
     "postCode": "3170",
     "Median_Rent_Price": "490",
     "Distance": "2.3",
@@ -121,7 +121,7 @@
   },
   {
     "id": "9",
-    "Suburb": "Notting Hill",
+    "suburbName": "Notting Hill",
     "postCode": "3168",
     "Median_Rent_Price": "450",
     "Distance": "2.2",
@@ -136,7 +136,7 @@
   },
   {
     "id": "10",
-    "Suburb": "Oakleigh",
+    "suburbName": "Oakleigh",
     "postCode": "3166",
     "Median_Rent_Price": "500",
     "Distance": "4.5",
@@ -151,7 +151,7 @@
   },
   {
     "id": "11",
-    "Suburb": "Oakleigh East",
+    "suburbName": "Oakleigh East",
     "postCode": "3168",
     "Median_Rent_Price": "499",
     "Distance": "2",
@@ -166,7 +166,7 @@
   },
   {
     "id": "12",
-    "Suburb": "Oakleigh South",
+    "suburbName": "Oakleigh South",
     "postCode": "3166",
     "Median_Rent_Price": "510",
     "Distance": "5",
@@ -181,7 +181,7 @@
   },
   {
     "id": "13",
-    "Suburb": "Springvale",
+    "suburbName": "Springvale",
     "postCode": "3171",
     "Median_Rent_Price": "415",
     "Distance": "5",
@@ -196,7 +196,7 @@
   },
   {
     "id": "14",
-    "Suburb": "Wheeler's Hill",
+    "suburbName": "Wheeler's Hill",
     "postCode": "3150",
     "Median_Rent_Price": "540",
     "Distance": "6",
@@ -211,7 +211,7 @@
   },
   {
     "id": "15",
-    "Suburb": "Murrumbeena",
+    "suburbName": "Murrumbeena",
     "postCode": "3163",
     "Median_Rent_Price": "630",
     "Distance": "6.6",
@@ -226,7 +226,7 @@
   },
   {
     "id": "16",
-    "Suburb": "Bentleigh East",
+    "suburbName": "Bentleigh East",
     "postCode": "3165",
     "Median_Rent_Price": "650",
     "Distance": "8.2",
@@ -241,7 +241,7 @@
   },
   {
     "id": "17",
-    "Suburb": "Moorabbin",
+    "suburbName": "Moorabbin",
     "postCode": "3189",
     "Median_Rent_Price": "600",
     "Distance": "10",
@@ -256,7 +256,7 @@
   },
   {
     "id": "18",
-    "Suburb": "Highett",
+    "suburbName": "Highett",
     "postCode": "3190",
     "Median_Rent_Price": "677",
     "Distance": "11.7",
@@ -271,7 +271,7 @@
   },
   {
     "id": "19",
-    "Suburb": "Cheltenham",
+    "suburbName": "Cheltenham",
     "postCode": "3192",
     "Median_Rent_Price": "580",
     "Distance": "12",
@@ -286,7 +286,7 @@
   },
   {
     "id": "20",
-    "Suburb": "Heatherton",
+    "suburbName": "Heatherton",
     "postCode": "3202",
     "Median_Rent_Price": "610",
     "Distance": "8.8",
@@ -301,7 +301,7 @@
   },
   {
     "id": "21",
-    "Suburb": "Noble Park",
+    "suburbName": "Noble Park",
     "postCode": "3174",
     "Median_Rent_Price": "400",
     "Distance": "7.3",
