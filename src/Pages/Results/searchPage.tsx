@@ -33,72 +33,6 @@ export interface suburbDataI {
 
 function SearchPage(props: searchProps) {
   let navigate = useNavigate();
-  // const [suburbs, setSuburbs] = useState<any[]>([]);
-
-  // let suburbDataTest: suburbDataI[] = [];
-
-  // const handleData = async () => {
-  //   const searchData = await getSearchData();
-  //   setSuburbs(searchData);
-  //   suburbDataTest = suburbs;
-  // };
-
-  // useEffect(() => {
-  //   handleData();
-  //   console.log("this suburbs", suburbs);
-  // }, []);
-
-  // console.log("new suburbs", suburbs);
-  // console.log("TEST", suburbDataTest);
-
-  // const renderSuburbResults = (localityData: suburbDataI[]) => {
-  //   return localityData
-  //     .map((s) => GetData(s))
-  //     .map(
-  //       (s) => <ExpandableComponent {...s}></ExpandableComponent>
-  //       //     suburbName: string; postCode: string;
-  //       // medianRent: number; lowerRent: number; upperRent: number; onClick?: any;
-  //       // distance: any; carTime: any; ptvTime: any; ptvType: any; noBuses: any; closestStation: any;
-  //     );
-  // };
-
-  // const suburbResults = () => GetData()
-  // const subData = GetData();
-
-  // console.log("this is get data", GetData());
-
-  // let someArray: any[] = [];
-
-  // GetData().map((s) => {
-  //   console.log(s);
-  //   // getRentData(s);
-  //   someArray.push(s);
-  // });
-
-  // console.log("hi this is me", someArray);
-
-  // someArray.map((s) => getRentData(s));
-
-  // console.log("render", renderSuburbResults(suburbs));
-  // const uniDictionary: uniDictionaryI = {
-  //   "Monash University": monashClaytonSuburbs,
-  //   "Monash University Peninsula": monashPeninsulaSuburbs,
-  //   "The University of Melbourne": uniMelbParkvilleSuburbs,
-  //   RMIT: rmitMelbSuburbs,
-  // };
-
-  // console.log("new suburbs", suburbDataTest);
-  // compileData();
-
-  // let rentData = monashClaytonSuburbs.map((s) => getRentData(s));
-  // console.log("this is rent data", rentData);
-
-  // subData.map((s) =>
-  //   // <ExpandableComponent {...s} />
-  //   console.log("final s", s)
-  // );
-
-  // console.log("fuck this shit honestly im so done", subData);
 
   const [suburbs, setSuburbs] = useState<suburbDataI[]>([]);
 
@@ -108,22 +42,10 @@ function SearchPage(props: searchProps) {
     setSuburbs(searchData);
   };
 
+  let resultsElements;
+
   useEffect(() => {
     handleData();
-  }, []);
-
-  console.log("tNNNEW SUB", suburbs, Boolean(suburbs));
-
-  let resultsElements = suburbs.map((s) => (
-    <ExpandableComponent
-      postCode={s.postCode}
-      suburbName={s.suburbName}
-      upperRent={s.upperRent}
-      lowerRent={s.lowerRent}
-      medianRent={s.medianRent}
-    />
-  ));
-  useEffect(() => {
     resultsElements = suburbs.map((s) => (
       <ExpandableComponent
         postCode={s.postCode}
@@ -133,7 +55,19 @@ function SearchPage(props: searchProps) {
         medianRent={s.medianRent}
       />
     ));
-  }, [suburbs]);
+  }, []);
+
+  console.log("tNNNEW SUB", suburbs, Boolean(suburbs));
+  console.log("res el", resultsElements);
+  // let resultsElements = suburbs.map((s) => (
+  //   <ExpandableComponent
+  //     postCode={s.postCode}
+  //     suburbName={s.suburbName}
+  //     upperRent={s.upperRent}
+  //     lowerRent={s.lowerRent}
+  //     medianRent={s.medianRent}
+  //   />
+  // ));
 
   return (
     <ThemeProvider theme={theme}>
