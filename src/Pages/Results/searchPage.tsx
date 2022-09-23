@@ -101,7 +101,16 @@ function SearchPage(props: searchProps) {
           ptvTime={elem.ptvTime}
         />
       ))} */}
-      {resultsElements}
+      {suburbs.length > 0 &&
+        suburbs.map((s) => (
+          <ExpandableComponent
+            postCode={s.postCode}
+            suburbName={s.suburbName}
+            upperRent={s.upperRent}
+            lowerRent={s.lowerRent}
+            medianRent={s.medianRent}
+          />
+        ))}
     </ThemeProvider>
   );
 }
