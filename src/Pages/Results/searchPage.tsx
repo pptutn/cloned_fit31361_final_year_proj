@@ -5,7 +5,7 @@ import { getSearchData } from "../../Components/API/getSuburbData";
 import React from "react";
 import { Box, Button, Grid, Paper, Stack, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { compileData, GetData, getRentData } from "./GetData";
+import { GetData } from "./GetData";
 import { GetPTVData } from "../../Apis/GetPTVData";
 import { ThemeProvider } from "@emotion/react";
 import theme from "../../colourScheme";
@@ -63,7 +63,9 @@ function SearchPage(props: searchProps) {
   // };
 
   // const suburbResults = () => GetData()
-  GetData();
+  // const subData = GetData();
+
+  // console.log("this is get data", GetData());
 
   // let someArray: any[] = [];
 
@@ -90,6 +92,30 @@ function SearchPage(props: searchProps) {
 
   // let rentData = monashClaytonSuburbs.map((s) => getRentData(s));
   // console.log("this is rent data", rentData);
+
+  // subData.map((s) =>
+  //   // <ExpandableComponent {...s} />
+  //   console.log("final s", s)
+  // );
+
+  // console.log("fuck this shit honestly im so done", subData);
+
+  const [suburbs, setSuburbs] = useState<suburbDataI[]>([]);
+
+  const handleData = async () => {
+    const searchData = await getSearchData();
+    console.log("fuck", searchData);
+    setSuburbs(searchData);
+  };
+
+  useEffect(() => {
+    handleData();
+  }, []);
+
+  console.log("tNNNEW SUB", suburbs, Boolean(suburbs));
+
+  suburbs.map((s) => console.log(s));
+
   return (
     <ThemeProvider theme={theme}>
       {/* add in the back button for navigation */}
@@ -122,6 +148,21 @@ function SearchPage(props: searchProps) {
           ptvTime={elem.ptvTime}
         />
       ))} */}
+      {suburbs.length == 0 ? (
+        suburbs.map(
+          (s) => (
+            <SearchResults
+              postCode={s.postCode}
+              suburbName={s.suburbName}
+              upperRent={s.upperRent}
+              lowerRent={s.lowerRent}
+              medianRent={s.medianRent}
+            />
+          )
+        )
+      ) : (
+        <div>ERROR</div>
+      )}
     </ThemeProvider>
   );
 }

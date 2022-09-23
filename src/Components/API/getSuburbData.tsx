@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { getRentData } from "../../Pages/Results/GetData";
+import { PropaneSharp } from "@mui/icons-material";
+import { useEffect, useState } from "react";
 import { suburbDataI } from "../../Pages/Results/searchPage";
 // import {React}
 
@@ -21,30 +21,43 @@ const axios = require("axios").default;
 //   closestStation: string;
 // }
 
-export function getSearchData() {
-  // const responseData = await axios.get("http://localhost:8080/api/suburbs");
-  const responseData = axios
-    .get("http://localhost:8080/api/suburbs")
-    .then((response: any) => {
-      const subData = response.data;
-      console.log("This is first sub data", subData);
-      // console.log("this is response", subData, typeof response);
-      const withRentData = subData.map((s: any) => {
-        newRentData(s);
-        console.log("this is function call for rentData", newRentData(s));
-      });
-
-      // console.log("this is withRentData", withRentData);
-    });
-
-  // console.log("this is subData");
-  return responseData.data;
+interface suburbReturnI {
+  suburbName: string;
+  postCode: string;
+  medianRent: string;
+  lowerRent: string;
+  upperRent: string;
+  [key: string]: any;
 }
 
-export const newRentData = (props: suburbDataI) => {
-  // console.log("inside rent data");
-  // const [apiCall, setApiCall] = useState<any>({ isLoaded: false, items: [] });
-  // console.log("inside rent dat2a");
+export function getSearchData() {
+  // const responseData = await axios.get("http://localhost:8080/api/suburbs");
+  let someArray: any[] = [];
+  const responseData = axios
+    .get("http://localhost:8080/api/suburbs")
+    .then(async (response: any) => {
+      const subData = response.data;
+      const withRentData = await subData.map((s: any) => {
+        newRentData(s).then((data) => {
+          console.log("this is data", data);
+          someArray.push(data);
+          return data;
+        });
+      });
+
+      console.log(
+        "SUB",
+        subData.map((s: suburbDataI) => newRentData(s))
+      );
+      console.log("this is withRentData", withRentData);
+    });
+  console.log("array", someArray);
+  return someArray;
+}
+
+export const newRentData = async (
+  props: suburbDataI
+): Promise<suburbReturnI> => {
   const RENT_COST_URL: string = `https://api.domain.com.au/v2/suburbPerformanceStatistics/VIC/${props.suburbName.replace(
     /\s/g,
     "%20"
@@ -53,68 +66,33 @@ export const newRentData = (props: suburbDataI) => {
   }?propertyCategory=house&bedrooms=3&periodSize=Quarters&startingPeriodRelativeToCurrent=1&totalPeriods=1
 `;
 
-  const callAPI = () => {
-    fetch(RENT_COST_URL, {
-      headers: {
-        "X-API-KEY": "key_cdf30e28a989dcbecfbe7d38cba466c4",
-      },
+  const fetchRes = await fetch(RENT_COST_URL, {
+    headers: {
+      "X-API-KEY": "key_cdf30e28a989dcbecfbe7d38cba466c4",
+    },
+  })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        throw new Error("Server response wasn't OK");
+      }
     })
-      .then((res) => res.json())
-      .then((json) => {
-        // console.log("setApi called");
-        // setApiCall({
-        //   items: json,
-        //   isLoaded: true,
-        // });
-        console.log("this is json", json);
+    .then((json) => {
+      const suburbData = json.series.seriesInfo[0].values;
+      // console.log("this is sub data", suburbData);
+      const result = {
+        // // returns an object with rent data
+        ...props,
+        medianRent: suburbData.medianRentListingPrice,
+        lowerRent: suburbData.lowestRentListingPrice,
+        upperRent: suburbData.highestRentListingPrice,
+      };
+      // console.log("final object", finalObject);
+      // return finalObject;
+      // finalObject = result;
+      return result;
+    });
 
-        const suburbData = json.series.seriesInfo[0].values;
-
-        console.log("this is sub data", suburbData);
-        const finalObject = {
-          // // returns an object with rent data
-          ...props,
-          medianRent: suburbData.medianRentListingPrice,
-          lowerRent: suburbData.lowestRentListingPrice,
-          upperRent: suburbData.highestRentListingPrice,
-        };
-        console.log("final object", finalObject);
-        return finalObject;
-      });
-  };
-
-  // // let suburbDataTest: suburbDataI[] = [];
-  console.log("RETURN for rentData", callAPI());
-  return callAPI();
-  // console.log("AHHHHH");
-  // useEffect(() => {
-  //   console.log("useEffect called");
-  //   callAPI();
-  // }, []);
-  //useEffect to call API?
-  // callAPI();
-
-  // console.log("calling API", props);
-  // let { isLoaded, items } = apiCall;
-  // let finalObject: suburbDataI = {
-  //   ...props,
-  //   medianRent: "n/a",
-  //   lowerRent: "n/a",
-  //   upperRent: "n/a",
-  // };
-
-  // if (isLoaded) {
-  //   const suburbData = items.series.seriesInfo[0].values; // we specify only 1 period, so we know there will be only 1 element
-  //   {
-  //     console.log("SUCCESS", items);
-  //     finalObject = {
-  //       // // returns an object with rent data
-  //       ...props,
-  //       medianRent: suburbData.medianRentListingPrice,
-  //       lowerRent: suburbData.lowestRentListingPrice,
-  //       upperRent: suburbData.highestRentListingPrice,
-  //     };
-  //   }
-  // }
-  // return finalObject;
+  return fetchRes;
 };
