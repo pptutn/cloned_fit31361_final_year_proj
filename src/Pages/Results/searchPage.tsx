@@ -114,7 +114,26 @@ function SearchPage(props: searchProps) {
 
   console.log("tNNNEW SUB", suburbs, Boolean(suburbs));
 
-  suburbs.map((s) => console.log(s));
+  let resultsElements = suburbs.map((s) => (
+    <ExpandableComponent
+      postCode={s.postCode}
+      suburbName={s.suburbName}
+      upperRent={s.upperRent}
+      lowerRent={s.lowerRent}
+      medianRent={s.medianRent}
+    />
+  ));
+  useEffect(() => {
+    resultsElements = suburbs.map((s) => (
+      <ExpandableComponent
+        postCode={s.postCode}
+        suburbName={s.suburbName}
+        upperRent={s.upperRent}
+        lowerRent={s.lowerRent}
+        medianRent={s.medianRent}
+      />
+    ));
+  }, [suburbs]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -148,21 +167,7 @@ function SearchPage(props: searchProps) {
           ptvTime={elem.ptvTime}
         />
       ))} */}
-      {suburbs.length == 0 ? (
-        suburbs.map(
-          (s) => (
-            <SearchResults
-              postCode={s.postCode}
-              suburbName={s.suburbName}
-              upperRent={s.upperRent}
-              lowerRent={s.lowerRent}
-              medianRent={s.medianRent}
-            />
-          )
-        )
-      ) : (
-        <div>ERROR</div>
-      )}
+      {resultsElements}
     </ThemeProvider>
   );
 }
