@@ -1,3 +1,9 @@
 .h2 {
-    color: '#009688';
+  color: "#009688";
+}
+
+.Suburb__Hyperlink {
+  color: #1ab6ad;
+  font-weight: bold;
+  text-decoration: underline;
 }

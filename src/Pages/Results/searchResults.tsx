@@ -5,17 +5,23 @@ import "./searchResults.css";
 //     <div className="searchResult">
 //       <FavoriteBorderIcon className="searchResult__heart" />
 
-
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import React, { useState } from "react";
 import FavouriteButton from "../../Components/FavouriteButton";
 
 interface Props {
-  suburbName: string;
+  suburb: string;
   postCode: string;
-  medianRent: number;
-  lowerRent: number;
-  upperRent: number;
+  medianRentPrice: number;
+  distance: number;
+  carTime: number;
+  ptvTime: number;
+  bus: boolean;
+  tram: boolean;
+  train: boolean;
+  rideShare: boolean;
+  noBusStop: number;
+  closestStation: string;
   onClick?: any;
 }
 
@@ -35,21 +41,17 @@ function SearchResults(props: Props) {
       className="searchResult"
       onClick={props.onClick ? props.onClick : null}
     >
-      <FavouriteButton favourite={favourite} suburbName={props.suburbName} />
+      <FavouriteButton favourite={favourite} suburbName={props.suburb} />
       {/* <FavoriteBorderIcon className="searchResult__heart" /> */}
 
       <div className="resultsPageInfo">
         <div className="searchResult__info">
-          <div className="searchResult__infoTop">
-            {/* <h1>{suburb}</h1> */}
-          </div>
+          <div className="searchResult__infoTop">{/* <h1>{suburb}</h1> */}</div>
           <div className="searchResult__infoBottom">
-            <p>Average Rent: ${props.medianRent}</p>
-            <p>Rent Range: ${props.lowerRent} to ${props.upperRent}
-            </p>
-            {/* <p>Distance: {distance}km</p>
-            <p>Travel Time by Car: {Car_Time} mins</p>
-            <p>Travel Time by Public Transport: {PTV_Time} mins</p> */}
+            <p>Average Rent: ${props.medianRentPrice}</p>
+            <p>Distance: {props.distance}km</p>
+            <p>Travel Time by Car: {props.carTime} mins</p>
+            <p>Travel Time by Public Transport: {props.ptvTime} mins</p>
             <p>Click here to search for rental houses</p>
           </div>
         </div>
