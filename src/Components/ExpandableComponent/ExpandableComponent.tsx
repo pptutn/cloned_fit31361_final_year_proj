@@ -10,9 +10,13 @@ import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import { Box, Stack } from "@mui/material";
 import FavouriteButton from "../FavouriteButton";
-import { ThreeMpTwoTone } from "@mui/icons-material";
+import { PanToolSharp, ThreeMpTwoTone } from "@mui/icons-material";
 import { ThemeProvider } from "@emotion/react";
 import theme from "../../colourScheme";
+import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
+import TramIcon from "@mui/icons-material/Tram";
+import TrainIcon from "@mui/icons-material/Train";
+import LocalTaxiIcon from "@mui/icons-material/LocalTaxi";
 
 interface Props {
   suburb: string;
@@ -74,7 +78,10 @@ export default function ExpandableComponent(props: Props) {
     };
 
   const rentalWebsite: string =
-    "https://www.domain.com.au/rent/" + props.suburb + "-vic-" + props.postCode;
+    "https://www.domain.com.au/rent/" +
+    props.suburb.split(" ").join("-") +
+    "-vic-" +
+    props.postCode;
 
   return (
     <div>
@@ -83,10 +90,20 @@ export default function ExpandableComponent(props: Props) {
           expanded={expanded === "panel1"}
           onChange={handleChange("panel1")}
         >
-          <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+          <AccordionSummary
+            aria-controls="panel1d-content"
+            id="panel1d-header"
+            className="accordian"
+          >
             <Box>
-              <Stack padding={2} spacing={3} direction="row">
+              <Stack padding={2} spacing={3} direction="row" className="stack">
                 <h2>{props.suburb}</h2>
+                {props.bus == true && <DirectionsBusIcon className="busIcon" />}
+                {props.train == true && <TrainIcon className="trainIcon" />}
+                {props.tram == true && <TramIcon className="tramIcon" />}
+                {props.rideShare == true && (
+                  <LocalTaxiIcon className="taxiIcon" />
+                )}
               </Stack>
             </Box>
           </AccordionSummary>
@@ -100,13 +117,42 @@ export default function ExpandableComponent(props: Props) {
               </p>
               <p>
                 {" "}
-                <b>Average Rent: </b>${props.medianRentPrice} per week
+                <b>Average Rent for a 3 bedroom house: </b>$
+                {props.medianRentPrice} per week
               </p>
               <p>
                 {" "}
-                <b>Distance: </b>
+                <b>Distance to university campus: </b>
                 {props.distance}km
               </p>
+              {props.bus == true && (
+                <p>
+                  {" "}
+                  <b>Buses Accessible </b>{" "}
+                  <DirectionsBusIcon className="smallBusIcon" />{" "}
+                </p>
+              )}
+              {props.train == true && (
+                <p>
+                  {" "}
+                  <b>Trains Accessible </b>
+                  <TrainIcon className="smallTrainIcon" />{" "}
+                </p>
+              )}
+              {props.tram == true && (
+                <p>
+                  {" "}
+                  <b>Trams Accessible </b>
+                  <TramIcon className="smallTramIcon" />{" "}
+                </p>
+              )}
+              {props.rideShare == true && (
+                <p>
+                  {" "}
+                  <b>Rideshare Services Available </b>{" "}
+                  <LocalTaxiIcon className="smallTaxiIcon" />{" "}
+                </p>
+              )}
               <p>
                 <b>Average Time by Car: </b>
                 {props.carTime} minutes
@@ -125,7 +171,6 @@ export default function ExpandableComponent(props: Props) {
                 <b>Closest Train Station: </b>
                 {props.closestStation}
               </p>
-
               <div className="Suburb__Hyperlink">
                 <p>
                   <a href={rentalWebsite}>
