@@ -72,12 +72,6 @@ const logInWithEmailAndPassword = async(email: string, password: string) => {
   return true;
 }
 
-
-// logOut function 
-const logOut = () => {
-  signOut(auth);
-};
-
 // declare the exports for this file
-export { database, auth, user, signUp, logInWithEmailAndPassword, logOut };
+export { database, auth, user, signUp, logInWithEmailAndPassword };
   

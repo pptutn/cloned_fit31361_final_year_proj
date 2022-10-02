@@ -1,8 +1,8 @@
+import React from "react";
 import "./searchPage.css";
 import SearchResults from "./searchResults";
 import { useState, useEffect } from "react";
 import { getSearchData } from "../../Components/API/getSuburbData";
-import React from "react";
 import { Box, Button, Grid, Paper, Stack, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { GetData } from "./GetData";
@@ -53,9 +53,6 @@ function SearchPage() {
       .map((s) => GetData(s))
       .map((s) =>
         <ExpandableComponent {...s}></ExpandableComponent>
-        //     suburbName: string; postCode: string; 
-        // medianRent: number; lowerRent: number; upperRent: number; onClick?: any; 
-        // distance: any; carTime: any; ptvTime: any; ptvType: any; noBuses: any; closestStation: any;
       )
   };
 
@@ -90,16 +87,6 @@ function SearchPage() {
 
       {/* create the expandable component */}
       {renderSuburbResults(monashSuburbs)}
-      {/* {suburbs.map((elem) => (
-        <SearchResults
-          suburb={elem.Suburb}
-          price={elem.Median_Rent_Price}
-          distance={elem.Distance}
-          carTime={elem.carTime}
-          ptvTime={elem.ptvTime}
-        />
-      ))} */}
-
 
     </ThemeProvider>
   );
