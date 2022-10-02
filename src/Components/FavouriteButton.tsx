@@ -3,8 +3,8 @@ import "./FavouriteButton.css";
 // import { View } from 'react';
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { auth, database, getDataFromCollection } from "../firebase";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { auth, user, database, getDataFromCollection } from "../firebase";
+import { collection, doc, getDocs, query, where } from "firebase/firestore";
 import { Button } from "@mui/material";
 
 interface Props {
@@ -22,14 +22,17 @@ export default function FavouriteButton(props: Props) {
     <FavoriteIcon sx={{ fontSize: "3rem" }} color="primary" />
   );
   const notCurrentlyAFavorite = (
-    <FavoriteBorderIcon sx={{ fontSize: "3rem"}} color="primary" />
+    <FavoriteBorderIcon sx={{ fontSize: "3rem" }} color="primary" />
   );
 
   const [favourite, setFavourite] = useState(props.favourite);
 
   const toggleFavourite = async (favourite: boolean) => {
+    const userRefs = collection(database, "users");
+
     // get all the user, if logged in the data correlating to them, from firebase
     const docId = getDataFromCollection();
+    console.log(docId);
 
     if (favourite == true) {
       console.log("I clicked unfavorite");
@@ -38,7 +41,6 @@ export default function FavouriteButton(props: Props) {
     } else {
       // (favourite == false)
       console.log("I clicked favorite");
-      console.log(docId);
       setFavourite(!favourite);
 
     }

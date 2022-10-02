@@ -17,7 +17,7 @@ import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
 import TramIcon from "@mui/icons-material/Tram";
 import TrainIcon from "@mui/icons-material/Train";
 import LocalTaxiIcon from "@mui/icons-material/LocalTaxi";
-import { user } from "../../firebase";
+import { auth, user } from "../../firebase";
 
 interface Props {
   suburb: string;
@@ -90,7 +90,7 @@ export default function ExpandableComponent(props: Props) {
     "-vic-" +
     props.postCode;
 
-  if (user !== null) {
+  if (auth.currentUser === null) {
     return (
       <div>
         <ThemeProvider theme={theme}>

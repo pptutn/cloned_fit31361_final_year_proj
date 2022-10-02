@@ -82,19 +82,24 @@ const getDataFromCollection = async () => {
   const userRefs = collection(database, "users");
   
   let docId = "";
+  let data;
   const userQuery = query(userRefs);
   
   const querySnapshot = await getDocs(userQuery);
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
-    if (user === doc.get('uid')) {
-      docId = doc.id.toString();
+    // if (user === doc.get('uid')) {
+      // docId = doc.id.toString();
+      // console.log(doc.get('uid'))
       console.log(doc.id, " => ", doc.data());
-    }
+      data = doc.data();
+    // }
 
   });
 
-  return docId;
+  
+
+  return data;
 }
 
 // declare the exports for this file
