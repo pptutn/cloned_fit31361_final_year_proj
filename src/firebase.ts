@@ -6,8 +6,12 @@ version: 1.1.0
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc } from "@firebase/firestore";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+// import { getFirestore, collection, addDoc } from "@firebase/firestore";
+// import * as firebase from 'firebase/app'
+import 'firebase/firestore'
+import { collection, getDocs, query, where, addDoc, getFirestore, CollectionReference, DocumentData } from "firebase/firestore";
+
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -25,7 +29,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // referred to in project, const that represents the firestore database
-const database = getFirestore(app);
+const database = getFirestore();
 
 // initialise authentication module
 const auth = getAuth();
@@ -39,6 +43,7 @@ const signUp = async (firstname: string, lastname: string, email: string, passwo
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 
       const user = userCredential.user;
+
 
       await addDoc(collection(database, "users"), {
           uid: user.uid,
@@ -72,6 +77,26 @@ const logInWithEmailAndPassword = async(email: string, password: string) => {
   return true;
 }
 
+const getDataFromCollection = async () => {
+  // gets all the users from firebase
+  const userRefs = collection(database, "users");
+  
+  let docId = "";
+  const userQuery = query(userRefs);
+  
+  const querySnapshot = await getDocs(userQuery);
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    if (user === doc.get('uid')) {
+      docId = doc.id.toString();
+      console.log(doc.id, " => ", doc.data());
+    }
+
+  });
+
+  return docId;
+}
+
 // declare the exports for this file
-export { database, auth, user, signUp, logInWithEmailAndPassword };
+export { database, auth, user, signUp, logInWithEmailAndPassword, getDataFromCollection };
   
