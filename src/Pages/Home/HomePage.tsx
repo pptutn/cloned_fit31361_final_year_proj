@@ -44,20 +44,19 @@ function HomePage() {
       ml={2}
       mr={2}
     >
-      
-    <div>
-      <Banner/>
-    </div>
 
-    <div>
-      <SearchBar/>
-    </div>
-  
-    <div>
-      <h2 className="HomePage-title" margin-left="50px"> Favourite Suburbs</h2>
-    </div>
+      <div>
+        <Banner />
+      </div>
 
-    
+      <div>
+        <SearchBar />
+      </div>
+
+      <div>
+        <h2 className="HomePage-title" margin-left="50px"> Favourite Suburbs</h2>
+      </div>
+
       <Stack
         direction={{ xs: "column", sm: "row" }}
         spacing={{ xs: 1, sm: 2, md: 4 }}
@@ -79,15 +78,5 @@ function HomePage() {
     </Stack>
   );
 }
-
-const Universities = [
-  { name: "Monash University", state: "VIC" },
-  { name: "The University of Melbourne", state: "VIC" },
-  { name: "University of New South Wales", state: "NSW" },
-  { name: "University of Sydney", state: "NSW" },
-  { name: "Adelaide University", state: "SA" },
-  { name: "Queensland Universty", state: "QLD" },
-  { name: "Royal Melbourne Insitute of Technology", state: "VIC" },
-];
 
 export default HomePage;

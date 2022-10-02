@@ -7,11 +7,10 @@ Version: 1.0.0
 */
 
 import "./LoginPage.css";
-import { auth, database, logInWithEmailAndPassword } from "../../firebase";
-import { addDoc, collection } from "@firebase/firestore";
+import { database, logInWithEmailAndPassword } from "../../firebase";
+import { collection } from "@firebase/firestore";
 import React from "react";
-import { createTheme, Link, ThemeProvider } from "@mui/material";
-// import { colourTheme } from "../../colourScheme";
+import { Link, ThemeProvider } from "@mui/material";
 import theme from "../../colourScheme"
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -35,70 +34,70 @@ function LoginPage() {
     // create a function that handles when the log in button is selected 
     const handleLogin = async (e: { preventDefault: () => void; }) => {
         e.preventDefault(); // prevent default so the page isn't reloaded when click the log in button
-        
+
         console.log(emailRef + " " + passwordRef);
 
         // save the data to the firebase collection
         let validUserSignInCredentials = logInWithEmailAndPassword(emailRef, passwordRef);
 
         if (await validUserSignInCredentials) {
-            window.location.href="/";
+            window.location.href = "/";
         }
     }
 
     return (
 
-      <ThemeProvider theme={theme}>
-        <Banner />
+        <ThemeProvider theme={theme}>
+            <Banner />
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
-                    <Box
-                        sx={{
+                <Box
+                    sx={{
                         marginTop: 8,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
-                        }}
-                    >
-                        <Typography component="h1" variant="h5">
+                    }}
+                >
+                    <Typography component="h1" variant="h5">
                         Log In
-                        </Typography>
-                        
-                        <Box component="form" noValidate onSubmit={handleLogin} sx={{ mt: 3 }}>
+                    </Typography>
+
+                    <Box component="form" noValidate onSubmit={handleLogin} sx={{ mt: 3 }}>
 
                         <Grid container spacing={2}>
-                            
-                            
+
+
                             <Grid item xs={12}>
-                            <TextField
-                                // on change is a function that sets the value inside the text field
-                                // to usernameRef that can be referenced in handleSignup function 
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                                fullWidth
-                                name="email"
-                                label="Email Address"
-                                type="email"
-                                id="email"
-                                autoComplete="email"
-                            />
+                                <TextField
+                                    // on change is a function that sets the value inside the text field
+                                    // to usernameRef that can be referenced in handleSignup function 
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                    fullWidth
+                                    name="email"
+                                    label="Email Address"
+                                    type="email"
+                                    id="email"
+                                    autoComplete="email"
+                                />
                             </Grid>
 
                             <Grid item xs={12}>
-                            <TextField
-                                // on change is a function that sets the value inside the text field
-                                // to passwordRef that can be referenced in handleSignup function 
-                                onChange={(e) => setPassword(e.target.value)}
-                                required
-                                fullWidth
-                                name="password"
-                                label="Password"
-                                type="password"
-                                id="password"
-                                autoComplete="password"
-                            />
+                                <TextField
+                                    // on change is a function that sets the value inside the text field
+                                    // to passwordRef that can be referenced in handleSignup function 
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                    fullWidth
+                                    name="password"
+                                    label="Password"
+                                    type="password"
+                                    id="password"
+                                    autoComplete="password"
+                                />
                             </Grid>
-            
+
                         </Grid>
                         <Button
                             type="submit"
@@ -116,12 +115,12 @@ function LoginPage() {
                                 </Link>
                             </Grid>
                         </Grid>
-                        </Box>
                     </Box>
-                    </Container>
-                    </ThemeProvider>
-                    );
-  }
+                </Box>
+            </Container>
+        </ThemeProvider>
+    );
+}
 
-  export default LoginPage;
+export default LoginPage;
 

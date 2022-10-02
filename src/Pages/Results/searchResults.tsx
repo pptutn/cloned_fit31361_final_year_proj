@@ -1,10 +1,4 @@
 import "./searchResults.css";
-
-// function searchResults({ suburb, price, distance, Car_Time, PTV_Time }: any) {
-//   return (
-//     <div className="searchResult">
-//       <FavoriteBorderIcon className="searchResult__heart" />
-
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import React, { useState } from "react";
 import FavouriteButton from "../../Components/FavouriteButton";

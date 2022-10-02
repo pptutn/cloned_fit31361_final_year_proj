@@ -1,8 +1,8 @@
+import React from "react";
 import "./searchPage.css";
 import SearchResults from "./searchResults";
 import { useState, useEffect } from "react";
 import { getSearchData } from "../../Components/API/getSuburbData";
-import React from "react";
 import { Box, Button, Grid, Paper, Stack, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { GetData } from "./GetData";
