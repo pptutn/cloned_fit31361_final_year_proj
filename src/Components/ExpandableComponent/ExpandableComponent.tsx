@@ -72,6 +72,12 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 export default function ExpandableComponent(props: Props) {
   const [expanded, setExpanded] = React.useState<string | false>();
 
+  const [favourite, setFavourite] = React.useState(false);
+
+  const onPress = () => {
+    setFavourite(!favourite);
+  };
+
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
       setExpanded(newExpanded ? panel : false);
@@ -97,6 +103,10 @@ export default function ExpandableComponent(props: Props) {
           >
             <Box>
               <Stack padding={2} spacing={3} direction="row" className="stack">
+                <FavouriteButton
+                  favourite={favourite}
+                  suburbName={props.suburb}
+                />
                 <h2>{props.suburb}</h2>
                 {props.bus == true && <DirectionsBusIcon className="busIcon" />}
                 {props.train == true && <TrainIcon className="trainIcon" />}
