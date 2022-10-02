@@ -1,3 +1,69 @@
-.h2 {
-    color: '#009688';
+.stack:hover {
+  color: #009688;
+}
+
+.accordian:hover {
+  opacity: 0.8;
+}
+
+.busIcon {
+  color: #c21810;
+  transform: scale(1.6);
+  display: inline-flex;
+  align-self: center;
+}
+
+.trainIcon {
+  color: #2130bf;
+  transform: scale(1.6);
+  display: inline-flex;
+  align-self: center;
+}
+
+.tramIcon {
+  color: limegreen;
+  transform: scale(1.6);
+  display: inline-flex;
+  align-self: center;
+}
+
+.taxiIcon {
+  color: #ede658;
+  transform: scale(1.6);
+  display: inline-flex;
+  align-self: center;
+}
+
+.smallBusIcon {
+  color: #c21810;
+  transform: scale(1.2);
+  top: 0.125em;
+  position: relative;
+}
+
+.smallTrainIcon {
+  color: #2130bf;
+  transform: scale(1.2);
+  top: 0.125em;
+  position: relative;
+}
+
+.smallTramIcon {
+  color: limegreen;
+  transform: scale(1.2);
+  top: 0.125em;
+  position: relative;
+}
+
+.smallTaxiIcon {
+  color: #ede658;
+  transform: scale(1.2);
+  top: 0.125em;
+  position: relative;
+}
+
+.Suburb__Hyperlink {
+  color: #1ab6ad;
+  font-weight: bold;
+  text-decoration: underline;
 }
