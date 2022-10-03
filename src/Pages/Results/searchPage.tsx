@@ -57,7 +57,6 @@ function SearchPage() {
   const renderSuburbResults = suburbs.map((elem) => (
     <ExpandableComponent {...elem}></ExpandableComponent>
   ));
-  console.log(renderSuburbResults);
 
   return (
     <ThemeProvider theme={theme}>
