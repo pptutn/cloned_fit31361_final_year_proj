@@ -15,25 +15,35 @@ import LocalTaxiIcon from "@mui/icons-material/LocalTaxi";
 import Typography from "@mui/material/Typography";
 import { blue, green } from "@mui/material/colors";
 import { Box, Slider, Checkbox, FormControlLabel } from "@mui/material";
+import { IFilterValues } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 const emails = ["username@gmail.com", "user02@gmail.com"];
 
 export interface SimpleDialogProps {
   open: boolean;
-  selectedValue: string;
-  onClose: (value: string) => void;
+  selectedValue: IFilterValues;
+  onClose: (value: IFilterValues) => void;
 }
 
 function SimpleDialog(props: SimpleDialogProps) {
   const { onClose, selectedValue, open } = props;
+  const [currentSelection, setCurrentselection] = React.useState(selectedValue);
 
   const handleClose = () => {
-    onClose(selectedValue);
+    onClose(currentSelection);
   };
 
-  const handleListItemClick = (value: string) => {
+  const handleListItemClick = (value: IFilterValues) => {
     // need to change this to allow for multiple values to be selected
-    onClose(value);
+    // onClose(value);
+    setCurrentselection(value);
+  };
+
+  let navigate = useNavigate();
+  const showResults = () => {
+    let path = `/results`;
+    navigate(path);
   };
 
   const distanceMarks = [
@@ -65,18 +75,6 @@ function SimpleDialog(props: SimpleDialogProps) {
 
   const priceMarks = [
     {
-      value: 0,
-      label: "$0",
-    },
-    {
-      value: 100,
-      label: "$100",
-    },
-    {
-      value: 200,
-      label: "$200",
-    },
-    {
       value: 300,
       label: "$300",
     },
@@ -88,7 +86,23 @@ function SimpleDialog(props: SimpleDialogProps) {
       value: 500,
       label: "$500",
     },
+    {
+      value: 600,
+      label: "$600",
+    },
+    {
+      value: 700,
+      label: "$700",
+    },
+    {
+      value: 800,
+      label: "$800",
+    },
   ];
+
+  const [busChecked, setBusChecked] = React.useState(true);
+  const [trainChecked, setTrainChecked] = React.useState(true);
+  const [tramChecked, setTramChecked] = React.useState(true);
 
   return (
     <Dialog
@@ -127,6 +141,13 @@ function SimpleDialog(props: SimpleDialogProps) {
             valueLabelDisplay="auto"
             defaultValue={15}
             max={25}
+            onChange={(e) => {
+              const t = e.target as HTMLInputElement;
+              handleListItemClick({
+                ...selectedValue,
+                distance: parseInt(t.value),
+              });
+            }}
           />
         </ListItem>
         <h3>Rent Price (Per week)</h3>
@@ -139,8 +160,16 @@ function SimpleDialog(props: SimpleDialogProps) {
             size="small"
             marks={priceMarks}
             valueLabelDisplay="auto"
-            defaultValue={100}
-            max={500}
+            defaultValue={500}
+            min={300}
+            max={800}
+            onChange={(e) => {
+              const t = e.target as HTMLInputElement;
+              handleListItemClick({
+                ...selectedValue,
+                price: parseInt(t.value),
+              });
+            }}
           />
         </ListItem>
         <h3>Public Transport Access</h3>
@@ -154,15 +183,55 @@ function SimpleDialog(props: SimpleDialogProps) {
           }}
         >
           <div className="checkbox__filters">
-            <FormControlLabel label="Bus" control={<Checkbox />} />
+            <FormControlLabel
+              label="Bus"
+              control={
+                <Checkbox
+                  checked={busChecked}
+                  onChange={() => {
+                    handleListItemClick({ ...selectedValue, bus: busChecked });
+                    setBusChecked(!busChecked);
+                  }}
+                />
+              }
+            />
             <DirectionsBusIcon />
           </div>
           <div className="checkbox__filters">
-            <FormControlLabel label="Tram" control={<Checkbox />} />
+            <FormControlLabel
+              label="Tram"
+              control={
+                <Checkbox
+                  checked={tramChecked}
+                  onChange={() => {
+                    handleListItemClick({
+                      ...selectedValue,
+                      tram: tramChecked,
+                    });
+                    setTramChecked(!tramChecked);
+                  }}
+                />
+              }
+            />
             <TramIcon />
           </div>
           <div className="checkbox__filters">
-            <FormControlLabel label="Train" control={<Checkbox />} />
+            <FormControlLabel
+              label="Train"
+              control={
+                <Checkbox
+                  checked={trainChecked}
+                  onChange={() => {
+                    handleListItemClick({
+                      ...selectedValue,
+                      train: trainChecked,
+                    });
+                    setTrainChecked(!trainChecked);
+                    console.log("train", trainChecked);
+                  }}
+                />
+              }
+            />
             <TrainIcon />
           </div>
         </ListItem>
@@ -193,20 +262,6 @@ function SimpleDialog(props: SimpleDialogProps) {
             <LocalTaxiIcon />
           </div>
         </ListItem>
-        <h3>Crime Rates</h3>
-        <ListItem>
-          <Slider // NEED TO ADD an ONCHANGE HOOK For all the below items
-            sx={{
-              color: green, // color is still blue wtf
-            }}
-            aria-label="Volume"
-            size="small"
-            // marks={priceMarks}
-            valueLabelDisplay="auto"
-            defaultValue={100}
-            max={500}
-          />
-        </ListItem>
         <ListItem
           sx={{
             display: "flex",
@@ -216,8 +271,22 @@ function SimpleDialog(props: SimpleDialogProps) {
             // bgcolor: "red",
           }}
         >
-          <Button>Clear Filters</Button>
-          <Button>Search</Button>
+          <Button
+            onClick={() => {
+              setCurrentselection(props.selectedValue);
+              // need a function to return filters to their initial value
+            }}
+          >
+            Clear Filters
+          </Button>
+          <Button
+            onClick={() => {
+              handleClose();
+              showResults();
+            }}
+          >
+            Search
+          </Button>
         </ListItem>
       </List>
     </Dialog>

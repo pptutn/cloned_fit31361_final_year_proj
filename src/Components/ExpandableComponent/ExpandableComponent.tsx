@@ -18,7 +18,7 @@ import TramIcon from "@mui/icons-material/Tram";
 import TrainIcon from "@mui/icons-material/Train";
 import LocalTaxiIcon from "@mui/icons-material/LocalTaxi";
 
-interface Props {
+export interface suburbProps {
   suburb: string;
   postCode: string;
   medianRentPrice: number;
@@ -69,7 +69,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
-export default function ExpandableComponent(props: Props) {
+export default function ExpandableComponent(props: suburbProps) {
   const [expanded, setExpanded] = React.useState<string | false>();
 
   const handleChange =
