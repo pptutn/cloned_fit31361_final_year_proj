@@ -10,15 +10,21 @@ export interface IFilterValues {
   price: number;
   pubTransport: boolean;
   lateTransport: boolean;
+  bus: boolean;
+  tram: boolean;
+  train: boolean;
 }
 
 function App() {
   const location = useLocation();
   const initialFilters: IFilterValues = {
-    distance: 0,
-    price: 0,
+    distance: 15,
+    price: 500,
     pubTransport: false,
     lateTransport: false,
+    bus: true,
+    tram: true,
+    train: true,
   };
 
   const [selectedValue, setSelectedValue] = useState(initialFilters);
