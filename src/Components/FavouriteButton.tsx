@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./FavouriteButton.css";
 // import { View } from 'react';
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -6,10 +6,12 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { auth, user, database, getDataFromCollection } from "../firebase";
 import { collection, doc, getDocs, query, where } from "firebase/firestore";
 import { Button } from "@mui/material";
+import { onAuthStateChanged } from "firebase/auth";
 
 interface Props {
   favourite: boolean;
   suburbName: string;
+  email: string|null;
 }
 
 export default function FavouriteButton(props: Props) {
@@ -28,11 +30,12 @@ export default function FavouriteButton(props: Props) {
   const [favourite, setFavourite] = useState(props.favourite);
 
   const toggleFavourite = async (favourite: boolean) => {
+    console.log(props.email);
     const userRefs = collection(database, "users");
+    // const whe = where(userRefs, )
 
     // get all the user, if logged in the data correlating to them, from firebase
     const docId = getDataFromCollection();
-    console.log(docId);
 
     if (favourite == true) {
       console.log("I clicked unfavorite");
@@ -46,6 +49,16 @@ export default function FavouriteButton(props: Props) {
     }
     console.log(favourite);
   };
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // console.log(auth.currentUser);
+      } else {
+        // user is not logged in 
+      }
+    })
+  }, []);
 
   return (
     <Button
