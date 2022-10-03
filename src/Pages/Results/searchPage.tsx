@@ -34,6 +34,16 @@ function SearchPage(props: filterPropsI) {
     <ExpandableComponent {...elem}></ExpandableComponent>
   ));
 
+  console.log("this is selected distance", props.selectedValue.distance);
+  const filteredResults = suburbs.filter(
+    (sub) => sub.distance < props.selectedValue.distance
+  );
+
+  const filteredResultsElements = filteredResults.map((elem) => (
+    <ExpandableComponent {...elem}></ExpandableComponent>
+  ));
+  console.log("this is suburbs", suburbs);
+  console.log("filteredResults", props.selectedValue.distance, filteredResults);
   return (
     <ThemeProvider theme={theme}>
       {/* add in the back button for navigation */}
@@ -59,7 +69,8 @@ function SearchPage(props: filterPropsI) {
       {/* create the expandable component */}
       <div>DISTANCE IS {props.selectedValue.distance}km</div>
       <div>PRICE IS ${props.selectedValue.price}</div>
-      {renderSuburbResults}
+      {/* {renderSuburbResults} */}
+      {filteredResultsElements}
     </ThemeProvider>
   );
 }
