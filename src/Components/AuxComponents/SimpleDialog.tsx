@@ -16,6 +16,7 @@ import Typography from "@mui/material/Typography";
 import { blue, green } from "@mui/material/colors";
 import { Box, Slider, Checkbox, FormControlLabel } from "@mui/material";
 import { IFilterValues } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 const emails = ["username@gmail.com", "user02@gmail.com"];
 
@@ -37,6 +38,12 @@ function SimpleDialog(props: SimpleDialogProps) {
     // need to change this to allow for multiple values to be selected
     // onClose(value);
     setCurrentselection(value);
+  };
+
+  let navigate = useNavigate();
+  const showResults = () => {
+    let path = `/results`;
+    navigate(path);
   };
 
   const distanceMarks = [
@@ -244,6 +251,7 @@ function SimpleDialog(props: SimpleDialogProps) {
           <Button
             onClick={() => {
               handleClose();
+              showResults();
             }}
           >
             Search

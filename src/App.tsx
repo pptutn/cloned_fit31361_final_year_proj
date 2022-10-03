@@ -41,7 +41,16 @@ function App() {
 
         <Route path="/signup" element={<SignupPage />} />
 
-        <Route path="/results" element={<SearchPage />} />
+        <Route
+          path="/results"
+          element={
+            <SearchPage
+              filterVal={initialFilters}
+              selectedValue={selectedValue}
+              setSelectedValue={setSelectedValue}
+            />
+          }
+        />
       </Routes>
     </div>
   );

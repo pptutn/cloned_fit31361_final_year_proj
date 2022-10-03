@@ -12,8 +12,9 @@ import BackButton from "../../Components/BackButton/BackButton";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ExpandableComponent from "../../Components/ExpandableComponent/ExpandableComponent";
 import FavouriteButton from "../../Components/FavouriteButton";
+import { filterPropsI } from "../Home/HomePage";
 
-function SearchPage() {
+function SearchPage(props: filterPropsI) {
   const [suburbs, setSuburbs] = useState<any[]>([]);
 
   const handleData = async () => {
@@ -56,6 +57,8 @@ function SearchPage() {
       </Box>
 
       {/* create the expandable component */}
+      <div>DISTANCE IS {props.selectedValue.distance}km</div>
+      <div>PRICE IS ${props.selectedValue.price}</div>
       {renderSuburbResults}
     </ThemeProvider>
   );
