@@ -36,7 +36,9 @@ function SearchPage(props: filterPropsI) {
 
   console.log("this is selected distance", props.selectedValue.distance);
   const filteredResults = suburbs.filter(
-    (sub) => sub.distance < props.selectedValue.distance
+    (sub) =>
+      sub.distance < props.selectedValue.distance &&
+      sub.medianRentPrice < props.selectedValue.price
   );
 
   const filteredResultsElements = filteredResults.map((elem) => (
