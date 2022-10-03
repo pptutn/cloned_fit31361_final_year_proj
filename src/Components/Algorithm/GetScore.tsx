@@ -12,4 +12,3 @@ const calcScore = (subs: suburbProps) => {
 export const GetScore = (subs: suburbProps) => {
   ({ ...subs, score: calcScore(subs) });
 };
-

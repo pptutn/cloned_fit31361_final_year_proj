@@ -106,7 +106,10 @@ function SearchBar(props: filterPropsI) {
               variant="contained"
               size="large"
               fullWidth
-              onClick={handleClickOpen}
+              onClick={() => {
+                handleClose(props.selectedValue);
+                showResults();
+              }}
             >
               SEARCH
             </Button>

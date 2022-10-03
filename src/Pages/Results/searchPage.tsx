@@ -28,13 +28,14 @@ function SearchPage(props: filterPropsI) {
 
   let navigate = useNavigate();
 
-  console.log(suburbs);
+  // console.log(suburbs);
 
   const renderSuburbResults = suburbs.map((elem) => (
     <ExpandableComponent {...elem}></ExpandableComponent>
   ));
 
-  console.log("this is selected distance", props.selectedValue.distance);
+  // console.log("this is selected distance", props.selectedValue.distance);
+  // console.log("props", props.selectedValue);
   const filteredResults = suburbs.filter(
     (sub) =>
       sub.distance < props.selectedValue.distance &&
@@ -44,8 +45,8 @@ function SearchPage(props: filterPropsI) {
   const filteredResultsElements = filteredResults.map((elem) => (
     <ExpandableComponent {...elem}></ExpandableComponent>
   ));
-  console.log("this is suburbs", suburbs);
-  console.log("filteredResults", props.selectedValue.distance, filteredResults);
+  // console.log("this is suburbs", suburbs);
+  // console.log("filteredResults", props.selectedValue.distance, filteredResults);
   return (
     <ThemeProvider theme={theme}>
       {/* add in the back button for navigation */}
@@ -69,8 +70,11 @@ function SearchPage(props: filterPropsI) {
       </Box>
 
       {/* create the expandable component */}
-      <div>DISTANCE IS {props.selectedValue.distance}km</div>
-      <div>PRICE IS ${props.selectedValue.price}</div>
+      {/* <div>DISTANCE IS {props.selectedValue.distance}km</div> */}
+      {/* <div>PRICE IS ${props.selectedValue.price}</div> */}
+      {/* <div>BUS? {props.selectedValue.bus.toString()}</div> */}
+      {/* <div>TRAIN? {props.selectedValue.train.toString()}</div> */}
+      {/* <div>TRAM? {props.selectedValue.tram.toString()}</div> */}
       {/* {renderSuburbResults} */}
       {filteredResultsElements}
     </ThemeProvider>

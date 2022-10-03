@@ -100,6 +100,10 @@ function SimpleDialog(props: SimpleDialogProps) {
     },
   ];
 
+  const [busChecked, setBusChecked] = React.useState(true);
+  const [trainChecked, setTrainChecked] = React.useState(true);
+  const [tramChecked, setTramChecked] = React.useState(true);
+
   return (
     <Dialog
       onClose={handleClose}
@@ -179,15 +183,55 @@ function SimpleDialog(props: SimpleDialogProps) {
           }}
         >
           <div className="checkbox__filters">
-            <FormControlLabel label="Bus" control={<Checkbox />} />
+            <FormControlLabel
+              label="Bus"
+              control={
+                <Checkbox
+                  checked={busChecked}
+                  onChange={() => {
+                    handleListItemClick({ ...selectedValue, bus: busChecked });
+                    setBusChecked(!busChecked);
+                  }}
+                />
+              }
+            />
             <DirectionsBusIcon />
           </div>
           <div className="checkbox__filters">
-            <FormControlLabel label="Tram" control={<Checkbox />} />
+            <FormControlLabel
+              label="Tram"
+              control={
+                <Checkbox
+                  checked={tramChecked}
+                  onChange={() => {
+                    handleListItemClick({
+                      ...selectedValue,
+                      tram: tramChecked,
+                    });
+                    setTramChecked(!tramChecked);
+                  }}
+                />
+              }
+            />
             <TramIcon />
           </div>
           <div className="checkbox__filters">
-            <FormControlLabel label="Train" control={<Checkbox />} />
+            <FormControlLabel
+              label="Train"
+              control={
+                <Checkbox
+                  checked={trainChecked}
+                  onChange={() => {
+                    handleListItemClick({
+                      ...selectedValue,
+                      train: trainChecked,
+                    });
+                    setTrainChecked(!trainChecked);
+                    console.log("train", trainChecked);
+                  }}
+                />
+              }
+            />
             <TrainIcon />
           </div>
         </ListItem>
@@ -218,20 +262,6 @@ function SimpleDialog(props: SimpleDialogProps) {
             <LocalTaxiIcon />
           </div>
         </ListItem>
-        {/* <h3>Crime Rates</h3>
-        <ListItem>
-          <Slider // NEED TO ADD an ONCHANGE HOOK For all the below items
-            sx={{
-              color: green, // color is still blue wtf
-            }}
-            aria-label="Volume"
-            size="small"
-            // marks={priceMarks}
-            valueLabelDisplay="auto"
-            defaultValue={100}
-            max={500}
-          />
-        </ListItem> */}
         <ListItem
           sx={{
             display: "flex",
