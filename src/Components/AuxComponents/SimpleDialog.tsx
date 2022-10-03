@@ -15,25 +15,28 @@ import LocalTaxiIcon from "@mui/icons-material/LocalTaxi";
 import Typography from "@mui/material/Typography";
 import { blue, green } from "@mui/material/colors";
 import { Box, Slider, Checkbox, FormControlLabel } from "@mui/material";
+import { IFilterValues } from "../../App";
 
 const emails = ["username@gmail.com", "user02@gmail.com"];
 
 export interface SimpleDialogProps {
   open: boolean;
-  selectedValue: string;
-  onClose: (value: string) => void;
+  selectedValue: IFilterValues;
+  onClose: (value: IFilterValues) => void;
 }
 
 function SimpleDialog(props: SimpleDialogProps) {
   const { onClose, selectedValue, open } = props;
+  const [currentSelection, setCurrentselection] = React.useState(selectedValue);
 
   const handleClose = () => {
-    onClose(selectedValue);
+    onClose(currentSelection);
   };
 
-  const handleListItemClick = (value: string) => {
+  const handleListItemClick = (value: IFilterValues) => {
     // need to change this to allow for multiple values to be selected
-    onClose(value);
+    // onClose(value);
+    setCurrentselection(value);
   };
 
   const distanceMarks = [
@@ -127,6 +130,13 @@ function SimpleDialog(props: SimpleDialogProps) {
             valueLabelDisplay="auto"
             defaultValue={15}
             max={25}
+            onChange={(e) => {
+              const t = e.target as HTMLInputElement;
+              handleListItemClick({
+                ...selectedValue,
+                distance: parseInt(t.value),
+              });
+            }}
           />
         </ListItem>
         <h3>Rent Price (Per week)</h3>
@@ -141,6 +151,13 @@ function SimpleDialog(props: SimpleDialogProps) {
             valueLabelDisplay="auto"
             defaultValue={100}
             max={500}
+            onChange={(e) => {
+              const t = e.target as HTMLInputElement;
+              handleListItemClick({
+                ...selectedValue,
+                price: parseInt(t.value),
+              });
+            }}
           />
         </ListItem>
         <h3>Public Transport Access</h3>
@@ -193,7 +210,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             <LocalTaxiIcon />
           </div>
         </ListItem>
-        <h3>Crime Rates</h3>
+        {/* <h3>Crime Rates</h3>
         <ListItem>
           <Slider // NEED TO ADD an ONCHANGE HOOK For all the below items
             sx={{
@@ -206,7 +223,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             defaultValue={100}
             max={500}
           />
-        </ListItem>
+        </ListItem> */}
         <ListItem
           sx={{
             display: "flex",

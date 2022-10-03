@@ -1,16 +1,23 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import "./HomePage.css";
 import Stack from "@mui/material/Stack";
 import InfoBox from "../../Components/AuxComponents/InfoBox";
 import SearchBar from "../../Components/Headers/SearchBar";
 import Banner from "../../Components/Headers/Banner";
-import { auth } from "../../firebase"
+import { auth } from "../../firebase";
 
 import SimpleDialog from "../../Components/AuxComponents/SimpleDialog";
 import { Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { IFilterValues } from "../../App";
 
-function HomePage() {
+export interface filterPropsI {
+  filterVal: IFilterValues;
+  selectedValue: IFilterValues;
+  setSelectedValue: Dispatch<SetStateAction<IFilterValues>>;
+}
+
+function HomePage(props: filterPropsI) {
   // POPUP STUFF
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(auth.currentUser);
@@ -19,9 +26,9 @@ function HomePage() {
     setOpen(true);
   };
 
-  const handleClose = (value: string) => {
+  const handleClose = (value: IFilterValues) => {
     setOpen(false);
-    // setSelectedValue(value);
+    props.setSelectedValue(value);
   };
 
   const showResults = () => {
@@ -35,7 +42,6 @@ function HomePage() {
     navigate(path);
   };
 
-
   return (
     <Stack
       spacing={{ xs: 1, sm: 2, md: 4 }}
@@ -44,17 +50,20 @@ function HomePage() {
       ml={2}
       mr={2}
     >
-
       <div>
         <Banner />
       </div>
 
       <div>
-        <SearchBar />
+        <SearchBar {...props} />
       </div>
-
+      <div>DISTANCE IS {props.selectedValue.distance}km</div>
+      <div>PRICE IS ${props.selectedValue.price}</div>
       <div>
-        <h2 className="HomePage-title" margin-left="50px"> Favourite Suburbs</h2>
+        <h2 className="HomePage-title" margin-left="50px">
+          {" "}
+          Favourite Suburbs
+        </h2>
       </div>
 
       <Stack
