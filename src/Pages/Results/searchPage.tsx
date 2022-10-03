@@ -26,9 +26,34 @@ function SearchPage(props: filterPropsI) {
     handleData();
   }, []);
 
-  let navigate = useNavigate();
+  function sortPrice() {
+    const priceData = [...suburbs].sort(
+      (a, b) => a.medianRentPrice - b.medianRentPrice
+    );
+    setSuburbs(priceData);
+  }
 
-  // console.log(suburbs);
+  function sortDistance() {
+    const distanceData = [...suburbs].sort((a, b) => a.distance - b.distance);
+    setSuburbs(distanceData);
+  }
+
+  function sortCarTime() {
+    const carData = [...suburbs].sort((a, b) => a.carTime - b.carTime);
+    setSuburbs(carData);
+  }
+
+  function sortPtvTime() {
+    const ptvData = [...suburbs].sort((a, b) => a.ptvTime - b.ptvTime);
+    setSuburbs(ptvData);
+  }
+
+  function sortBusStops() {
+    const busData = [...suburbs].sort((a, b) => b.noBusStop - a.noBusStop);
+    setSuburbs(busData);
+  }
+
+  let navigate = useNavigate();
 
   const renderSuburbResults = suburbs.map((elem) => (
     <ExpandableComponent {...elem}></ExpandableComponent>
@@ -62,10 +87,31 @@ function SearchPage(props: filterPropsI) {
       </Box>
 
       <Box>
+        <Stack padding={0}>
+          <h2 className="sortHeading">Sort By</h2>
+        </Stack>
+      </Box>
+
+      <Box>
         <Stack padding={2} spacing={3} direction="row">
-          <Button variant="contained">Average Rent</Button>
-          <Button variant="contained">Distance from University</Button>
-          <Button variant="contained">More Filters</Button>
+          <Button onClick={sortPrice} variant="contained">
+            Most Relevant
+          </Button>
+          <Button onClick={sortPrice} variant="contained">
+            Average Rent
+          </Button>
+          <Button onClick={sortDistance} variant="contained">
+            Distance from University
+          </Button>
+          <Button onClick={sortCarTime} variant="contained">
+            Time by Car
+          </Button>
+          <Button onClick={sortPtvTime} variant="contained">
+            Time by Public Transport
+          </Button>
+          <Button onClick={sortBusStops} variant="contained">
+            Number of Bus Stops
+          </Button>
         </Stack>
       </Box>
 
