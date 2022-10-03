@@ -233,8 +233,21 @@ function SimpleDialog(props: SimpleDialogProps) {
             // bgcolor: "red",
           }}
         >
-          <Button>Clear Filters</Button>
-          <Button>Search</Button>
+          <Button
+            onClick={() => {
+              setCurrentselection(props.selectedValue);
+              // need a function to return filters to their initial value
+            }}
+          >
+            Clear Filters
+          </Button>
+          <Button
+            onClick={() => {
+              handleClose();
+            }}
+          >
+            Search
+          </Button>
         </ListItem>
       </List>
     </Dialog>
