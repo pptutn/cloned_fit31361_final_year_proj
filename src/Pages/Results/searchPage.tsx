@@ -12,8 +12,9 @@ import BackButton from "../../Components/BackButton/BackButton";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ExpandableComponent from "../../Components/ExpandableComponent/ExpandableComponent";
 import FavouriteButton from "../../Components/FavouriteButton";
+import { filterPropsI } from "../Home/HomePage";
 
-function SearchPage() {
+function SearchPage(props: filterPropsI) {
   const [suburbs, setSuburbs] = useState<any[]>([]);
 
   const handleData = async () => {
@@ -58,6 +59,19 @@ function SearchPage() {
     <ExpandableComponent {...elem}></ExpandableComponent>
   ));
 
+  // console.log("this is selected distance", props.selectedValue.distance);
+  // console.log("props", props.selectedValue);
+  const filteredResults = suburbs.filter(
+    (sub) =>
+      sub.distance < props.selectedValue.distance &&
+      sub.medianRentPrice < props.selectedValue.price
+  );
+
+  const filteredResultsElements = filteredResults.map((elem) => (
+    <ExpandableComponent {...elem}></ExpandableComponent>
+  ));
+  // console.log("this is suburbs", suburbs);
+  // console.log("filteredResults", props.selectedValue.distance, filteredResults);
   return (
     <ThemeProvider theme={theme}>
       {/* add in the back button for navigation */}
@@ -102,7 +116,13 @@ function SearchPage() {
       </Box>
 
       {/* create the expandable component */}
-      {renderSuburbResults}
+      {/* <div>DISTANCE IS {props.selectedValue.distance}km</div> */}
+      {/* <div>PRICE IS ${props.selectedValue.price}</div> */}
+      {/* <div>BUS? {props.selectedValue.bus.toString()}</div> */}
+      {/* <div>TRAIN? {props.selectedValue.train.toString()}</div> */}
+      {/* <div>TRAM? {props.selectedValue.tram.toString()}</div> */}
+      {/* {renderSuburbResults} */}
+      {filteredResultsElements}
     </ThemeProvider>
   );
 }
