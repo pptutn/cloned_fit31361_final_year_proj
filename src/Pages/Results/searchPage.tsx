@@ -71,6 +71,7 @@ function SearchPage(props: filterPropsI) {
 
   // console.log("this is selected distance", props.selectedValue.distance);
   console.log("props", props.selectedValue);
+  console.log("sub", suburbs);
 
   const filteredResults = suburbs.filter(
     (sub) =>
