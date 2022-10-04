@@ -57,8 +57,6 @@ function HomePage(props: filterPropsI) {
       <div>
         <SearchBar {...props} />
       </div>
-      <div>DISTANCE IS {props.selectedValue.distance}km</div>
-      <div>PRICE IS ${props.selectedValue.price}</div>
       <div>
         <h2 className="HomePage-title" margin-left="50px">
           {" "}

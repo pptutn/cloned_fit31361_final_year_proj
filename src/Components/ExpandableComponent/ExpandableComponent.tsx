@@ -74,7 +74,6 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export default function ExpandableComponent(props: suburbPropsWithScore) {
-  console.log("this is score", props.score);
   const [expanded, setExpanded] = React.useState<string | false>();
 
   const handleChange =
@@ -120,7 +119,7 @@ export default function ExpandableComponent(props: suburbPropsWithScore) {
                   props.score > 160 ? "suburbScore_good" : "suburbScore_ok"
                 }
               >
-                <b>StuCom SCORE: {props.score} points</b>
+                <b>Overall StuCom Rating: {props.score} points</b>
               </div>
 
               <p>
