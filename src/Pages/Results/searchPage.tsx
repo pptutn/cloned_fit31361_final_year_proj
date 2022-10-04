@@ -58,6 +58,11 @@ function SearchPage(props: filterPropsI) {
     setSuburbs(busData);
   }
 
+  function sortRelevant() {
+    const sortByScore = [...suburbs].sort((a, b) => b.score - a.score);
+    setSuburbs(sortByScore);
+  }
+
   let navigate = useNavigate();
 
   const renderSuburbResults = suburbs.map((elem) => (
@@ -99,7 +104,7 @@ function SearchPage(props: filterPropsI) {
 
       <Box>
         <Stack padding={2} spacing={3} direction="row">
-          <Button onClick={sortPrice} variant="contained">
+          <Button onClick={sortRelevant} variant="contained">
             Most Relevant
           </Button>
           <Button onClick={sortPrice} variant="contained">
