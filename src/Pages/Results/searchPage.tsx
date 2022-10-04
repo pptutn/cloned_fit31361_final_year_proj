@@ -13,13 +13,18 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ExpandableComponent from "../../Components/ExpandableComponent/ExpandableComponent";
 import FavouriteButton from "../../Components/FavouriteButton";
 import { filterPropsI } from "../Home/HomePage";
+import { GetScore, calcScore } from "../../Components/Algorithm/GetScore";
+import { suburbProps } from "../../Components/ExpandableComponent/ExpandableComponent";
 
 function SearchPage(props: filterPropsI) {
   const [suburbs, setSuburbs] = useState<any[]>([]);
 
   const handleData = async () => {
     const searchData = await getSearchData();
-    setSuburbs(searchData);
+    const searchDataWithScore = searchData.map((s: suburbProps) => {
+      return { ...s, score: calcScore(s) };
+    });
+    setSuburbs(searchDataWithScore);
   };
 
   useEffect(() => {
@@ -53,6 +58,11 @@ function SearchPage(props: filterPropsI) {
     setSuburbs(busData);
   }
 
+  function sortRelevant() {
+    const sortByScore = [...suburbs].sort((a, b) => b.score - a.score);
+    setSuburbs(sortByScore);
+  }
+
   let navigate = useNavigate();
 
   const renderSuburbResults = suburbs.map((elem) => (
@@ -60,11 +70,16 @@ function SearchPage(props: filterPropsI) {
   ));
 
   // console.log("this is selected distance", props.selectedValue.distance);
-  // console.log("props", props.selectedValue);
+  console.log("props", props.selectedValue);
+  console.log("sub", suburbs);
+
   const filteredResults = suburbs.filter(
     (sub) =>
       sub.distance < props.selectedValue.distance &&
       sub.medianRentPrice < props.selectedValue.price
+    // (sub.train == props.selectedValue.train ||
+    //   sub.tram == props.selectedValue.tram ||
+    //   sub.bus == props.selectedValue.bus)
   );
 
   const filteredResultsElements = filteredResults.map((elem) => (
@@ -94,7 +109,7 @@ function SearchPage(props: filterPropsI) {
 
       <Box>
         <Stack padding={2} spacing={3} direction="row">
-          <Button onClick={sortPrice} variant="contained">
+          <Button onClick={sortRelevant} variant="contained">
             Most Relevant
           </Button>
           <Button onClick={sortPrice} variant="contained">
