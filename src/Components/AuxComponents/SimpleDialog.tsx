@@ -29,15 +29,39 @@ export interface SimpleDialogProps {
 function SimpleDialog(props: SimpleDialogProps) {
   const { onClose, selectedValue, open } = props;
   const [currentSelection, setCurrentselection] = React.useState(selectedValue);
+  const [busChecked, setBusChecked] = React.useState(true);
+  const [trainChecked, setTrainChecked] = React.useState(true);
+  const [tramChecked, setTramChecked] = React.useState(true);
 
   const handleClose = () => {
-    onClose(currentSelection);
+    onClose({
+      ...currentSelection,
+      bus: busChecked,
+      train: trainChecked,
+      tram: tramChecked,
+    });
   };
 
   const handleListItemClick = (value: IFilterValues) => {
     // need to change this to allow for multiple values to be selected
     // onClose(value);
     setCurrentselection(value);
+  };
+
+  const handleTrainChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTrainChecked(event.target.checked);
+    // handleListItemClick({ ...selectedValue, train: !trainChecked });
+    console.log("train is", trainChecked);
+  };
+  const handleTramChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTramChecked(event.target.checked);
+    // handleListItemClick({ ...selectedValue, tram: !tramChecked });
+    console.log("tram is", tramChecked);
+  };
+  const handleBusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setBusChecked(event.target.checked);
+    // handleListItemClick({ ...selectedValue, bus: !busChecked });
+    console.log("bus is", busChecked);
   };
 
   let navigate = useNavigate();
@@ -99,10 +123,6 @@ function SimpleDialog(props: SimpleDialogProps) {
       label: "$800",
     },
   ];
-
-  const [busChecked, setBusChecked] = React.useState(true);
-  const [trainChecked, setTrainChecked] = React.useState(true);
-  const [tramChecked, setTramChecked] = React.useState(true);
 
   return (
     <Dialog
@@ -186,13 +206,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             <FormControlLabel
               label="Bus"
               control={
-                <Checkbox
-                  checked={busChecked}
-                  onChange={() => {
-                    handleListItemClick({ ...selectedValue, bus: busChecked });
-                    setBusChecked(!busChecked);
-                  }}
-                />
+                <Checkbox checked={busChecked} onChange={handleBusChange} />
               }
             />
             <DirectionsBusIcon />
@@ -201,16 +215,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             <FormControlLabel
               label="Tram"
               control={
-                <Checkbox
-                  checked={tramChecked}
-                  onChange={() => {
-                    handleListItemClick({
-                      ...selectedValue,
-                      tram: tramChecked,
-                    });
-                    setTramChecked(!tramChecked);
-                  }}
-                />
+                <Checkbox checked={tramChecked} onChange={handleTramChange} />
               }
             />
             <TramIcon />
@@ -219,17 +224,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             <FormControlLabel
               label="Train"
               control={
-                <Checkbox
-                  checked={trainChecked}
-                  onChange={() => {
-                    handleListItemClick({
-                      ...selectedValue,
-                      train: trainChecked,
-                    });
-                    setTrainChecked(!trainChecked);
-                    console.log("train", trainChecked);
-                  }}
-                />
+                <Checkbox checked={trainChecked} onChange={handleTrainChange} />
               }
             />
             <TrainIcon />

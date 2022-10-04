@@ -70,11 +70,15 @@ function SearchPage(props: filterPropsI) {
   ));
 
   // console.log("this is selected distance", props.selectedValue.distance);
-  // console.log("props", props.selectedValue);
+  console.log("props", props.selectedValue);
+
   const filteredResults = suburbs.filter(
     (sub) =>
       sub.distance < props.selectedValue.distance &&
-      sub.medianRentPrice < props.selectedValue.price
+      sub.medianRentPrice < props.selectedValue.price &&
+      (sub.train == props.selectedValue.train ||
+        sub.tram == props.selectedValue.tram ||
+        sub.bus == props.selectedValue.bus)
   );
 
   const filteredResultsElements = filteredResults.map((elem) => (
