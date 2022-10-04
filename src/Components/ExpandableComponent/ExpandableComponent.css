@@ -67,3 +67,8 @@
   font-weight: bold;
   text-decoration: underline;
 }
+
+.suburbScore {
+  color: #1ab6ad;
+  font-size: large;
+}

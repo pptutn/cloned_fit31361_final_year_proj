@@ -33,6 +33,10 @@ export interface suburbProps {
   closestStation: string;
 }
 
+interface suburbPropsWithScore extends suburbProps {
+  score: number;
+}
+
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
@@ -69,7 +73,8 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
-export default function ExpandableComponent(props: suburbProps) {
+export default function ExpandableComponent(props: suburbPropsWithScore) {
+  console.log("this is score", props.score);
   const [expanded, setExpanded] = React.useState<string | false>();
 
   const handleChange =
@@ -110,6 +115,10 @@ export default function ExpandableComponent(props: suburbProps) {
 
           <AccordionDetails>
             <div className="searchResult__infoBottom">
+              <div className="suburbScore">
+                <b>StuCom SCORE: {props.score} points</b>
+              </div>
+
               <p>
                 {" "}
                 <b>Post Code: </b>

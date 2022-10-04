@@ -13,13 +13,18 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ExpandableComponent from "../../Components/ExpandableComponent/ExpandableComponent";
 import FavouriteButton from "../../Components/FavouriteButton";
 import { filterPropsI } from "../Home/HomePage";
+import { GetScore, calcScore } from "../../Components/Algorithm/GetScore";
+import { suburbProps } from "../../Components/ExpandableComponent/ExpandableComponent";
 
 function SearchPage(props: filterPropsI) {
   const [suburbs, setSuburbs] = useState<any[]>([]);
 
   const handleData = async () => {
     const searchData = await getSearchData();
-    setSuburbs(searchData);
+    const searchDataWithScore = searchData.map((s: suburbProps) => {
+      return { ...s, score: calcScore(s) };
+    });
+    setSuburbs(searchDataWithScore);
   };
 
   useEffect(() => {
