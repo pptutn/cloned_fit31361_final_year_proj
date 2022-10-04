@@ -115,7 +115,11 @@ export default function ExpandableComponent(props: suburbPropsWithScore) {
 
           <AccordionDetails>
             <div className="searchResult__infoBottom">
-              <div className="suburbScore">
+              <div
+                className={
+                  props.score > 160 ? "suburbScore_good" : "suburbScore_ok"
+                }
+              >
                 <b>StuCom SCORE: {props.score} points</b>
               </div>
 

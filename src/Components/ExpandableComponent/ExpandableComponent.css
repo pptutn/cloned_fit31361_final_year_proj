@@ -68,7 +68,12 @@
   text-decoration: underline;
 }
 
-.suburbScore {
+.suburbScore_good {
   color: #1ab6ad;
+  font-size: large;
+}
+
+.suburbScore_ok {
+  color: orange;
   font-size: large;
 }
