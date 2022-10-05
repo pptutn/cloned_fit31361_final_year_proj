@@ -116,7 +116,7 @@ export default function ExpandableComponent(props: suburbPropsWithScore) {
             <div className="searchResult__infoBottom">
               <div
                 className={
-                  props.score > 160 ? "suburbScore_good" : "suburbScore_ok"
+                  props.score > 80 ? "suburbScore_good" : "suburbScore_ok"
                 }
               >
                 <b>Overall StuCom Rating: {props.score} points</b>
