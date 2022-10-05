@@ -1,19 +1,16 @@
 import React from "react";
 import "./searchPage.css";
-import SearchResults from "./searchResults";
 import { useState, useEffect } from "react";
 import { getSearchData } from "../../Components/API/getSuburbData";
 import { Box, Button, Grid, Paper, Stack, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { GetData } from "./GetData";
 import { ThemeProvider } from "@emotion/react";
 import theme from "../../colourScheme";
-import BackButton from "../../Components/BackButton/BackButton";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ExpandableComponent from "../../Components/ExpandableComponent/ExpandableComponent";
-import FavouriteButton from "../../Components/FavouriteButton";
 import { filterPropsI } from "../Home/HomePage";
 import { GetScore, calcScore } from "../../Components/Algorithm/GetScore";
+import FavouriteButton from "../../Components/FavouriteButton";
 import { suburbProps } from "../../Components/ExpandableComponent/ExpandableComponent";
 
 function SearchPage(props: filterPropsI) {
