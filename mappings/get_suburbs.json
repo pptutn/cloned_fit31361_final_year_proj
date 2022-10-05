@@ -1,10 +1,44 @@
 {
-  "request": {
-    "method": "GET",
-    "url": "/api/suburbs"
-  },
-  "response": {
-    "status": 200,
-    "bodyFileName": "../__files/get_suburbs_response.json"
-  }
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "/suburbs/MON_CLA"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "../__files/get_mon_clay_response.json"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/suburbs/RMI_MEL"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "../__files/get_rmi_mel_response.json"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/api/suburbs"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "../__files/get_suburbs_response.json"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/api/suburbs"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "../__files/get_suburbs_response.json"
+      }
+    }
+  ]
 }
