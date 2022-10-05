@@ -7,12 +7,12 @@
     "distance": 0.7,
     "carTime": 8,
     "ptvTime": 6,
-    "bus": ,
-    "tram": ,
-    "train": ,
+    "bus": true,
+    "tram": true,
+    "train": true,
     "rideShare": true,
-    "noBusStop": ,
-    "closestStation":
+    "noBusStop": 39,
+    "closestStation": "Flinders Street Station"
   },
   {
     "id": "2",
@@ -22,12 +22,12 @@
     "distance": 1.8,
     "carTime": 7,
     "ptvTime": 13,
-    "bus": ,
-    "tram": ,
-    "train": ,
+    "bus": true,
+    "tram": true,
+    "train": true,
     "rideShare": true,
-    "noBusStop": ,
-    "closestStation":
+    "noBusStop": 9,
+    "closestStation": "Jolimont Station"
   },
   {
     "id": "3",
@@ -37,12 +37,12 @@
     "distance": 2,
     "carTime": 12,
     "ptvTime": 20,
-    "bus": ,
-    "tram": ,
-    "train": ,
+    "bus": true,
+    "tram": true,
+    "train": false,
     "rideShare": true,
-    "noBusStop": ,
-    "closestStation":
+    "noBusStop": 11,
+    "closestStation": "Flinders Street Station"
   },
   {
     "id": "4",
@@ -52,12 +52,12 @@
     "distance": 2.3,
     "carTime": 9,
     "ptvTime": 19,
-    "bus": ,
-    "tram": ,
-    "train": ,
+    "bus": true,
+    "tram": true,
+    "train": false,
     "rideShare": true,
-    "noBusStop": ,
-    "closestStation":
+    "noBusStop": 2,
+    "closestStation": "Southern Cross Station"
   },
   {
     "id": "5",
@@ -67,12 +67,12 @@
     "distance": 0.8,
     "carTime": 3,
     "ptvTime": 6,
-    "bus": ,
-    "tram": ,
-    "train": ,
+    "bus": true,
+    "tram": true,
+    "train": false,
     "rideShare": true,
-    "noBusStop": ,
-    "closestStation":
+    "noBusStop": 31,
+    "closestStation": "Melbourne Central Station"
   },
   {
     "id": "6",
@@ -82,12 +82,12 @@
     "distance": 1.7,
     "carTime": 8,
     "ptvTime": 16,
-    "bus": ,
-    "tram": ,
-    "train": ,
+    "bus": true,
+    "tram": true,
+    "train": true,
     "rideShare": true,
-    "noBusStop": ,
-    "closestStation":
+    "noBusStop": 15,
+    "closestStation": "North Melbourne Station"
   },
   {
     "id": "7",
@@ -97,12 +97,12 @@
     "distance": 3.3,
     "carTime": 12,
     "ptvTime": 24,
-    "bus": ,
-    "tram": ,
-    "train": ,
+    "bus": true,
+    "tram": true,
+    "train": true,
     "rideShare": true,
-    "noBusStop": ,
-    "closestStation":
+    "noBusStop": 29,
+    "closestStation": "North Melbourne Station"
   },
   {
     "id": "8",
@@ -112,12 +112,12 @@
     "distance": 3.6,
     "carTime": 15,
     "ptvTime": 25,
-    "bus": ,
-    "tram": ,
-    "train": ,
+    "bus": true,
+    "tram": true,
+    "train": false,
     "rideShare": true,
-    "noBusStop": ,
-    "closestStation":
+    "noBusStop": 10,
+    "closestStation": "Southern Cross Station"
   },
   {
     "id": "9",
@@ -127,12 +127,12 @@
     "distance": 4.2,
     "carTime": 13,
     "ptvTime": 35,
-    "bus": ,
-    "tram": ,
-    "train": ,
+    "bus": true,
+    "tram": true,
+    "train": true,
     "rideShare": true,
-    "noBusStop": ,
-    "closestStation":
+    "noBusStop": 17,
+    "closestStation": "Melbourne Central Station"
   },
   {
     "id": "10",
@@ -142,12 +142,12 @@
     "distance": 2,
     "carTime": 9,
     "ptvTime": 11,
-    "bus": ,
-    "tram": ,
-    "train": ,
+    "bus": true,
+    "tram": true,
+    "train": false,
     "rideShare": true,
-    "noBusStop": ,
-    "closestStation":
+    "noBusStop": 6,
+    "closestStation": "Parliament Station"
   },
   {
     "id": "11",
@@ -156,12 +156,12 @@
     "distance": 3.2,
     "carTime": 11,
     "ptvTime": 17,
-    "bus": ,
-    "tram": ,
-    "train": ,
+    "bus": true,
+    "tram": true,
+    "train": false,
     "rideShare": true,
-    "noBusStop": ,
-    "closestStation":
+    "noBusStop": 15,
+    "closestStation": "Melbourne Central Station"
   },
   {
     "id": "12",
@@ -171,12 +171,12 @@
     "distance": 3.5,
     "carTime": 17,
     "ptvTime": 26,
-    "bus": ,
-    "tram": ,
-    "train": ,
+    "bus": true,
+    "tram": true,
+    "train": true,
     "rideShare": true,
-    "noBusStop": ,
-    "closestStation":
+    "noBusStop": 23,
+    "closestStation": "Rushall Station"
   },
   {
     "id": "13",
@@ -186,12 +186,12 @@
     "distance": 4,
     "carTime": 15,
     "ptvTime": 18,
-    "bus": ,
-    "tram": ,
+    "bus": true,
+    "tram": true,
     "train": true,
     "rideShare": true,
-    "noBusStop": ,
-    "closestStation":
+    "noBusStop": 6,
+    "closestStation": "Richmond Station"
   },
   {
     "id": "14",
@@ -201,27 +201,27 @@
     "distance": 5,
     "carTime": 17,
     "ptvTime": 17,
-    "bus": ,
-    "tram": ,
+    "bus": true,
+    "tram": true,
     "train": true,
     "rideShare": true,
-    "noBusStop": ,
-    "closestStation":
+    "noBusStop": 33,
+    "closestStation": "South Yarra Station"
   },
   {
     "id": "15",
-    "suburb": "Prahan",
+    "suburb": "Prahran",
     "postCode": "3181",
     "medianRentPrice": 845,
     "distance": 6.6,
     "carTime": 21,
     "ptvTime": 27,
-    "bus": ,
-    "tram": ,
-    "train": ,
+    "bus": true,
+    "tram": true,
+    "train": true,
     "rideShare": true,
-    "noBusStop": ,
-    "closestStation":
+    "noBusStop": 15,
+    "closestStation": "Prahran Station"
   },
   {
     "id": "16",
@@ -231,12 +231,12 @@
     "distance": 4.9,
     "carTime": 19,
     "ptvTime": 25,
-    "bus": ,
-    "tram": ,
-    "train": ,
+    "bus": true,
+    "tram": true,
+    "train": false,
     "rideShare": true,
-    "noBusStop": ,
-    "closestStation":
+    "noBusStop": 4,
+    "closestStation": "Southern Cross Station"
   },
   {
     "id": "17",
@@ -246,12 +246,12 @@
     "distance": 5.5,
     "carTime": 20,
     "ptvTime": 33,
-    "bus": ,
-    "tram": ,
-    "train": ,
+    "bus": true,
+    "tram": true,
+    "train": false,
     "rideShare": true,
-    "noBusStop": ,
-    "closestStation":
+    "noBusStop": 69,
+    "closestStation": "Southern Cross Station"
   },
   {
     "id": "18",
@@ -261,12 +261,12 @@
     "distance": 6.5,
     "carTime": 23,
     "ptvTime": 36,
-    "bus": ,
-    "tram": ,
-    "train": ,
+    "bus": true,
+    "tram": true,
+    "train": false,
     "rideShare": true,
-    "noBusStop": ,
-    "closestStation":
+    "noBusStop": 26,
+    "closestStation": "Balaclava Station"
   },
   {
     "id": "19",
@@ -276,12 +276,12 @@
     "distance": 4.8,
     "carTime": 17,
     "ptvTime": 23,
-    "bus": ,
-    "tram": ,
-    "train": ,
+    "bus": true,
+    "tram": true,
+    "train": true,
     "rideShare": true,
-    "noBusStop": ,
-    "closestStation":
+    "noBusStop": 57,
+    "closestStation": "Brunswick Station"
   },
   {
     "id": "20",
@@ -291,12 +291,12 @@
     "distance": 4.9,
     "carTime": 18,
     "ptvTime": 32,
-    "bus": ,
-    "tram": ,
-    "train": ,
+    "bus": true,
+    "tram": true,
+    "train": true,
     "rideShare": true,
-    "noBusStop": ,
-    "closestStation":
+    "noBusStop": 10,
+    "closestStation": "Flemington Racecourse Station"
   },
   {
     "id": "21",
@@ -306,11 +306,11 @@
     "distance": 6.6,
     "carTime": 21,
     "ptvTime": 27,
-    "bus": ,
-    "tram": ,
-    "train": ,
+    "bus": true,
+    "tram": true,
+    "train": true,
     "rideShare": true,
-    "noBusStop": ,
-    "closestStation":
+    "noBusStop": 63,
+    "closestStation": "Footscray Station"
   }
 ]
