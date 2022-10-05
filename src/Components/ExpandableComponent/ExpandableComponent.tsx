@@ -119,7 +119,7 @@ export default function ExpandableComponent(props: suburbPropsWithScore) {
                   props.score > 80 ? "suburbScore_good" : "suburbScore_ok"
                 }
               >
-                <b>Overall StuCom Rating: {props.score} points</b>
+                <b>Overall StuCom Rating: {props.score} / 100</b>
               </div>
 
               <p>
