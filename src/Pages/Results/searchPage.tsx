@@ -3,7 +3,7 @@ import "./searchPage.css";
 import SearchResults from "./searchResults";
 import { useState, useEffect } from "react";
 import { getSearchData } from "../../Components/API/getSuburbData";
-import { Box, Button, Grid, Paper, Stack, TextField } from "@mui/material";
+import { Box, Button, Grid, Paper, Stack, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { GetData } from "./GetData";
 import { ThemeProvider } from "@emotion/react";
@@ -82,14 +82,19 @@ function SearchPage(props: filterPropsI) {
     //   sub.bus == props.selectedValue.bus)
   );
 
-  const filteredResultsElements = filteredResults.map((elem) => (
+  const filteredResultsElements = 
+    filteredResults.map((elem) => (
     <ExpandableComponent {...elem}></ExpandableComponent>
-  ));
-  // console.log("this is suburbs", suburbs);
-  // console.log("filteredResults", props.selectedValue.distance, filteredResults);
+  )
+ );
+
+ const resultsOrNot =  
+    <Typography padding={2} variant='h5' color='white' align='justify'>There are no results for the filters selected</Typography>;
+  
+ 
   return (
     <ThemeProvider theme={theme}>
-      {/* add in the back button for navigation */}
+      {/* page header, includes a back button and heading */}
       <Box>
         <Stack spacing={4} direction="row">
           <Button color="primary" onClick={() => navigate(-1)}>
@@ -101,12 +106,14 @@ function SearchPage(props: filterPropsI) {
         </Stack>
       </Box>
 
+      {/* sort by subheadings */}
       <Box>
         <Stack padding={0}>
           <h2 className="sortHeading">Sort By</h2>
         </Stack>
       </Box>
 
+      {/* filter buttons available for the user to sort by */}
       <Box>
         <Stack padding={2} spacing={3} direction="row">
           <Button onClick={sortRelevant} variant="contained">
@@ -137,7 +144,7 @@ function SearchPage(props: filterPropsI) {
       {/* <div>TRAIN? {props.selectedValue.train.toString()}</div> */}
       {/* <div>TRAM? {props.selectedValue.tram.toString()}</div> */}
       {/* {renderSuburbResults} */}
-      {filteredResultsElements}
+      {filteredResults.length>0? filteredResultsElements : resultsOrNot}
     </ThemeProvider>
   );
 }

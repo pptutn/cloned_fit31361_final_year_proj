@@ -22,14 +22,6 @@ interface Props {
 function SearchResults(props: Props) {
   const [favourite, setFavourite] = useState(false);
 
-  const onPress = () => {
-    console.log("favourite BEFORE: " + favourite);
-
-    // change the state of the favourite button on click
-    setFavourite(!favourite);
-    console.log("favourite AFTER: " + favourite);
-  };
-
   return (
     <div
       className="searchResult"
