@@ -12,27 +12,81 @@ import BackButton from "../../Components/BackButton/BackButton";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ExpandableComponent from "../../Components/ExpandableComponent/ExpandableComponent";
 import FavouriteButton from "../../Components/FavouriteButton";
+import { filterPropsI } from "../Home/HomePage";
+import { GetScore, calcScore } from "../../Components/Algorithm/GetScore";
+import { suburbProps } from "../../Components/ExpandableComponent/ExpandableComponent";
 
-function SearchPage() {
+function SearchPage(props: filterPropsI) {
   const [suburbs, setSuburbs] = useState<any[]>([]);
 
   const handleData = async () => {
     const searchData = await getSearchData();
-    setSuburbs(searchData);
+    const searchDataWithScore = searchData.map((s: suburbProps) => {
+      return { ...s, score: calcScore(s) };
+    });
+    setSuburbs(searchDataWithScore);
   };
 
   useEffect(() => {
     handleData();
   }, []);
 
-  let navigate = useNavigate();
+  function sortPrice() {
+    const priceData = [...suburbs].sort(
+      (a, b) => a.medianRentPrice - b.medianRentPrice
+    );
+    setSuburbs(priceData);
+  }
 
-  console.log(suburbs);
+  function sortDistance() {
+    const distanceData = [...suburbs].sort((a, b) => a.distance - b.distance);
+    setSuburbs(distanceData);
+  }
+
+  function sortCarTime() {
+    const carData = [...suburbs].sort((a, b) => a.carTime - b.carTime);
+    setSuburbs(carData);
+  }
+
+  function sortPtvTime() {
+    const ptvData = [...suburbs].sort((a, b) => a.ptvTime - b.ptvTime);
+    setSuburbs(ptvData);
+  }
+
+  function sortBusStops() {
+    const busData = [...suburbs].sort((a, b) => b.noBusStop - a.noBusStop);
+    setSuburbs(busData);
+  }
+
+  function sortRelevant() {
+    const sortByScore = [...suburbs].sort((a, b) => b.score - a.score);
+    setSuburbs(sortByScore);
+  }
+
+  let navigate = useNavigate();
 
   const renderSuburbResults = suburbs.map((elem) => (
     <ExpandableComponent {...elem}></ExpandableComponent>
   ));
 
+  // console.log("this is selected distance", props.selectedValue.distance);
+  console.log("props", props.selectedValue);
+  console.log("sub", suburbs);
+
+  const filteredResults = suburbs.filter(
+    (sub) =>
+      sub.distance < props.selectedValue.distance &&
+      sub.medianRentPrice < props.selectedValue.price
+    // (sub.train == props.selectedValue.train ||
+    //   sub.tram == props.selectedValue.tram ||
+    //   sub.bus == props.selectedValue.bus)
+  );
+
+  const filteredResultsElements = filteredResults.map((elem) => (
+    <ExpandableComponent {...elem}></ExpandableComponent>
+  ));
+  // console.log("this is suburbs", suburbs);
+  // console.log("filteredResults", props.selectedValue.distance, filteredResults);
   return (
     <ThemeProvider theme={theme}>
       {/* add in the back button for navigation */}
@@ -48,15 +102,42 @@ function SearchPage() {
       </Box>
 
       <Box>
+        <Stack padding={0}>
+          <h2 className="sortHeading">Sort By</h2>
+        </Stack>
+      </Box>
+
+      <Box>
         <Stack padding={2} spacing={3} direction="row">
-          <Button variant="contained">Average Rent</Button>
-          <Button variant="contained">Distance from University</Button>
-          <Button variant="contained">More Filters</Button>
+          <Button onClick={sortRelevant} variant="contained">
+            Most Relevant
+          </Button>
+          <Button onClick={sortPrice} variant="contained">
+            Average Rent
+          </Button>
+          <Button onClick={sortDistance} variant="contained">
+            Distance from University
+          </Button>
+          <Button onClick={sortCarTime} variant="contained">
+            Time by Car
+          </Button>
+          <Button onClick={sortPtvTime} variant="contained">
+            Time by Public Transport
+          </Button>
+          <Button onClick={sortBusStops} variant="contained">
+            Number of Bus Stops
+          </Button>
         </Stack>
       </Box>
 
       {/* create the expandable component */}
-      {renderSuburbResults}
+      {/* <div>DISTANCE IS {props.selectedValue.distance}km</div> */}
+      {/* <div>PRICE IS ${props.selectedValue.price}</div> */}
+      {/* <div>BUS? {props.selectedValue.bus.toString()}</div> */}
+      {/* <div>TRAIN? {props.selectedValue.train.toString()}</div> */}
+      {/* <div>TRAM? {props.selectedValue.tram.toString()}</div> */}
+      {/* {renderSuburbResults} */}
+      {filteredResultsElements}
     </ThemeProvider>
   );
 }

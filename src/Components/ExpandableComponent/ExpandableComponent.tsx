@@ -20,7 +20,7 @@ import LocalTaxiIcon from "@mui/icons-material/LocalTaxi";
 import { auth, user } from "../../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 
-interface Props {
+export interface suburbProps {
   suburb: string;
   postCode: string;
   medianRentPrice: number;
@@ -71,7 +71,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
-export default function ExpandableComponent(props: Props) {
+export default function ExpandableComponent(props: suburbProps) {
   const [expanded, setExpanded] = React.useState<string | false>();
   const [isLoggedIn, setLoggedIn] = React.useState(false);
 
