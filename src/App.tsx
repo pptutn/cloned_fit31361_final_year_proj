@@ -1,5 +1,7 @@
+import { constants } from "crypto";
 import React, { useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
+import { Universities } from "./constants";
 import HomePage from "./Pages/Home/HomePage";
 import LoginPage from "./Pages/LogIn/LoginPage";
 import SearchPage from "./Pages/Results/searchPage";
@@ -54,6 +56,7 @@ function App() {
               filterVal={initialFilters}
               selectedValue={selectedValue}
               setSelectedValue={setSelectedValue}
+              university=""
             />
           }
         />

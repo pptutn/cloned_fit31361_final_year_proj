@@ -18,11 +18,13 @@ export const PROJECT_ID = "fit3161-2-stucom-ffb4a";
 
 // listed universities for drop down search bar
 export const Universities = [
-    { name: "Monash University", state: "VIC" },
+    { name: "Monash University - Clayton", state: "VIC" },
+    { name: "Monash University - Caufield", state: "VIC" },
     { name: "The University of Melbourne", state: "VIC" },
-    { name: "University of New South Wales", state: "NSW" },
-    { name: "University of Sydney", state: "NSW" },
-    { name: "Adelaide University", state: "SA" },
-    { name: "Queendsland Universty", state: "QLD" },
+    { name: "Deakin - Burwood", state: "VIC" },
+    { name: "Deakin - Geelong", state: "VIC" },
+    { name: "Swinburne", state: "VIC" },
+    { name: "Victoria University", state: "VIC" },
+    { name: "La Trobe University", state: "VIC" },
     { name: "Royal Melbourne Insitute of Technology", state: "VIC" },
   ];

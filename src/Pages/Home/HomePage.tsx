@@ -20,7 +20,7 @@ export interface filterPropsI {
 function HomePage(props: filterPropsI) {
   // POPUP STUFF
   const [open, setOpen] = React.useState(false);
-  const [selectedValue, setSelectedValue] = React.useState(auth.currentUser);
+  // const [selectedValue, setSelectedValue] = React.useState(auth.currentUser);
 
   const handleClickOpen = () => {
     setOpen(true);

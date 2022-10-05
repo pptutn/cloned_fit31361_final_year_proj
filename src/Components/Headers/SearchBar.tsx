@@ -3,10 +3,15 @@ import TextField from "@mui/material/TextField";
 import {
   Autocomplete,
   Button,
+  FormControl,
   Grid,
+  InputLabel,
+  MenuItem,
   Paper,
+  Select,
+  SelectChangeEvent,
   Stack,
-  ThemeProvider,
+  ThemeProvider
 } from "@mui/material";
 import theme from "../../colourScheme";
 import React from "react";
@@ -17,9 +22,18 @@ import { Universities } from "../../constants";
 import SearchPage from "../../Pages/Results/searchPage";
 import { filterPropsI } from "../../Pages/Home/HomePage";
 import { IFilterValues } from "../../App";
+import SearchResults from "../../Pages/Results/searchResults";
 
 function SearchBar(props: filterPropsI) {
   const [open, setOpen] = React.useState(false);
+  const [university, setUniversity] = React.useState("");
+
+  // onChange handler for the Select university component
+  const handleSearchBarChange = (event: SelectChangeEvent<string>, child: React.ReactNode) => {
+    setUniversity(event.target.value);
+    console.log(university);
+  }
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -33,6 +47,9 @@ function SearchBar(props: filterPropsI) {
   let navigate = useNavigate();
 
   const showResults = () => {
+    <SearchPage university={university} filterVal={props.filterVal} selectedValue={props.selectedValue} setSelectedValue={function (value: React.SetStateAction<IFilterValues>): void {
+      throw new Error("Function not implemented.");
+    } }></SearchPage>
     let path = `/results`;
     navigate(path);
   };
@@ -59,7 +76,7 @@ function SearchBar(props: filterPropsI) {
       >
         <Grid item xs={7}>
           <Paper className="paper">
-            <Autocomplete
+            {/* <Autocomplete
               id="search-universities"
               color="primary"
               freeSolo
@@ -73,7 +90,24 @@ function SearchBar(props: filterPropsI) {
               )}
               onClick={showResults}
               onChange={showResults}
-            />
+            /> */}
+            <FormControl fullWidth>
+              <InputLabel>Search for your University</InputLabel>
+            <Select
+              id="search-universities"
+              color="primary"
+              label="Search for your University"             
+              value={university}
+              renderValue={(option) => option ? option : <em>Nothing Selected</em>}
+              MenuProps={{
+                PaperProps: { sx: { maxHeight: 300 }}
+              }}
+              onChange={handleSearchBarChange}
+              >
+              {Universities.map((option) => { return <MenuItem value={option.name}>{option.name}</MenuItem>})}
+
+            </Select>
+            </FormControl>
           </Paper>
         </Grid>
 

@@ -16,7 +16,11 @@ import { filterPropsI } from "../Home/HomePage";
 import { GetScore, calcScore } from "../../Components/Algorithm/GetScore";
 import { suburbProps } from "../../Components/ExpandableComponent/ExpandableComponent";
 
-function SearchPage(props: filterPropsI) {
+export interface SearchProps extends filterPropsI {
+  university: string;
+}
+
+function SearchPage(props: SearchProps) {
   const [suburbs, setSuburbs] = useState<any[]>([]);
 
   const handleData = async () => {
@@ -101,7 +105,7 @@ function SearchPage(props: filterPropsI) {
             <ArrowBackIcon fontSize="large" />
           </Button>
           <div className="banner_right">
-            <h1 className="h1">Suburb Results - </h1>
+            <h1 className="h1">Suburb Results - {props.university}</h1>
           </div>
         </Stack>
       </Box>
@@ -144,7 +148,7 @@ function SearchPage(props: filterPropsI) {
       {/* <div>TRAIN? {props.selectedValue.train.toString()}</div> */}
       {/* <div>TRAM? {props.selectedValue.tram.toString()}</div> */}
       {/* {renderSuburbResults} */}
-      {filteredResults.length>0? filteredResultsElements : resultsOrNot}
+      {filteredResults.length > 0 ? filteredResultsElements : resultsOrNot}
     </ThemeProvider>
   );
 }
