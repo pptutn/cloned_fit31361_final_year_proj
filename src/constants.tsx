@@ -23,7 +23,7 @@ export const Universities = [
     { name: "The University of Melbourne", state: "VIC" },
     { name: "Deakin - Burwood", state: "VIC" },
     { name: "Deakin - Geelong", state: "VIC" },
-    { name: "Swinburne University", state: "VIC" },
+    { name: "Swinburne", state: "VIC" },
     { name: "Victoria University", state: "VIC" },
     { name: "La Trobe University", state: "VIC" },
     { name: "Royal Melbourne Insitute of Technology", state: "VIC" },
