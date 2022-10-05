@@ -230,7 +230,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             <TrainIcon />
           </div>
         </ListItem>
-        <h3>Late Night Transport Access</h3>
+        {/* <h3>Late Night Transport Access</h3>
         <ListItem
           sx={{
             display: "flex",
@@ -256,7 +256,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             <FormControlLabel label="Ride Share" control={<Checkbox />} />
             <LocalTaxiIcon />
           </div>
-        </ListItem>
+        </ListItem> */}
         <ListItem
           sx={{
             display: "flex",

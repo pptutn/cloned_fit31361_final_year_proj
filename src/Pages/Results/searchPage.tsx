@@ -80,14 +80,15 @@ function SearchPage(props: SearchProps) {
   const filteredResults = suburbs.filter(
     (sub) =>
       sub.distance < props.selectedValue.distance &&
-      sub.medianRentPrice < props.selectedValue.price
-    // (sub.train == props.selectedValue.train ||
-    //   sub.tram == props.selectedValue.tram ||
-    //   sub.bus == props.selectedValue.bus)
+      sub.medianRentPrice < props.selectedValue.price &&
+      sub.train == props.selectedValue.train &&
+      sub.bus == props.selectedValue.bus &&
+      sub.tram == props.selectedValue.tram
   );
 
-  const filteredResultsElements = 
-    filteredResults.map((elem) => (
+  console.log("this is filtered results", filteredResults);
+
+  const filteredResultsElements = filteredResults.map((elem) => (
     <ExpandableComponent {...elem}></ExpandableComponent>
   )
  );
