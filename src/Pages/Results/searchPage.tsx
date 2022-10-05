@@ -101,7 +101,7 @@ function SearchPage(props: filterPropsI) {
             <ArrowBackIcon fontSize="large" />
           </Button>
           <div className="banner_right">
-            <h1 className="h1">Suburb Results</h1>
+            <h1 className="h1">Suburb Results - </h1>
           </div>
         </Stack>
       </Box>

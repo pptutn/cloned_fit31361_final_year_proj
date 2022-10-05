@@ -38,18 +38,66 @@ function SignupPage() {
     const handleSignup = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
 
-        // call the firebase sign up method, once hte user has filled in fields required
-        let validUserMade = signUp(firstNameRef, lastNameRef, emailRef, passwordRef, universityRef);
+        try {
+            if (!(/\d/.test(passwordRef))) {
+                // if there is no digits throw an error
+                throw { name: "No digits present", message: "Password must contain at least one digit" };
+            }
+            else if (!(/[A-Z]/.test(passwordRef))) {
+                throw { name: "No upper case letters present", message: "Password must contain at least one upper case" };
 
-        if (await validUserMade) {
-            window.location.href = "/";
+            }
+            else if (!(/[a-z]/.test(passwordRef))) {
+                throw { name: "No lower cases letters present", message: "Password must contain at least one lower case" };
+
+            }
+            else if (!(/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(passwordRef))) {
+                throw { name: "No special characters present", message: "Password must contain at least one special character" };
+
+            }
+
+            // call the firebase sign up method, once hte user has filled in fields required
+            let validUserMade = signUp(firstNameRef, lastNameRef, emailRef, passwordRef, universityRef);
+
+            if (await validUserMade) {
+                window.location.href = "/";
+            }
+        } catch (e: any) {
+            alert(e.message);
         }
+
+        // // manual password validation 
+        // if (!(/\d/.test(passwordRef))) {
+        //     // checks if has NO number
+        //     // throws an Exception if none
+        //     throw NotImplementedError("Need to have at least one digit");
+        // }
+
+        // if (!(/[A-Z]/.test(passwordRef))) {
+        //     // checks whether there is NO upper case
+        //     // throws an Exception if none
+        //     throw new Error("Need to have at least one upper case");
+        // }
+
+        // if (!(/[a-z]/.test(passwordRef))) {
+        //     // checks whether there is NO lower case 
+        //     // throws an Exception if none
+        //     throw new Error("Need to have at least one lower case");
+        // }
+
+        // if (!(/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(passwordRef))) {
+        //     // if there is NO special character
+        //     // throws an Exception if none
+        //     throw new Error("Need to have at least one special character");
+        // }
+
+
     }
 
 
     return (
         <ThemeProvider theme={theme}>
-            <Banner/>
+            <Banner />
 
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
