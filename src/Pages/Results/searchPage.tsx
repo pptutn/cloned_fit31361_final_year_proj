@@ -77,9 +77,6 @@ function SearchPage(props: filterPropsI) {
     (sub) =>
       sub.distance < props.selectedValue.distance &&
       sub.medianRentPrice < props.selectedValue.price &&
-      // (sub.train == props.selectedValue.train ||
-      //   sub.tram == props.selectedValue.tram ||
-      //   sub.bus == props.selectedValue.bus)
       sub.train == props.selectedValue.train &&
       sub.bus == props.selectedValue.bus &&
       sub.tram == props.selectedValue.tram
