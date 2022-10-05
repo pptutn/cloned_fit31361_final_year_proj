@@ -212,7 +212,7 @@ export default function ExpandableComponent(props: suburbPropsWithScore) {
                 </p>
                 <div className="Suburb__Hyperlink">
                   <p>
-                    <a href={rentalWebsite}>
+                    <a href={rentalWebsite} target="_blank" rel="noopener noreferrer">
                       Click here to look at rental houses in {props.suburb}
                     </a>
                   </p>

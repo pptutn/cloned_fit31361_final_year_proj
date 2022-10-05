@@ -91,7 +91,6 @@ function SearchBar(props: filterPropsI) {
             </Button>
             <SimpleDialog
               selectedValue={initialFilters}
-              // selectedValue={
               open={open}
               onClose={handleClose}
             />
