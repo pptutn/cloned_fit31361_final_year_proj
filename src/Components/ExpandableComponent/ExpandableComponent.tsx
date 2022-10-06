@@ -7,10 +7,7 @@ import MuiAccordionSummary, {
   AccordionSummaryProps,
 } from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
 import { Box, Stack } from "@mui/material";
-import FavouriteButton from "../FavouriteButton";
-import { PanToolSharp, ThreeMpTwoTone } from "@mui/icons-material";
 import { ThemeProvider } from "@emotion/react";
 import theme from "../../colourScheme";
 import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
@@ -116,10 +113,10 @@ export default function ExpandableComponent(props: suburbPropsWithScore) {
             <div className="searchResult__infoBottom">
               <div
                 className={
-                  props.score > 160 ? "suburbScore_good" : "suburbScore_ok"
+                  props.score > 80 ? "suburbScore_good" : "suburbScore_ok"
                 }
               >
-                <b>Overall StuCom Rating: {props.score} points</b>
+                <b>Overall StuCom Rating: {props.score} / 100</b>
               </div>
 
               <p>
