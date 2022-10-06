@@ -153,6 +153,7 @@
     "id": "11",
     "suburb": "Carlton North",
     "postCode": "3054",
+    "medianRentPrice": 775,
     "distance": 3.2,
     "carTime": 11,
     "ptvTime": 17,
