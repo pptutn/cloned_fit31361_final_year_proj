@@ -7,10 +7,7 @@ import MuiAccordionSummary, {
   AccordionSummaryProps,
 } from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
 import { Box, Stack } from "@mui/material";
-import FavouriteButton from "../FavouriteButton";
-import { PanToolSharp, ThreeMpTwoTone } from "@mui/icons-material";
 import { ThemeProvider } from "@emotion/react";
 import theme from "../../colourScheme";
 import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
