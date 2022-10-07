@@ -101,6 +101,13 @@ function SearchPage(props: filterPropsI) {
         </Stack>
       </Box>
 
+      {/* <Box>
+        <Stack padding={0}>
+          <h2 className="sortHeading">
+            Displaying Results for: {props.selectedValue.campusCode}
+          </h2>
+        </Stack>
+      </Box> */}
       <Box>
         <Stack padding={0}>
           <h2 className="sortHeading">Sort By</h2>
