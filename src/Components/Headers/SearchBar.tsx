@@ -38,6 +38,7 @@ function SearchBar(props: filterPropsI) {
   };
 
   const initialFilters: IFilterValues = {
+    campusCode: "MON_CLA",
     distance: 15,
     price: 500,
     pubTransport: false,

@@ -17,7 +17,8 @@ function SearchPage(props: filterPropsI) {
   const [suburbs, setSuburbs] = useState<any[]>([]);
 
   const handleData = async () => {
-    const searchData = await getSearchData();
+    console.log("this is campusCode passed in: ");
+    const searchData = await getSearchData(props.selectedValue.campusCode);
     const searchDataWithScore = searchData.map((s: suburbProps) => {
       return { ...s, score: calcScore(s) };
     });

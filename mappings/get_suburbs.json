@@ -37,6 +37,16 @@
       },
       "response": {
         "status": 200,
+        "bodyFileName": "../__files/get_dea_gee_response.json"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/suburbs/MEL_PAR"
+      },
+      "response": {
+        "status": 200,
         "bodyFileName": "../__files/get_mel_par_response.json"
       }
     },

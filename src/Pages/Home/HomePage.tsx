@@ -32,6 +32,7 @@ function HomePage(props: filterPropsI) {
   };
 
   const showResults = () => {
+    console.log("showing result (showResult)", props.selectedValue.campusCode);
     let path = `/results`;
     navigate(path);
   };
@@ -73,14 +74,47 @@ function HomePage(props: filterPropsI) {
         <InfoBox
           name="Monash University"
           campusLocation="Clayton, VIC"
-          onClick={showResults}
+          onClick={() => {
+            props.setSelectedValue({
+              ...props.selectedValue,
+              campusCode: "MON_CLA",
+            });
+            showResults();
+          }}
         />
         <InfoBox
           name="The University of Melbourne"
           campusLocation="Parkville, VIC"
+          onClick={() => {
+            props.setSelectedValue({
+              ...props.selectedValue,
+              campusCode: "MEL_PAR",
+            });
+            showResults();
+          }}
         />
-        <InfoBox name="University of Sydney" campusLocation="Sydney, NSW" />
-        <InfoBox name="University of NSW" campusLocation="Kensington, NSW" />
+        <InfoBox
+          name="Royal Melb Institute of Tech"
+          campusLocation="Melbourne, VIC"
+          onClick={() => {
+            props.setSelectedValue({
+              ...props.selectedValue,
+              campusCode: "RMI_MEL",
+            });
+            showResults();
+          }}
+        />
+        <InfoBox
+          name="Monash University (Caulfield)"
+          campusLocation="Caulfield, VIC"
+          onClick={() => {
+            props.setSelectedValue({
+              ...props.selectedValue,
+              campusCode: "MON_CAU",
+            });
+            showResults();
+          }}
+        />
       </Stack>
     </Stack>
   );
