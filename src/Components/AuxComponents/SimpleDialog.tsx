@@ -17,6 +17,7 @@ import { blue, green } from "@mui/material/colors";
 import { Box, Slider, Checkbox, FormControlLabel } from "@mui/material";
 import { IFilterValues } from "../../App";
 import { useNavigate } from "react-router-dom";
+import { initialFilters } from "../../App";
 
 const emails = ["username@gmail.com", "user02@gmail.com"];
 
@@ -29,9 +30,9 @@ export interface SimpleDialogProps {
 function SimpleDialog(props: SimpleDialogProps) {
   const { onClose, selectedValue, open } = props;
   const [currentSelection, setCurrentselection] = React.useState(selectedValue);
-  const [busChecked, setBusChecked] = React.useState(true);
-  const [trainChecked, setTrainChecked] = React.useState(true);
-  const [tramChecked, setTramChecked] = React.useState(true);
+  const [busChecked, setBusChecked] = React.useState(initialFilters.bus);
+  const [trainChecked, setTrainChecked] = React.useState(initialFilters.train);
+  const [tramChecked, setTramChecked] = React.useState(initialFilters.tram);
 
   const handleClose = () => {
     onClose({
@@ -167,7 +168,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             marks={distanceMarks}
             // step={5}
             valueLabelDisplay="auto"
-            defaultValue={15}
+            defaultValue={initialFilters.distance}
             max={25}
             onChange={(e) => {
               const t = e.target as HTMLInputElement;
@@ -188,7 +189,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             size="small"
             marks={priceMarks}
             valueLabelDisplay="auto"
-            defaultValue={500}
+            defaultValue={initialFilters.price}
             min={300}
             max={1000}
             onChange={(e) => {
@@ -276,6 +277,10 @@ function SimpleDialog(props: SimpleDialogProps) {
         >
           <Button
             onClick={() => {
+              setBusChecked(initialFilters.bus);
+              setTrainChecked(initialFilters.train);
+              setTramChecked(initialFilters.tram);
+
               setCurrentselection(props.selectedValue);
               // need a function to return filters to their initial value
             }}
@@ -285,10 +290,10 @@ function SimpleDialog(props: SimpleDialogProps) {
           <Button
             onClick={() => {
               handleClose();
-              showResults();
+              // showResults();
             }}
           >
-            Search
+            Done
           </Button>
         </ListItem>
       </List>

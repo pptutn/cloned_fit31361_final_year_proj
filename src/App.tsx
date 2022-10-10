@@ -18,19 +18,21 @@ export interface IFilterValues {
   train: boolean;
 }
 
+export const initialFilters: IFilterValues = {
+  // campusCode: "MON_CLA",
+  distance: 25,
+  price: 1000,
+  pubTransport: false,
+  lateTransport: false,
+  bus: false,
+  tram: false,
+  train: false,
+  campusCode: ""
+};
+
 function App() {
   const location = useLocation();
-  const initialFilters: IFilterValues = {
-    // campusCode: "MON_CLA",
-    distance: 15,
-    price: 1000,
-    pubTransport: false,
-    lateTransport: false,
-    bus: true,
-    tram: true,
-    train: true,
-    campusCode: ""
-  };
+
 
   const [selectedValue, setSelectedValue] = useState(initialFilters);
 
