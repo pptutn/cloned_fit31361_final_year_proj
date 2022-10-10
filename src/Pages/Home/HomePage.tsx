@@ -83,12 +83,12 @@ function HomePage(props: filterPropsI) {
           }}
         />
         <InfoBox
-          name="The University of Melbourne"
-          campusLocation="Parkville, VIC"
+          name="Swinburne University"
+          campusLocation="Hawthorn, VIC"
           onClick={() => {
             props.setSelectedValue({
               ...props.selectedValue,
-              campusCode: "MEL_PAR",
+              campusCode: "SWI_HAW",
             });
             showResults();
           }}
