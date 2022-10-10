@@ -80,10 +80,26 @@ function SearchPage(props: filterPropsI) {
       (sub.distance < props.selectedValue.distance &&
       sub.medianRentPrice < props.selectedValue.price &&
       
-      (props.selectedValue.bus === false && props.selectedValue.train === false && props.selectedValue.tram === false ? 
-        sub.train==true||sub.bus==true||sub.tram==true : 
-        props.selectedValue.train == sub.train && sub.bus == props.selectedValue.bus && sub.tram == props.selectedValue.tram)
+      (props.selectedValue.bus === false && props.selectedValue.train === false && props.selectedValue.tram === false ? sub.train==true||sub.bus==true||sub.tram==true : 
+      props.selectedValue.train == sub.train && sub.bus == props.selectedValue.bus && sub.tram == props.selectedValue.tram)
         )
+
+
+      // (sub.distance < props.selectedValue.distance &&
+      // sub.medianRentPrice < props.selectedValue.price && 
+      // (props.selectedValue.bus === false && props.selectedValue.train === false && props.selectedValue.tram === false))
+
+      // ||
+      // (sub.distance < props.selectedValue.distance &&
+      // sub.medianRentPrice < props.selectedValue.price && 
+      // (props.selectedValue.train == sub.train &&
+      // sub.bus == props.selectedValue.bus &&
+      // sub.tram == props.selectedValue.tram))
+
+      //&&
+      // ((props.selectedValue.train == sub.train &&
+      // sub.bus == props.selectedValue.bus &&
+      // sub.tram == props.selectedValue.tram) || (props.selectedValue.bus && props.selectedValue.train && props.selectedValue.tram === false))
   );
 
   console.log("this is filtered results", filteredResults);

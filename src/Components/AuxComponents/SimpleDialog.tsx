@@ -32,11 +32,8 @@ function SimpleDialog(props: SimpleDialogProps) {
   const [busChecked, setBusChecked] = React.useState(true);
   const [trainChecked, setTrainChecked] = React.useState(true);
   const [tramChecked, setTramChecked] = React.useState(true);
-  // const [open, setOpen] = React.useState(false);
-
 
   const handleClose = () => {
-    // setOpen(false);
     onClose({
       ...currentSelection,
       bus: busChecked,
@@ -288,9 +285,10 @@ function SimpleDialog(props: SimpleDialogProps) {
           <Button
             onClick={() => {
               handleClose();
+              showResults();
             }}
           >
-            Done
+            Search
           </Button>
         </ListItem>
       </List>
