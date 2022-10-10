@@ -122,6 +122,14 @@ function SimpleDialog(props: SimpleDialogProps) {
       value: 800,
       label: "$800",
     },
+    {
+      value: 900,
+      label: "$900",
+    },
+    {
+      value: 1000,
+      label: "$1000",
+    },
   ];
 
   return (
@@ -182,7 +190,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             valueLabelDisplay="auto"
             defaultValue={500}
             min={300}
-            max={800}
+            max={1000}
             onChange={(e) => {
               const t = e.target as HTMLInputElement;
               handleListItemClick({

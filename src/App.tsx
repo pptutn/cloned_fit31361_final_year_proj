@@ -8,6 +8,7 @@ import SearchPage from "./Pages/Results/searchPage";
 import SignupPage from "./Pages/SignUp/SignupPage";
 
 export interface IFilterValues {
+  campusCode: string;
   distance: number;
   price: number;
   pubTransport: boolean;
@@ -21,6 +22,7 @@ export interface IFilterValues {
 function App() {
   const location = useLocation();
   const initialFilters: IFilterValues = {
+    campusCode: "MON_CLA",
     distance: 15,
     price: 500,
     pubTransport: false,

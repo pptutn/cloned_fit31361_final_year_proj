@@ -1,19 +1,16 @@
 import React from "react";
 import "./searchPage.css";
-import SearchResults from "./searchResults";
 import { useState, useEffect } from "react";
 import { getSearchData } from "../../Components/API/getSuburbData";
 import { Box, Button, Grid, Paper, Stack, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { GetData } from "./GetData";
 import { ThemeProvider } from "@emotion/react";
 import theme from "../../colourScheme";
-import BackButton from "../../Components/BackButton/BackButton";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ExpandableComponent from "../../Components/ExpandableComponent/ExpandableComponent";
-import FavouriteButton from "../../Components/FavouriteButton";
 import { filterPropsI } from "../Home/HomePage";
 import { GetScore, calcScore } from "../../Components/Algorithm/GetScore";
+import FavouriteButton from "../../Components/FavouriteButton";
 import { suburbProps } from "../../Components/ExpandableComponent/ExpandableComponent";
 
 export interface SearchProps extends filterPropsI {
@@ -24,7 +21,8 @@ function SearchPage(props: SearchProps) {
   const [suburbs, setSuburbs] = useState<any[]>([]);
 
   const handleData = async () => {
-    const searchData = await getSearchData();
+    console.log("this is campusCode passed in: ");
+    const searchData = await getSearchData(props.selectedValue.campusCode);
     const searchDataWithScore = searchData.map((s: suburbProps) => {
       return { ...s, score: calcScore(s) };
     });
@@ -113,6 +111,13 @@ function SearchPage(props: SearchProps) {
       </Box>
 
       {/* sort by subheadings */}
+      {/* <Box>
+        <Stack padding={0}>
+          <h2 className="sortHeading">
+            Displaying Results for: {props.selectedValue.campusCode}
+          </h2>
+        </Stack>
+      </Box> */}
       <Box>
         <Stack padding={0}>
           <h2 className="sortHeading">Sort By</h2>
