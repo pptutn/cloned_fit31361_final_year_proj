@@ -23,7 +23,7 @@ function App() {
   const initialFilters: IFilterValues = {
     // campusCode: "MON_CLA",
     distance: 15,
-    price: 500,
+    price: 1000,
     pubTransport: false,
     lateTransport: false,
     bus: true,
@@ -59,7 +59,6 @@ function App() {
               filterVal={initialFilters}
               selectedValue={selectedValue}
               setSelectedValue={setSelectedValue}
-              university=""
             />
           }
         />

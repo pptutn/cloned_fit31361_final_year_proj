@@ -16,6 +16,7 @@ import TrainIcon from "@mui/icons-material/Train";
 import LocalTaxiIcon from "@mui/icons-material/LocalTaxi";
 import { auth, user } from "../../firebase";
 import { onAuthStateChanged } from "firebase/auth";
+import FavouriteButton from "../FavouriteButton";
 
 export interface suburbProps {
   suburb: string;

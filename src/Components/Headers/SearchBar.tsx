@@ -48,16 +48,32 @@ function SearchBar(props: filterPropsI) {
   let navigate = useNavigate();
 
   const getUniCode = () => {
-    // switch (university) {
-    //  case "":
-
-
-    // }
-    if (university === "Monash University - Clayton") {
-      return "MON_CLA";
+    if (university === "Deakin - Burwood") {
+      return "DEA_BUR";
+    }
+    else if (university === "Deakin - Geelong") {
+      return "DEA_GEE";
+    }
+    else if (university === "La Trobe University - Bundoora") {
+      return "LAT_BUN";
+    }
+    else if (university === "The University of Melbourne") {
+      return "MEL_PAR";
+    }
+    else if (university === "Monash University - Caufield") {
+      return "MON_CAU";
+    }
+    else if (university === "Royal Melbourne Insitute of Technology") {
+      return "RMI_MEL";
+    }
+    else if (university === "Swinburne University - Hawthorn") {
+      return "SWI_HAW";
+    }
+    else if (university === "Victoria University - Footscray") {
+      return "VIC_FOO";
     }
     else {
-      return "no code";
+      return "MON_CLA";
     }
 
   }
@@ -68,7 +84,7 @@ function SearchBar(props: filterPropsI) {
     let uni_code: string = getUniCode();
     console.log(uni_code);
 
-    props.setSelectedValue({...props.filterVal, campusCode: uni_code});
+    props.setSelectedValue({ ...props.selectedValue, campusCode: uni_code });
 
     // <SearchPage university={uni_code} filterVal={props.filterVal} selectedValue={props.selectedValue} setSelectedValue={function (value: React.SetStateAction<IFilterValues>): void {
     //   throw new Error("Function not implemented.");
@@ -77,7 +93,7 @@ function SearchBar(props: filterPropsI) {
     navigate(path);
   };
 
-  
+
   // const initialFilters: IFilterValues = {
   //   campusCode: "MON_CLA",
   //   distance: 15,
@@ -118,20 +134,20 @@ function SearchBar(props: filterPropsI) {
             /> */}
             <FormControl fullWidth>
               <InputLabel>Search for your University</InputLabel>
-            <Select
-              id="search-universities"
-              color="primary"
-              label="Search for your University"             
-              value={university}
-              renderValue={(option) => option ? option : <em>Nothing Selected</em>}
-              MenuProps={{
-                PaperProps: { sx: { maxHeight: 300 }}
-              }}
-              onChange={handleSearchBarChange}
+              <Select
+                id="search-universities"
+                color="primary"
+                label="Search for your University"
+                value={university}
+                renderValue={(option) => option ? option : <em>Nothing Selected</em>}
+                MenuProps={{
+                  PaperProps: { sx: { maxHeight: 300 } }
+                }}
+                onChange={handleSearchBarChange}
               >
-              {Universities.map((option) => { return <MenuItem value={option.name} onClick={() => {setUniversity(university); showResults}}>{option.name}</MenuItem>})}
+                {Universities.map((option) => { return <MenuItem value={option.name} onClick={() => { setUniversity(option.code); showResults }}>{option.name}</MenuItem> })}
 
-            </Select>
+              </Select>
             </FormControl>
           </Paper>
         </Grid>

@@ -17,11 +17,11 @@ export interface SearchProps extends filterPropsI {
   university: string;
 }
 
-function SearchPage(props: SearchProps) {
+function SearchPage(props: filterPropsI) {
   const [suburbs, setSuburbs] = useState<any[]>([]);
 
   const handleData = async () => {
-    console.log("this is campusCode passed in: ");
+    console.log("this is campusCode passed in: " + props.selectedValue.campusCode);
     const searchData = await getSearchData(props.selectedValue.campusCode);
     const searchDataWithScore = searchData.map((s: suburbProps) => {
       return { ...s, score: calcScore(s) };
@@ -30,7 +30,6 @@ function SearchPage(props: SearchProps) {
   };
 
   useEffect(() => {
-    console.log("UNIVERSITY: " + props.filterVal.campusCode );
     handleData();
   }, []);
 
@@ -78,11 +77,29 @@ function SearchPage(props: SearchProps) {
 
   const filteredResults = suburbs.filter(
     (sub) =>
-      sub.distance < props.selectedValue.distance &&
+      (sub.distance < props.selectedValue.distance &&
       sub.medianRentPrice < props.selectedValue.price &&
-      sub.train == props.selectedValue.train &&
-      sub.bus == props.selectedValue.bus &&
-      sub.tram == props.selectedValue.tram
+      
+      (props.selectedValue.bus === false && props.selectedValue.train === false && props.selectedValue.tram === false ? sub.train==true||sub.bus==true||sub.tram==true : 
+      props.selectedValue.train == sub.train && sub.bus == props.selectedValue.bus && sub.tram == props.selectedValue.tram)
+        )
+
+
+      // (sub.distance < props.selectedValue.distance &&
+      // sub.medianRentPrice < props.selectedValue.price && 
+      // (props.selectedValue.bus === false && props.selectedValue.train === false && props.selectedValue.tram === false))
+
+      // ||
+      // (sub.distance < props.selectedValue.distance &&
+      // sub.medianRentPrice < props.selectedValue.price && 
+      // (props.selectedValue.train == sub.train &&
+      // sub.bus == props.selectedValue.bus &&
+      // sub.tram == props.selectedValue.tram))
+
+      //&&
+      // ((props.selectedValue.train == sub.train &&
+      // sub.bus == props.selectedValue.bus &&
+      // sub.tram == props.selectedValue.tram) || (props.selectedValue.bus && props.selectedValue.train && props.selectedValue.tram === false))
   );
 
   console.log("this is filtered results", filteredResults);
@@ -105,7 +122,7 @@ function SearchPage(props: SearchProps) {
             <ArrowBackIcon fontSize="large" />
           </Button>
           <div className="banner_right">
-            <h1 className="h1">Suburb Results - {props.university}</h1>
+            <h1 className="h1">Suburb Results</h1>
           </div>
         </Stack>
       </Box>
