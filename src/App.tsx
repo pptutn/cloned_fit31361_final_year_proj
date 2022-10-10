@@ -19,7 +19,6 @@ export interface IFilterValues {
 }
 
 export const initialFilters: IFilterValues = {
-  // campusCode: "MON_CLA",
   distance: 25,
   price: 1000,
   pubTransport: false,
