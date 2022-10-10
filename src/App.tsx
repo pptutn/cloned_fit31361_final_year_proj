@@ -16,13 +16,12 @@ export interface IFilterValues {
   bus: boolean;
   tram: boolean;
   train: boolean;
-  campusCode: string;
 }
 
 function App() {
   const location = useLocation();
   const initialFilters: IFilterValues = {
-    campusCode: "MON_CLA",
+    // campusCode: "MON_CLA",
     distance: 15,
     price: 500,
     pubTransport: false,
