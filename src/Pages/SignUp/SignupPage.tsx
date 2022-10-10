@@ -66,31 +66,6 @@ function SignupPage() {
             alert(e.message);
         }
 
-        // // manual password validation 
-        // if (!(/\d/.test(passwordRef))) {
-        //     // checks if has NO number
-        //     // throws an Exception if none
-        //     throw NotImplementedError("Need to have at least one digit");
-        // }
-
-        // if (!(/[A-Z]/.test(passwordRef))) {
-        //     // checks whether there is NO upper case
-        //     // throws an Exception if none
-        //     throw new Error("Need to have at least one upper case");
-        // }
-
-        // if (!(/[a-z]/.test(passwordRef))) {
-        //     // checks whether there is NO lower case 
-        //     // throws an Exception if none
-        //     throw new Error("Need to have at least one lower case");
-        // }
-
-        // if (!(/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(passwordRef))) {
-        //     // if there is NO special character
-        //     // throws an Exception if none
-        //     throw new Error("Need to have at least one special character");
-        // }
-
 
     }
 

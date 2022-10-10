@@ -31,7 +31,8 @@ function SearchBar(props: filterPropsI) {
   // onChange handler for the Select university component
   const handleSearchBarChange = (event: SelectChangeEvent<string>, child: React.ReactNode) => {
     setUniversity(event.target.value);
-    console.log(university);
+    // console.log(event.target.value);
+    // console.log(university);
   }
 
 
@@ -46,24 +47,37 @@ function SearchBar(props: filterPropsI) {
 
   let navigate = useNavigate();
 
+  const getUniCode = () => {
+    // switch (university) {
+    //  case "":
+
+
+    // }
+    if (university === "Monash University - Clayton") {
+      return "MON_CLA";
+    }
+    else {
+      return "no code";
+    }
+
+  }
+
   const showResults = () => {
-    <SearchPage university={university} filterVal={props.filterVal} selectedValue={props.selectedValue} setSelectedValue={function (value: React.SetStateAction<IFilterValues>): void {
-      throw new Error("Function not implemented.");
-    } }></SearchPage>
+    console.log(university);
+
+    let uni_code: string = getUniCode();
+    console.log(uni_code);
+
+    props.setSelectedValue({...props.filterVal, campusCode: uni_code});
+
+    // <SearchPage university={uni_code} filterVal={props.filterVal} selectedValue={props.selectedValue} setSelectedValue={function (value: React.SetStateAction<IFilterValues>): void {
+    //   throw new Error("Function not implemented.");
+    // } }></SearchPage>
     let path = `/results`;
     navigate(path);
   };
 
-  const initialFilters: IFilterValues = {
-    distance: 15,
-    price: 500,
-    pubTransport: false,
-    lateTransport: false,
-    bus: true,
-    tram: true,
-    train: true,
-  };
-
+  
   return (
     <ThemeProvider theme={theme}>
       <Grid
@@ -104,7 +118,7 @@ function SearchBar(props: filterPropsI) {
               }}
               onChange={handleSearchBarChange}
               >
-              {Universities.map((option) => { return <MenuItem value={option.name}>{option.name}</MenuItem>})}
+              {Universities.map((option) => { return <MenuItem value={option.name} onClick={() => {setUniversity(university); showResults}}>{option.name}</MenuItem>})}
 
             </Select>
             </FormControl>
@@ -124,7 +138,7 @@ function SearchBar(props: filterPropsI) {
               FILTERS
             </Button>
             <SimpleDialog
-              selectedValue={initialFilters}
+              selectedValue={props.filterVal}
               open={open}
               onClose={handleClose}
             />

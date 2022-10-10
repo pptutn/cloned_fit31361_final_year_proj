@@ -32,6 +32,7 @@ function SearchPage(props: SearchProps) {
   };
 
   useEffect(() => {
+    console.log("UNIVERSITY: " + props.filterVal.campusCode );
     handleData();
   }, []);
 

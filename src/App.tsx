@@ -15,6 +15,7 @@ export interface IFilterValues {
   bus: boolean;
   tram: boolean;
   train: boolean;
+  campusCode: string;
 }
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
     bus: true,
     tram: true,
     train: true,
+    campusCode: ""
   };
 
   const [selectedValue, setSelectedValue] = useState(initialFilters);

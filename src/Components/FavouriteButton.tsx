@@ -4,7 +4,7 @@ import "./FavouriteButton.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { auth, user, database, getDataFromCollection } from "../firebase";
-import { collection, doc, getDocs, query, where } from "firebase/firestore";
+import { collection, doc, documentId, getDocs, query, where } from "firebase/firestore";
 import { Button } from "@mui/material";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -32,14 +32,18 @@ export default function FavouriteButton(props: Props) {
   const toggleFavourite = async (favourite: boolean) => {
     console.log(props.email);
     const userRefs = collection(database, "users");
-    // const whe = where(userRefs, )
+    
 
     // get all the user, if logged in the data correlating to them, from firebase
     const docId = getDataFromCollection();
 
-    if (favourite == true) {
+    if ( favourite == true ) {
       console.log("I clicked unfavorite");
       setFavourite(!favourite);
+
+      console.log(docId);
+      
+
 
     } else {
       // (favourite == false)
@@ -53,7 +57,9 @@ export default function FavouriteButton(props: Props) {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        // console.log(docId);
         // console.log(auth.currentUser);
+
       } else {
         // user is not logged in 
       }
