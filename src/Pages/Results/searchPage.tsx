@@ -2,7 +2,7 @@ import React from "react";
 import "./searchPage.css";
 import { useState, useEffect } from "react";
 import { getSearchData } from "../../Components/API/getSuburbData";
-import { Box, Button, Grid, Paper, Stack, TextField } from "@mui/material";
+import { Box, Button, Grid, Paper, Stack, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
 import theme from "../../colourScheme";
@@ -13,11 +13,16 @@ import { GetScore, calcScore } from "../../Components/Algorithm/GetScore";
 import FavouriteButton from "../../Components/FavouriteButton";
 import { suburbProps } from "../../Components/ExpandableComponent/ExpandableComponent";
 
+export interface SearchProps extends filterPropsI {
+  university: string;
+}
+
 function SearchPage(props: filterPropsI) {
   const [suburbs, setSuburbs] = useState<any[]>([]);
 
   const handleData = async () => {
-    const searchData = await getSearchData();
+    console.log("this is campusCode passed in: " + props.selectedValue.campusCode);
+    const searchData = await getSearchData(props.selectedValue.campusCode);
     const searchDataWithScore = searchData.map((s: suburbProps) => {
       return { ...s, score: calcScore(s) };
     });
@@ -72,23 +77,45 @@ function SearchPage(props: filterPropsI) {
 
   const filteredResults = suburbs.filter(
     (sub) =>
-      sub.distance < props.selectedValue.distance &&
+      (sub.distance < props.selectedValue.distance &&
       sub.medianRentPrice < props.selectedValue.price &&
-      sub.train == props.selectedValue.train &&
-      sub.bus == props.selectedValue.bus &&
-      sub.tram == props.selectedValue.tram
+      
+      (props.selectedValue.bus === false && props.selectedValue.train === false && props.selectedValue.tram === false ? sub.train==true||sub.bus==true||sub.tram==true : 
+      props.selectedValue.train == sub.train && sub.bus == props.selectedValue.bus && sub.tram == props.selectedValue.tram)
+        )
+
+
+      // (sub.distance < props.selectedValue.distance &&
+      // sub.medianRentPrice < props.selectedValue.price && 
+      // (props.selectedValue.bus === false && props.selectedValue.train === false && props.selectedValue.tram === false))
+
+      // ||
+      // (sub.distance < props.selectedValue.distance &&
+      // sub.medianRentPrice < props.selectedValue.price && 
+      // (props.selectedValue.train == sub.train &&
+      // sub.bus == props.selectedValue.bus &&
+      // sub.tram == props.selectedValue.tram))
+
+      //&&
+      // ((props.selectedValue.train == sub.train &&
+      // sub.bus == props.selectedValue.bus &&
+      // sub.tram == props.selectedValue.tram) || (props.selectedValue.bus && props.selectedValue.train && props.selectedValue.tram === false))
   );
 
   console.log("this is filtered results", filteredResults);
 
   const filteredResultsElements = filteredResults.map((elem) => (
     <ExpandableComponent {...elem}></ExpandableComponent>
-  ));
-  // console.log("this is suburbs", suburbs);
-  // console.log("filteredResults", props.selectedValue.distance, filteredResults);
+  )
+ );
+
+ const resultsOrNot =  
+    <Typography padding={2} variant='h5' color='white' align='justify'>There are no results for the filters selected</Typography>;
+  
+ 
   return (
     <ThemeProvider theme={theme}>
-      {/* add in the back button for navigation */}
+      {/* page header, includes a back button and heading */}
       <Box>
         <Stack spacing={4} direction="row">
           <Button color="primary" onClick={() => navigate(-1)}>
@@ -100,12 +127,21 @@ function SearchPage(props: filterPropsI) {
         </Stack>
       </Box>
 
+      {/* sort by subheadings */}
+      {/* <Box>
+        <Stack padding={0}>
+          <h2 className="sortHeading">
+            Displaying Results for: {props.selectedValue.campusCode}
+          </h2>
+        </Stack>
+      </Box> */}
       <Box>
         <Stack padding={0}>
           <h2 className="sortHeading">Sort By</h2>
         </Stack>
       </Box>
 
+      {/* filter buttons available for the user to sort by */}
       <Box>
         <Stack padding={2} spacing={3} direction="row">
           <Button onClick={sortRelevant} variant="contained">
@@ -136,7 +172,7 @@ function SearchPage(props: filterPropsI) {
       {/* <div>TRAIN? {props.selectedValue.train.toString()}</div> */}
       {/* <div>TRAM? {props.selectedValue.tram.toString()}</div> */}
       {/* {renderSuburbResults} */}
-      {filteredResultsElements}
+      {filteredResults.length > 0 ? filteredResultsElements : resultsOrNot}
     </ThemeProvider>
   );
 }

@@ -1,11 +1,14 @@
+import { constants } from "crypto";
 import React, { useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
+import { Universities } from "./constants";
 import HomePage from "./Pages/Home/HomePage";
 import LoginPage from "./Pages/LogIn/LoginPage";
 import SearchPage from "./Pages/Results/searchPage";
 import SignupPage from "./Pages/SignUp/SignupPage";
 
 export interface IFilterValues {
+  campusCode: string;
   distance: number;
   price: number;
   pubTransport: boolean;
@@ -15,17 +18,20 @@ export interface IFilterValues {
   train: boolean;
 }
 
+export const initialFilters: IFilterValues = {
+  distance: 25,
+  price: 1000,
+  pubTransport: false,
+  lateTransport: false,
+  bus: false,
+  tram: false,
+  train: false,
+  campusCode: ""
+};
+
 function App() {
   const location = useLocation();
-  const initialFilters: IFilterValues = {
-    distance: 15,
-    price: 500,
-    pubTransport: false,
-    lateTransport: false,
-    bus: true,
-    tram: true,
-    train: true,
-  };
+
 
   const [selectedValue, setSelectedValue] = useState(initialFilters);
 

@@ -1,10 +1,94 @@
 {
-  "request": {
-    "method": "GET",
-    "url": "/api/suburbs"
-  },
-  "response": {
-    "status": 200,
-    "bodyFileName": "../__files/get_suburbs_response.json"
-  }
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "/suburbs/MON_CLA"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "../__files/get_mon_clay_response.json"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/suburbs/RMI_MEL"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "../__files/get_rmi_mel_response.json"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/suburbs/DEA_BUR"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "../__files/get_dea_bur_response.json"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/suburbs/DEA_GEE"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "../__files/get_dea_gee_response.json"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/suburbs/MEL_PAR"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "../__files/get_mel_par_response.json"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/suburbs/MON_CAU"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "../__files/get_mon_cau_response.json"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/suburbs/SWI_HAW"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "../__files/get_swi_haw_response.json"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/suburbs/VIC_FOO"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "../__files/get_vic_foo_response.json"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/suburbs/LAT_BUN"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "../__files/get_lat_bun_response.json"
+      }
+    }
+  ]
 }

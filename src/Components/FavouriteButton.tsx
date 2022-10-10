@@ -1,88 +1,78 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
+import "./FavouriteButton.css";
 // import { View } from 'react';
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { auth, user, database, getDataFromCollection } from "../firebase";
+import { collection, doc, documentId, getDocs, query, where } from "firebase/firestore";
+import { Button } from "@mui/material";
+import { onAuthStateChanged } from "firebase/auth";
 
 interface Props {
-    favourite: boolean
-    suburbName: string
+  favourite: boolean;
+  suburbName: string;
+  email: string|null;
 }
 
 export default function FavouriteButton(props: Props) {
-    const onPress = () => {
-        // change the state of the favourite button on click
-        //setFavourite(!favourite);
-    };
+  const onPress = () => {
+    // change the state of the favourite button on click
+    //setFavourite(!favourite);
+  };
 
-    const currentlyAFavorite = <FavoriteIcon sx={{ fontSize: '3rem' }} color="secondary" />
-    const notCurrentlyAFavorite = <FavoriteBorderIcon className="searchResult__heart" sx={{ fontSize: '3rem' }} color="secondary" />
+  const currentlyAFavorite = (
+    <FavoriteIcon sx={{ fontSize: "3rem" }} color="primary" />
+  );
+  const notCurrentlyAFavorite = (
+    <FavoriteBorderIcon sx={{ fontSize: "3rem" }} color="primary" />
+  );
 
-    const [favourite, setFavourite] = useState(props.favourite);
+  const [favourite, setFavourite] = useState(props.favourite);
 
-    const toggleFavourite = (favourite: boolean) => {
-        if (favourite == true) {
-            console.log("I clicked unfavorite")
-            console.log(props)
-            setFavourite(!favourite);
+  const toggleFavourite = async (favourite: boolean) => {
+    console.log(props.email);
+    const userRefs = collection(database, "users");
+    
 
-            //             fetch(`/api/users/${props.userId}/recipes/${recipeId}/remove`, { method: 'POST' })
-            //             .then(console.log("This was a favorited recipe, but now it isnt!"));
+    // get all the user, if logged in the data correlating to them, from firebase
+    const docId = getDataFromCollection();
 
-        }
-        else {
-            // (favourite == false)
-            console.log("I clicked favorite")
-            setFavourite(!favourite);
+    if ( favourite == true ) {
+      console.log("I clicked unfavorite");
+      setFavourite(!favourite);
 
-            //             fetch(`/api/users/${props.userId}/recipes/${recipeId}/add`, { method: 'POST' })
-            //             .then(console.log("This was not a favorited recipe. Now it is!"));
-            //           }
+      console.log(docId);
+      
 
-            return !favourite;
-        }
-    };
 
-    return (
-        <button
-            className=""
-            onClick={() => toggleFavourite(props.favourite)}
-            key={props.suburbName}>
-            {favourite === true ? currentlyAFavorite : notCurrentlyAFavorite}
-        </button>
-    );
+    } else {
+      // (favourite == false)
+      console.log("I clicked favorite");
+      setFavourite(!favourite);
+
+    }
+    console.log(favourite);
+  };
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // console.log(docId);
+        // console.log(auth.currentUser);
+
+      } else {
+        // user is not logged in 
+      }
+    })
+  }, []);
+
+  return (
+    <Button
+      className="favButton"
+      onClick={() => toggleFavourite(favourite)}
+      key={props.suburbName}
+    >
+      {favourite === true ? currentlyAFavorite : notCurrentlyAFavorite}
+    </Button>
+  );
 }
-
-
-
-    //   if (favourite) {
-    // filled in white heart appears if favourite is true
-    // return (
-
-
-    //   <TouchableOpacity activeOpacity={0.5} onPress={onPress}>
-    //     <View
-    //       style={[
-    //         {
-    //           flexDirection: 'row',
-    //         },
-    //       ]}>
-    //       <MaterialCommunityIcons name="heart" color="white" size={39} />
-    //     </View>
-    //   </TouchableOpacity>
-    //     );
-    //   } else {
-    // white outlined heart appears if favourite is false
-    // return (
-    //     <FavoriteBorderIcon className="searchResult__heart" sx={{ fontSize: '3rem' }} color="secondary"/>
-
-    //   <TouchableOpacity activeOpacity={0.5} onPress={onPress}>
-    //     <View
-    //       style={[
-    //         {
-    //           flexDirection: 'row',
-    //         },
-    //       ]}>
-    //       <MaterialCommunityIcons name="heart-outline" color="white" size={39} />
-    //     </View>
-    //   </TouchableOpacity>
-    // );
