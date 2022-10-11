@@ -8,7 +8,21 @@ export const calcScore = (subs: suburbProps) => {
       +(subs.bus || subs.train || subs.tram) * 0.03
   );
   console.log("this is res", res);
-  return res > 100 ? 100 : res < 0 ? 0 : res;
+  const convertStars = (score: number) => {
+    let finalStars = 1;
+    if (score > 100) {
+      finalStars = 5;
+    } else if (score > 80) {
+      finalStars = 4;
+    } else if (score > 60) {
+      finalStars = 3;
+    } else if (score > 40) {
+      finalStars = 2;
+    }
+    return finalStars;
+  };
+
+  return convertStars(res);
 };
 
 export const GetScore = (subs: suburbProps) => {
