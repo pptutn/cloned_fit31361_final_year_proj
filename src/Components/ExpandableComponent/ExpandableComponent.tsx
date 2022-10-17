@@ -77,10 +77,6 @@ export default function ExpandableComponent(props: suburbPropsWithScore) {
   const [expanded, setExpanded] = React.useState<string | false>();
   const [isLoggedIn, setLoggedIn] = React.useState(false);
 
-<<<<<<< HEAD
-
-=======
->>>>>>> master
   const [favourite, setFavourite] = React.useState(false);
   const [email, setEmail] = React.useState<string | null>("");
 
@@ -102,7 +98,6 @@ export default function ExpandableComponent(props: suburbPropsWithScore) {
   React.useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-<<<<<<< HEAD
         setLoggedIn(true); 
         setEmail(user.email);
       } else {
@@ -140,47 +135,6 @@ export default function ExpandableComponent(props: suburbPropsWithScore) {
                 </Stack>
               </Box>
             </AccordionSummary>
-=======
-        setLoggedIn(true);
-        setEmail(user.email);
-      } else {
-        setLoggedIn(false);
-      }
-    });
-  }, []);
-
-  return (
-    <div>
-      <ThemeProvider theme={theme}>
-        <Accordion
-          expanded={expanded === "panel1"}
-          onChange={handleChange("panel1")}
-        >
-          <AccordionSummary
-            aria-controls="panel1d-content"
-            id="panel1d-header"
-            className="accordian"
-          >
-            <Box>
-              <Stack padding={2} spacing={3} direction="row" className="stack">
-                {isLoggedIn == true && (
-                  <FavouriteButton
-                    favourite={favourite}
-                    suburbName={props.suburb}
-                    email={email}
-                  />
-                )}
-                <h2>{props.suburb}</h2>
-                {props.bus == true && <DirectionsBusIcon className="busIcon" />}
-                {props.train == true && <TrainIcon className="trainIcon" />}
-                {props.tram == true && <TramIcon className="tramIcon" />}
-                {props.rideShare == true && (
-                  <LocalTaxiIcon className="taxiIcon" />
-                )}
-              </Stack>
-            </Box>
-          </AccordionSummary>
->>>>>>> master
 
             <AccordionDetails>
             <div className="searchResult__infoBottom">
@@ -245,19 +199,9 @@ export default function ExpandableComponent(props: suburbPropsWithScore) {
                   {props.ptvTime} minutes
                 </p>
                 <p>
-<<<<<<< HEAD
                   {" "}
                   <b>Number of bus stops in the area: </b>
                   {props.noBusStop} stops
-=======
-                  <a
-                    href={rentalWebsite}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Click here to look at rental houses in {props.suburb}
-                  </a>
->>>>>>> master
                 </p>
                 <p>
                   <b>Closest Train Station: </b>
@@ -271,20 +215,11 @@ export default function ExpandableComponent(props: suburbPropsWithScore) {
                   </p>
                 </div>
               </div>
-<<<<<<< HEAD
             </AccordionDetails>
           </Accordion>
         </ThemeProvider>
       </div>
     );
-=======
-            </div>
-          </AccordionDetails>
-        </Accordion>
-      </ThemeProvider>
-    </div>
-  );
->>>>>>> master
   // } else {
 
   //   return (
@@ -393,8 +328,4 @@ export default function ExpandableComponent(props: suburbPropsWithScore) {
   //     </div>
   //   );
   // }
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 }
