@@ -43,11 +43,10 @@ const user = auth.currentUser;
 // create a signUp function, so users can sign up to application and are authenticated
 const signUp = async (firstname: string, lastname: string, email: string, password: string, university: string) => {
   try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-    // .then(() => {
-    //   // let user = auth.currentUser as User;
-    //   addtoDatabase();
-    // });
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      // let user = auth.currentUser as User;
+      // addtoDatabase();
+    
 
 
     // const addtoDatabase = async () => {
