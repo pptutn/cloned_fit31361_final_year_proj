@@ -61,7 +61,7 @@ function HomePage(props: filterPropsI) {
       <div>
         <h2 className="HomePage-title" margin-left="50px">
           {" "}
-          Favourite Suburbs
+          Frequently Searched Suburbs
         </h2>
       </div>
 
