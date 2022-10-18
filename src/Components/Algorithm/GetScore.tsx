@@ -1,4 +1,3 @@
-import { Subscript, SubscriptSharp } from "@mui/icons-material";
 import { suburbProps } from "../ExpandableComponent/ExpandableComponent";
 
 export const calcScore = (subs: suburbProps) => {

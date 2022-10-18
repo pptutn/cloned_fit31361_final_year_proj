@@ -7,14 +7,37 @@ version: 1.1.0
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 // import { getFirestore, collection, addDoc } from "@firebase/firestore";
-import * as firebase from 'firebase/app'
-import 'firebase/firestore'
-import { collection, getDocs, query, where, addDoc, getFirestore, CollectionReference, DocumentData, setDoc, doc } from "firebase/firestore";
+import * as firebase from "firebase/app";
+import "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  query,
+  where,
+  addDoc,
+  getFirestore,
+  CollectionReference,
+  DocumentData,
+  setDoc,
+  doc,
+} from "firebase/firestore";
 
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, EmailAuthCredential, User } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  EmailAuthCredential,
+  User,
+} from "firebase/auth";
 import { useEffect, useState } from "react";
 import { constants } from "crypto";
-import { FIREBASE_APP_ID, FIREBASE_API_KEY, FIREBASE_AUTH_DOMAIN } from "./constants";
+import {
+  FIREBASE_APP_ID,
+  FIREBASE_API_KEY,
+  FIREBASE_AUTH_DOMAIN,
+} from "./constants";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -25,7 +48,7 @@ const firebaseConfig = {
   projectId: "fit3161-2-stucom-ffb4a",
   storageBucket: "fit3161-2-stucom-ffb4a.appspot.com",
   messagingSenderId: "739812073286",
-  appId: FIREBASE_APP_ID
+  appId: FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
@@ -41,13 +64,21 @@ const auth = getAuth();
 const user = auth.currentUser;
 
 // create a signUp function, so users can sign up to application and are authenticated
-const signUp = async (firstname: string, lastname: string, email: string, password: string, university: string) => {
+const signUp = async (
+  firstname: string,
+  lastname: string,
+  email: string,
+  password: string,
+  university: string
+) => {
   try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      // let user = auth.currentUser as User;
-      // addtoDatabase();
-    
-
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    // let user = auth.currentUser as User;
+    // addtoDatabase();
 
     // const addtoDatabase = async () => {
     //   let newUser = auth.currentUser as User;
@@ -73,7 +104,7 @@ const signUp = async (firstname: string, lastname: string, email: string, passwo
       password: password, // should probably get rid of this at a later stage
       firstname: firstname,
       lastname: lastname,
-      universityAttending: university
+      universityAttending: university,
     });
   } catch (e: any) {
     console.error(e);
@@ -87,11 +118,14 @@ const signUp = async (firstname: string, lastname: string, email: string, passwo
 // an account that is on firestore db
 const logInWithEmailAndPassword = async (email: string, password: string) => {
   try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
     const user = userCredential.user;
 
     // console.log(user);
-
   } catch (error: any) {
     // console.log(error);
     alert(error.message);
@@ -99,7 +133,7 @@ const logInWithEmailAndPassword = async (email: string, password: string) => {
   }
 
   return true;
-}
+};
 
 const getDataFromCollection = async () => {
   // gets all the users from firebase
@@ -107,34 +141,31 @@ const getDataFromCollection = async () => {
 
   // const [userDoc, setUserDocs] = useState([]);
 
-    // gets all the user documents
-    const getDocuments = (userRefs: CollectionReference) => {
-
+  // gets all the user documents
+  const getDocuments = (userRefs: CollectionReference) => {
     getDocs(userRefs)
-      .then(response => {
+      .then((response) => {
         // console.log(response.docs)
         // get the individual document
-        const userDocs = response.docs.map(doc => ({
+        const userDocs = response.docs.map((doc) => ({
           data: doc.data(),
           id: doc.id,
           // ...doc.data()
-        }))
-        
+        }));
+
         // console.log(userDocs);
         // console.log(auth.currentUser?.email);
 
         // setUserDocs(userDocs);
       })
-      .catch(e => console.log(e.message));
+      .catch((e) => console.log(e.message));
+  };
 
-    }
-
-    // console.log(getDocuments);
+  // console.log(getDocuments);
 
   let docId = "";
   // let data = "";
   const userQuery = query(userRefs);
-
 
   const querySnapshot = await getDocs(userQuery);
 
@@ -150,10 +181,14 @@ const getDataFromCollection = async () => {
 
   //   }
   // });
-
-  
-}
+};
 
 // declare the exports for this file
-export { database, auth, user, signUp, logInWithEmailAndPassword, getDataFromCollection };
-
+export {
+  database,
+  auth,
+  user,
+  signUp,
+  logInWithEmailAndPassword,
+  getDataFromCollection,
+};

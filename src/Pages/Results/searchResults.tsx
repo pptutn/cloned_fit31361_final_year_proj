@@ -1,5 +1,4 @@
 import "./searchResults.css";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import React, { useState } from "react";
 import FavouriteButton from "../../Components/FavouriteButton";
 
@@ -27,7 +26,11 @@ function SearchResults(props: Props) {
       className="searchResult"
       onClick={props.onClick ? props.onClick : null}
     >
-      <FavouriteButton favourite={favourite} suburbName={props.suburb} email={null} />
+      <FavouriteButton
+        favourite={favourite}
+        suburbName={props.suburb}
+        email={null}
+      />
       {/* <FavoriteBorderIcon className="searchResult__heart" /> */}
 
       <div className="resultsPageInfo">

@@ -1,17 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./FavouriteButton.css";
-// import { View } from 'react';
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { auth, user, database, getDataFromCollection } from "../firebase";
-import {
-  collection,
-  doc,
-  documentId,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
+import { auth, database, getDataFromCollection } from "../firebase";
+import { collection } from "firebase/firestore";
 import { Button } from "@mui/material";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -43,16 +35,10 @@ export default function FavouriteButton(props: Props) {
     const docId = getDataFromCollection();
 
     if (favourite == true) {
-      // console.log("I clicked unfavorite");
       setFavourite(!favourite);
-
-      // console.log(docId);
     } else {
-      // (favourite == false)
-      // console.log("I clicked favorite");
       setFavourite(!favourite);
     }
-    // console.log(favourite);
   };
 
   useEffect(() => {

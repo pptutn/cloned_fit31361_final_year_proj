@@ -94,22 +94,6 @@ function SearchPage(props: filterPropsI) {
         : props.selectedValue.train == sub.train &&
           sub.bus == props.selectedValue.bus &&
           sub.tram == props.selectedValue.tram)
-
-    // (sub.distance < props.selectedValue.distance &&
-    // sub.medianRentPrice < props.selectedValue.price &&
-    // (props.selectedValue.bus === false && props.selectedValue.train === false && props.selectedValue.tram === false))
-
-    // ||
-    // (sub.distance < props.selectedValue.distance &&
-    // sub.medianRentPrice < props.selectedValue.price &&
-    // (props.selectedValue.train == sub.train &&
-    // sub.bus == props.selectedValue.bus &&
-    // sub.tram == props.selectedValue.tram))
-
-    //&&
-    // ((props.selectedValue.train == sub.train &&
-    // sub.bus == props.selectedValue.bus &&
-    // sub.tram == props.selectedValue.tram) || (props.selectedValue.bus && props.selectedValue.train && props.selectedValue.tram === false))
   );
 
   const filteredResultsElements = filteredResults.map((elem) => (
@@ -137,13 +121,6 @@ function SearchPage(props: filterPropsI) {
       </Box>
 
       {/* sort by subheadings */}
-      {/* <Box>
-        <Stack padding={0}>
-          <h2 className="sortHeading">
-            Displaying Results for: {props.selectedValue.campusCode}
-          </h2>
-        </Stack>
-      </Box> */}
       <Box>
         <Stack padding={0}>
           <h2 className="sortHeading">Sort By</h2>
@@ -174,13 +151,6 @@ function SearchPage(props: filterPropsI) {
         </Stack>
       </Box>
 
-      {/* create the expandable component */}
-      {/* <div>DISTANCE IS {props.selectedValue.distance}km</div> */}
-      {/* <div>PRICE IS ${props.selectedValue.price}</div> */}
-      {/* <div>BUS? {props.selectedValue.bus.toString()}</div> */}
-      {/* <div>TRAIN? {props.selectedValue.train.toString()}</div> */}
-      {/* <div>TRAM? {props.selectedValue.tram.toString()}</div> */}
-      {/* {renderSuburbResults} */}
       {filteredResults.length > 0 ? filteredResultsElements : resultsOrNot}
     </ThemeProvider>
   );

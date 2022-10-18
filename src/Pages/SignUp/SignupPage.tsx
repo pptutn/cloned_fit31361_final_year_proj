@@ -12,7 +12,6 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { teal } from "@mui/material/colors";
-import { Route } from "react-router-dom";
 import Banner from "../../Components/Headers/Banner";
 
 const theme = createTheme({

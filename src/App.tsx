@@ -1,7 +1,5 @@
-import { constants } from "crypto";
 import React, { useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
-import { Universities } from "./constants";
 import HomePage from "./Pages/Home/HomePage";
 import LoginPage from "./Pages/LogIn/LoginPage";
 import SearchPage from "./Pages/Results/searchPage";
@@ -26,12 +24,11 @@ export const initialFilters: IFilterValues = {
   bus: false,
   tram: false,
   train: false,
-  campusCode: ""
+  campusCode: "",
 };
 
 function App() {
   const location = useLocation();
-
 
   const [selectedValue, setSelectedValue] = useState(initialFilters);
 
