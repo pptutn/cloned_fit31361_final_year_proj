@@ -43,38 +43,38 @@ const user = auth.currentUser;
 // create a signUp function, so users can sign up to application and are authenticated
 const signUp = async (firstname: string, lastname: string, email: string, password: string, university: string) => {
   try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password).then(() => {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       // let user = auth.currentUser as User;
-      addtoDatabase();
+      // addtoDatabase();
+    
+
+
+    // const addtoDatabase = async () => {
+    //   let newUser = auth.currentUser as User;
+
+    //   const userData = {
+    //     firstName: firstname,
+    //     familyName: lastname,
+    //     email: email,
+    //     university: university,
+    //     password: password,
+    //     uid: newUser.uid
+    //   };
+
+    //   await setDoc(doc(database, 'user-collection', newUser.uid), userData).then(() => {
+    //     console.log("Successful")})
+    //     .catch((error) => {
+    //     console.log(`Unsuccessful returned error ${error}`)});
+    // };
+
+    await addDoc(collection(database, "users"), {
+      uid: userCredential.user.uid,
+      email: userCredential.user.email,
+      password: password, // should probably get rid of this at a later stage
+      firstname: firstname,
+      lastname: lastname,
+      universityAttending: university
     });
-
-
-    const addtoDatabase = async () => {
-      let newUser = auth.currentUser as User;
-
-      const userData = {
-        firstName: firstname,
-        familyName: lastname,
-        email: email,
-        university: university,
-        password: password,
-        uid: newUser.uid
-      };
-
-      await setDoc(doc(database, 'user-collection', newUser.uid), userData).then(() => {
-        console.log("Successful")})
-        .catch((error) => {
-        console.log(`Unsuccessful returned error ${error}`)});
-    };
-
-    // await addDoc(collection(database, "users"), {
-    //   uid: user.uid,
-    //   email: user.email,
-    //   password: password, // should probably get rid of this at a later stage
-    //   firstname: firstname,
-    //   lastname: lastname,
-    //   universityAttending: university
-    // });
   } catch (e: any) {
     console.error(e);
     alert(e.message);

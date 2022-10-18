@@ -98,47 +98,45 @@ export default function ExpandableComponent(props: suburbPropsWithScore) {
   React.useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        setLoggedIn(true);
+        setLoggedIn(true); 
         setEmail(user.email);
       } else {
-        setLoggedIn(false);
+        setLoggedIn(false); 
       }
-    });
+    })
   }, []);
 
-  return (
-    <div>
-      <ThemeProvider theme={theme}>
-        <Accordion
-          expanded={expanded === "panel1"}
-          onChange={handleChange("panel1")}
-        >
-          <AccordionSummary
-            aria-controls="panel1d-content"
-            id="panel1d-header"
-            className="accordian"
+    return (
+      <div>
+        <ThemeProvider theme={theme}>
+          <Accordion
+            expanded={expanded === "panel1"}
+            onChange={handleChange("panel1")}
           >
-            <Box>
-              <Stack padding={2} spacing={3} direction="row" className="stack">
-                {isLoggedIn == true && (
-                  <FavouriteButton
+            <AccordionSummary
+              aria-controls="panel1d-content"
+              id="panel1d-header"
+              className="accordian"
+            >
+              <Box>
+                <Stack padding={2} spacing={3} direction="row" className="stack">
+                  {isLoggedIn == true && <FavouriteButton
                     favourite={favourite}
                     suburbName={props.suburb}
                     email={email}
-                  />
-                )}
-                <h2>{props.suburb}</h2>
-                {props.bus == true && <DirectionsBusIcon className="busIcon" />}
-                {props.train == true && <TrainIcon className="trainIcon" />}
-                {props.tram == true && <TramIcon className="tramIcon" />}
-                {props.rideShare == true && (
-                  <LocalTaxiIcon className="taxiIcon" />
-                )}
-              </Stack>
-            </Box>
-          </AccordionSummary>
+                  /> }
+                  <h2>{props.suburb}</h2>
+                  {props.bus == true && <DirectionsBusIcon className="busIcon" />}
+                  {props.train == true && <TrainIcon className="trainIcon" />}
+                  {props.tram == true && <TramIcon className="tramIcon" />}
+                  {props.rideShare == true && (
+                    <LocalTaxiIcon className="taxiIcon" />
+                  )}
+                </Stack>
+              </Box>
+            </AccordionSummary>
 
-          <AccordionDetails>
+            <AccordionDetails>
             <div className="searchResult__infoBottom">
               <div
                 className={
@@ -148,84 +146,80 @@ export default function ExpandableComponent(props: suburbPropsWithScore) {
                 <b>Overall StuCom Rating: {props.score} / 5 Stars </b>
               </div>
 
-              <p>
-                {" "}
-                <b>Post Code: </b>
-                {props.postCode}
-              </p>
-              <p>
-                {" "}
-                <b>Average Rent for a 3 bedroom house: </b>$
-                {props.medianRentPrice} per week
-              </p>
-              <p>
-                {" "}
-                <b>Distance to university campus: </b>
-                {props.distance}km
-              </p>
-              {props.bus == true && (
                 <p>
                   {" "}
-                  <b>Buses Accessible </b>{" "}
-                  <DirectionsBusIcon className="smallBusIcon" />{" "}
+                  <b>Post Code: </b>
+                  {props.postCode}
                 </p>
-              )}
-              {props.train == true && (
                 <p>
                   {" "}
-                  <b>Trains Accessible </b>
-                  <TrainIcon className="smallTrainIcon" />{" "}
+                  <b>Average Rent for a 3 bedroom house: </b>$
+                  {props.medianRentPrice} per week
                 </p>
-              )}
-              {props.tram == true && (
                 <p>
                   {" "}
-                  <b>Trams Accessible </b>
-                  <TramIcon className="smallTramIcon" />{" "}
+                  <b>Distance to university campus: </b>
+                  {props.distance}km
                 </p>
-              )}
-              {props.rideShare == true && (
+                {props.bus == true && (
+                  <p>
+                    {" "}
+                    <b>Buses Accessible </b>{" "}
+                    <DirectionsBusIcon className="smallBusIcon" />{" "}
+                  </p>
+                )}
+                {props.train == true && (
+                  <p>
+                    {" "}
+                    <b>Trains Accessible </b>
+                    <TrainIcon className="smallTrainIcon" />{" "}
+                  </p>
+                )}
+                {props.tram == true && (
+                  <p>
+                    {" "}
+                    <b>Trams Accessible </b>
+                    <TramIcon className="smallTramIcon" />{" "}
+                  </p>
+                )}
+                {props.rideShare == true && (
+                  <p>
+                    {" "}
+                    <b>Rideshare Services Available </b>{" "}
+                    <LocalTaxiIcon className="smallTaxiIcon" />{" "}
+                  </p>
+                )}
+                <p>
+                  <b>Average Time by Car: </b>
+                  {props.carTime} minutes
+                </p>
                 <p>
                   {" "}
-                  <b>Rideshare Services Available </b>{" "}
-                  <LocalTaxiIcon className="smallTaxiIcon" />{" "}
+                  <b>Average Time by Public Transport: </b>
+                  {props.ptvTime} minutes
                 </p>
-              )}
-              <p>
-                <b>Average Time by Car: </b>
-                {props.carTime} minutes
-              </p>
-              <p>
-                {" "}
-                <b>Average Time by Public Transport: </b>
-                {props.ptvTime} minutes
-              </p>
-              <p>
-                {" "}
-                <b>Number of bus stops in the area: </b>
-                {props.noBusStop} stops
-              </p>
-              <p>
-                <b>Closest Train Station: </b>
-                {props.closestStation}
-              </p>
-              <div className="Suburb__Hyperlink">
                 <p>
-                  <a
-                    href={rentalWebsite}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Click here to look at rental houses in {props.suburb}
-                  </a>
+                  {" "}
+                  <b>Number of bus stops in the area: </b>
+                  {props.noBusStop} stops
                 </p>
+                <p>
+                  <b>Closest Train Station: </b>
+                  {props.closestStation}
+                </p>
+                <div className="Suburb__Hyperlink">
+                  <p>
+                    <a href={rentalWebsite} target="_blank" rel="noopener noreferrer">
+                      Click here to look at rental houses in {props.suburb}
+                    </a>
+                  </p>
+                </div>
               </div>
-            </div>
-          </AccordionDetails>
-        </Accordion>
-      </ThemeProvider>
-    </div>
-  );
+            </AccordionDetails>
+          </Accordion>
+        </ThemeProvider>
+      </div>
+    );
   // } else {
 
   //   return (
