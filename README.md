@@ -1,16 +1,12 @@
 # FIT3161/2 Group 20 - Suburb Selector
-
-This project aims to recommend a suburb for students to live in around Australian
-Universities or Schools based on their:
-
-<ol>
-  <li>budget,</li>
-  <li>public transport,</li>
-  <li>availability to grocery stores, shopping centres,</li>
-  <li>whether or not they need late night transportation,</li>
-  <li>transit time and</li>
-  <li>crime rates in the suburbs</li>
-</ol>
+  <p>To build an easy-to-use web application that assists students in finding the most suitable suburb/s to rent a house around a selected Victorian university. They will be able to adjust certain criteria such as:
+  <ol>
+  <li>Distance from university</li>
+  <li>Average rent</li>
+  <li>Public transport access</li>
+  <li>based on their preferences</li>
+  </ol>
+</p>
 
 # Members
 
