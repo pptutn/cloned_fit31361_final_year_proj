@@ -4,14 +4,21 @@ import "./FavouriteButton.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { auth, user, database, getDataFromCollection } from "../firebase";
-import { collection, doc, documentId, getDocs, query, where } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  documentId,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 import { Button } from "@mui/material";
 import { onAuthStateChanged } from "firebase/auth";
 
 interface Props {
   favourite: boolean;
   suburbName: string;
-  email: string|null;
+  email: string | null;
 }
 
 export default function FavouriteButton(props: Props) {
@@ -30,28 +37,22 @@ export default function FavouriteButton(props: Props) {
   const [favourite, setFavourite] = useState(props.favourite);
 
   const toggleFavourite = async (favourite: boolean) => {
-    console.log(props.email);
     const userRefs = collection(database, "users");
-    
 
     // get all the user, if logged in the data correlating to them, from firebase
     const docId = getDataFromCollection();
 
-    if ( favourite == true ) {
-      console.log("I clicked unfavorite");
+    if (favourite == true) {
+      // console.log("I clicked unfavorite");
       setFavourite(!favourite);
 
-      console.log(docId);
-      
-
-
+      // console.log(docId);
     } else {
       // (favourite == false)
-      console.log("I clicked favorite");
+      // console.log("I clicked favorite");
       setFavourite(!favourite);
-
     }
-    console.log(favourite);
+    // console.log(favourite);
   };
 
   useEffect(() => {
@@ -59,11 +60,10 @@ export default function FavouriteButton(props: Props) {
       if (user) {
         // console.log(docId);
         // console.log(auth.currentUser);
-
       } else {
-        // user is not logged in 
+        // user is not logged in
       }
-    })
+    });
   }, []);
 
   return (

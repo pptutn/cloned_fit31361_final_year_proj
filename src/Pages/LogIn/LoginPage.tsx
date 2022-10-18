@@ -35,7 +35,7 @@ function LoginPage() {
     const handleLogin = async (e: { preventDefault: () => void; }) => {
         e.preventDefault(); // prevent default so the page isn't reloaded when click the log in button
 
-        console.log(emailRef + " " + passwordRef);
+        // console.log(emailRef + " " + passwordRef);
 
         // save the data to the firebase collection
         let validUserSignInCredentials = logInWithEmailAndPassword(emailRef, passwordRef);

@@ -79,10 +79,10 @@ function SearchBar(props: filterPropsI) {
   }
 
   const showResults = () => {
-    console.log(university);
+    // console.log(university);
 
     let uni_code: string = getUniCode();
-    console.log(uni_code);
+    // console.log(uni_code);
 
     props.setSelectedValue({ ...props.selectedValue, campusCode: uni_code });
 

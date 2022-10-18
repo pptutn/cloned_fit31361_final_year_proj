@@ -52,17 +52,14 @@ function SimpleDialog(props: SimpleDialogProps) {
   const handleTrainChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTrainChecked(event.target.checked);
     // handleListItemClick({ ...selectedValue, train: !trainChecked });
-    console.log("train is", trainChecked);
   };
   const handleTramChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTramChecked(event.target.checked);
     // handleListItemClick({ ...selectedValue, tram: !tramChecked });
-    console.log("tram is", tramChecked);
   };
   const handleBusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setBusChecked(event.target.checked);
     // handleListItemClick({ ...selectedValue, bus: !busChecked });
-    console.log("bus is", busChecked);
   };
 
   let navigate = useNavigate();

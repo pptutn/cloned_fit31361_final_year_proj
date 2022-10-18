@@ -32,7 +32,7 @@ function HomePage(props: filterPropsI) {
   };
 
   const showResults = () => {
-    console.log("showing result (showResult)", props.selectedValue.campusCode);
+    // console.log("showing result (showResult)", props.selectedValue.campusCode);
     let path = `/results`;
     navigate(path);
   };

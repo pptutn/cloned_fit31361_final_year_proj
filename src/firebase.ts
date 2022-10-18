@@ -90,10 +90,10 @@ const logInWithEmailAndPassword = async (email: string, password: string) => {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
-    console.log(user);
+    // console.log(user);
 
   } catch (error: any) {
-    console.log(error);
+    // console.log(error);
     alert(error.message);
     return false;
   }
@@ -112,7 +112,7 @@ const getDataFromCollection = async () => {
 
     getDocs(userRefs)
       .then(response => {
-        console.log(response.docs)
+        // console.log(response.docs)
         // get the individual document
         const userDocs = response.docs.map(doc => ({
           data: doc.data(),
@@ -120,7 +120,7 @@ const getDataFromCollection = async () => {
           // ...doc.data()
         }))
         
-        console.log(userDocs);
+        // console.log(userDocs);
         // console.log(auth.currentUser?.email);
 
         // setUserDocs(userDocs);

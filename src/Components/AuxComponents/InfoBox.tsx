@@ -11,7 +11,7 @@ interface Props {
 }
 
 const showAlert = () => {
-  alert("God I love FIT3162");
+  // alert("God I love FIT3162");
 };
 
 function InfoBox(props: Props) {

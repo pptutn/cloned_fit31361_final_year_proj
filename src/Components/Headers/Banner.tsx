@@ -64,7 +64,7 @@ function Banner() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setLoggedIn(true);
-        console.log(auth.currentUser);
+        // console.log(auth.currentUser);
         setCurrentUser(user);
       } else {
         setLoggedIn(false);
