@@ -6,12 +6,12 @@ import "./InfoBox.css";
 interface Props {
   name?: string;
   campusLocation?: string;
-  href? : string;
-  onClick? : any;
+  href?: string;
+  onClick?: any;
 }
 
 const showAlert = () => {
-  alert("God I love FIT3162");
+  // alert("God I love FIT3162");
 };
 
 function InfoBox(props: Props) {

@@ -4,10 +4,6 @@ import Stack from "@mui/material/Stack";
 import InfoBox from "../../Components/AuxComponents/InfoBox";
 import SearchBar from "../../Components/Headers/SearchBar";
 import Banner from "../../Components/Headers/Banner";
-import { auth } from "../../firebase";
-
-import SimpleDialog from "../../Components/AuxComponents/SimpleDialog";
-import { Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { IFilterValues } from "../../App";
 
@@ -32,7 +28,7 @@ function HomePage(props: filterPropsI) {
   };
 
   const showResults = () => {
-    console.log("showing result (showResult)", props.selectedValue.campusCode);
+    // console.log("showing result (showResult)", props.selectedValue.campusCode);
     let path = `/results`;
     navigate(path);
   };

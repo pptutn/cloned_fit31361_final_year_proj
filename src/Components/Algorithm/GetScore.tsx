@@ -1,4 +1,3 @@
-import { Subscript, SubscriptSharp } from "@mui/icons-material";
 import { suburbProps } from "../ExpandableComponent/ExpandableComponent";
 
 export const calcScore = (subs: suburbProps) => {
@@ -7,7 +6,6 @@ export const calcScore = (subs: suburbProps) => {
       (800 - subs.medianRentPrice) * 0.47 +
       +(subs.bus || subs.train || subs.tram) * 0.03
   );
-  console.log("this is res", res);
   const convertStars = (score: number) => {
     let finalStars = 1;
     if (score > 100) {

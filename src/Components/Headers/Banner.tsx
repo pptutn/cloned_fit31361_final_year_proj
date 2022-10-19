@@ -7,13 +7,10 @@ import theme from "../../colourScheme";
 import { onAuthStateChanged, signOut, User } from "firebase/auth";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./Banner.css";
-import { AuthProvider } from "../../AuthProvider";
-
 
 function Banner() {
-
   const [isLoggedIn, setLoggedIn] = useState(false);
-  // state that holds the value for the user in the 
+  // state that holds the value for the user in the
   const [currentUser, setCurrentUser] = useState<User | null>(auth.currentUser);
 
   const navigate = useNavigate();
@@ -21,29 +18,28 @@ function Banner() {
   // get the route location of the page the user is on
   const location = useLocation();
 
-
   const showLogInPage = () => {
     let path = "/login";
     navigate(path);
   };
 
   const handleLogOut = () => {
-    signOut(auth).then(r => console.log(r))
+    signOut(auth)
+      .then((r) => console.log(r))
       .catch();
     setCurrentUser(null);
-  }
+  };
 
   const logInLogOutClick = () => {
-
     // there is a user logged in, so log them out
     if (isLoggedIn) {
       // then log the user out
-      // change the state of loggedIn 
+      // change the state of loggedIn
       setLoggedIn(!isLoggedIn);
       // change the state of the user and sign them out
       handleLogOut();
     }
-    // if the user is not logged in 
+    // if the user is not logged in
     else {
       setLoggedIn(!isLoggedIn);
       // take the user to the login page
@@ -51,30 +47,29 @@ function Banner() {
         showLogInPage();
       }
     }
-  }
+  };
 
   const giveUsername = () => {
-    if (isLoggedIn && (currentUser!== null)) {
-      return ("Welcome, " + currentUser.email);
+    if (isLoggedIn && currentUser !== null) {
+      return "Welcome, " + currentUser.email;
     }
-  }
-
+  };
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setLoggedIn(true);
-        console.log(auth.currentUser);
+        // console.log(auth.currentUser);
         setCurrentUser(user);
       } else {
         setLoggedIn(false);
 
         setCurrentUser(null);
       }
-    })
+    });
   }, []);
 
-  // if the user is on the home page 
+  // if the user is on the home page
   if (location.pathname === "/") {
     return (
       <ThemeProvider theme={theme}>
@@ -86,7 +81,12 @@ function Banner() {
             </h1>
           </div>
           <div className="banner__links">
-            <Button color="primary" variant="contained" size="large" onClick={logInLogOutClick}>
+            <Button
+              color="primary"
+              variant="contained"
+              size="large"
+              onClick={logInLogOutClick}
+            >
               {isLoggedIn ? "Log Out" : "Log In"}
             </Button>
             {/* <div className="banner__right">
@@ -117,4 +117,3 @@ function Banner() {
 }
 
 export default Banner;
-

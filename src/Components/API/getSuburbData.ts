@@ -1,7 +1,7 @@
 const axios = require("axios").default;
 
 export async function getSearchData(campusCode: string) {
-  console.log("this is campusCode called: ", campusCode);
+  // console.log("this is campusCode called: ", campusCode);
   // monash clayton
   // const responseData = await axios.get("http://localhost:8080/suburbs/MON_CLA");
   // latrobe bundoora

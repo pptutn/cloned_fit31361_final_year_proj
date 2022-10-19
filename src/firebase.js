@@ -20,6 +20,7 @@ import {
   DocumentData,
   setDoc,
   doc,
+  Firestore,
 } from "firebase/firestore";
 
 import {
@@ -38,6 +39,9 @@ import {
   FIREBASE_API_KEY,
   FIREBASE_AUTH_DOMAIN,
 } from "./constants";
+import { userInfoI } from "./App";
+// import { userDetails, setUserDetails } from "./App";
+import { userIDGlobal } from "./App";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -55,7 +59,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // referred to in project, const that represents the firestore database
-const database = getFirestore();
+const database = getFirestore(app);
 
 // initialise authentication module
 const auth = getAuth();
@@ -63,50 +67,62 @@ const auth = getAuth();
 // check if a user is logged in
 const user = auth.currentUser;
 
+//adding user info to db
+const addtoDatabase = (userData) => {
+  // let newUser = auth.currentUser as User;
+  // console.log("hope this works");
+
+  setDoc(doc(database, "users", userData.uid), userData)
+    .then((doc) => {
+      // console.log("this is doc", doc);
+      // console.log("Successful");
+    })
+    .catch((error) => {
+      // console.log(`Unsuccessful returned error ${error}`);
+    });
+  // console.log("doc should be set");
+};
+
 // create a signUp function, so users can sign up to application and are authenticated
-const signUp = async (
-  firstname: string,
-  lastname: string,
-  email: string,
-  password: string,
-  university: string
-) => {
+const signUp = async (firstname, lastname, email, password, university) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
       password
     );
-    // let user = auth.currentUser as User;
-    // addtoDatabase();
 
-    // const addtoDatabase = async () => {
-    //   let newUser = auth.currentUser as User;
-
-    //   const userData = {
-    //     firstName: firstname,
-    //     familyName: lastname,
-    //     email: email,
-    //     university: university,
-    //     password: password,
-    //     uid: newUser.uid
-    //   };
-
-    //   await setDoc(doc(database, 'user-collection', newUser.uid), userData).then(() => {
-    //     console.log("Successful")})
-    //     .catch((error) => {
-    //     console.log(`Unsuccessful returned error ${error}`)});
-    // };
-
-    await addDoc(collection(database, "users"), {
-      uid: userCredential.user.uid,
+    const userData = {
+      firstName: firstname,
+      familyName: lastname,
       email: userCredential.user.email,
-      password: password, // should probably get rid of this at a later stage
-      firstname: firstname,
-      lastname: lastname,
-      universityAttending: university,
-    });
-  } catch (e: any) {
+      university: university,
+      password: password,
+      uid: userCredential.user.uid,
+    };
+    addtoDatabase(userData);
+    // .then(() => {
+    //   console.log("AAAAAAHHH");
+    //   addtoDatabase();
+    // })
+    // .catch(() => console.log("FUCKCCC"));
+
+    // setUserDetails({ userId: userCredential.user.uid });
+    // console.log("this is from firebaSE, this is", userDetails);
+    // .then(() => {
+    //   // let user = auth.currentUser as User;
+    //   addtoDatabase();
+    // });
+
+    // await addDoc(collection(database, "users"), {
+    //   uid: userCredential.user.uid,
+    //   email: userCredential.user.email,
+    //   password: password, // should probably get rid of this at a later stage
+    //   firstname: firstname,
+    //   lastname: lastname,
+    //   universityAttending: university,
+    // });
+  } catch (e) {
     console.error(e);
     alert(e.message);
     return false;
@@ -116,17 +132,20 @@ const signUp = async (
 
 // function that allows the user to log in to app using email and password, given they already have
 // an account that is on firestore db
-const logInWithEmailAndPassword = async (email: string, password: string) => {
+const logInWithEmailAndPassword = async (email, password) => {
   try {
     const userCredential = await signInWithEmailAndPassword(
       auth,
       email,
       password
     );
-    const user = userCredential.user;
+    // const user = userCredential.user;
+    const user = {
+      userId: userCredential.user.uid,
+    };
 
     // console.log(user);
-  } catch (error: any) {
+  } catch (error) {
     // console.log(error);
     alert(error.message);
     return false;
@@ -142,10 +161,10 @@ const getDataFromCollection = async () => {
   // const [userDoc, setUserDocs] = useState([]);
 
   // gets all the user documents
-  const getDocuments = (userRefs: CollectionReference) => {
+  const getDocuments = (userRefs) => {
     getDocs(userRefs)
       .then((response) => {
-        // console.log(response.docs)
+        // console.log(response.docs);
         // get the individual document
         const userDocs = response.docs.map((doc) => ({
           data: doc.data(),

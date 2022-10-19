@@ -1,25 +1,17 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
-import Avatar from "@mui/material/Avatar";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import ListItemText from "@mui/material/ListItemText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
-import PersonIcon from "@mui/icons-material/Person";
 import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
 import TramIcon from "@mui/icons-material/Tram";
 import TrainIcon from "@mui/icons-material/Train";
-import LocalTaxiIcon from "@mui/icons-material/LocalTaxi";
-import Typography from "@mui/material/Typography";
-import { blue, green } from "@mui/material/colors";
-import { Box, Slider, Checkbox, FormControlLabel } from "@mui/material";
+import { green } from "@mui/material/colors";
+import { Slider, Checkbox, FormControlLabel } from "@mui/material";
 import { IFilterValues } from "../../App";
 import { useNavigate } from "react-router-dom";
 import { initialFilters } from "../../App";
-
-const emails = ["username@gmail.com", "user02@gmail.com"];
 
 export interface SimpleDialogProps {
   open: boolean;
@@ -52,17 +44,14 @@ function SimpleDialog(props: SimpleDialogProps) {
   const handleTrainChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTrainChecked(event.target.checked);
     // handleListItemClick({ ...selectedValue, train: !trainChecked });
-    console.log("train is", trainChecked);
   };
   const handleTramChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTramChecked(event.target.checked);
     // handleListItemClick({ ...selectedValue, tram: !tramChecked });
-    console.log("tram is", tramChecked);
   };
   const handleBusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setBusChecked(event.target.checked);
     // handleListItemClick({ ...selectedValue, bus: !busChecked });
-    console.log("bus is", busChecked);
   };
 
   let navigate = useNavigate();

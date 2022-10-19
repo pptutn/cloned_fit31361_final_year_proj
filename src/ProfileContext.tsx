@@ -1,5 +1,5 @@
-import { createContext } from 'react';
-import { auth } from './firebase';
+import { createContext } from "react";
+import { auth } from "./firebase";
 
 const profileContextData = {
   currentUser: auth.currentUser,
